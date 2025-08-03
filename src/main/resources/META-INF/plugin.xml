@@ -1,0 +1,95 @@
+<idea-plugin>
+    <id>ua.com.pimenov.HotReload</id>
+    <name>Hot Reload Service</name>
+    <vendor url="https://www.pimenov.com">Serhii Pimenov</vendor>
+
+    <description><![CDATA[
+    Automatically updates the page open in the browser when changing the project files.
+    Supports File Expansion Settings for Tracking.
+    Saves relative paths to resources without creating temporary files.
+    ]]></description>
+
+    <idea-version since-build="251"/>
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <!-- Налаштування плагіна -->
+        <applicationConfigurable
+                parentId="tools"
+                instance="ua.com.pimenov.hotreload.settings.HotReloadConfigurable"
+                id="ua.com.pimenov.hotreload.settings"
+                displayName="Hot Reload"/>
+
+        <!-- Група нотифікацій -->
+        <notificationGroup
+                id="HotReload.Notifications"
+                displayName="Hot Reload"
+                displayType="BALLOON"/>
+
+        <!-- Сервіси -->
+        <applicationService
+                serviceImplementation="ua.com.pimenov.hotreload.settings.HotReloadSettings"/>
+        <applicationService
+                serviceImplementation="ua.com.pimenov.hotreload.service.HotReloadService"/>
+        <applicationService
+                serviceImplementation="ua.com.pimenov.hotreload.service.FileServerService"/>
+
+    </extensions>
+
+    <actions>
+        <!-- Створюємо групу для HotReload -->
+        <group id="HotReload.ToolsMenu"
+               text="Hot Reload"
+               description="Actions to control Hot Reload"
+               icon="ua.com.pimenov.hotreload.icons.HotReloadIcons.HOTRELOAD"
+               popup="true">
+            <add-to-group group-id="ToolsMenu" anchor="last"/>
+
+            <!-- Дії для запуску/зупинки всередині групи -->
+            <action id="HotReload.Start"
+                    class="ua.com.pimenov.hotreload.action.StartHotReloadAction"
+                    text="Start Hot Reload"
+                    description="Run Browser Automatic Update"
+                    icon="AllIcons.Actions.Execute"/>
+
+            <action id="HotReload.Stop"
+                    class="ua.com.pimenov.hotreload.action.StopHotReloadAction"
+                    text="Stop Hot Reload"
+                    description="Stop Browser Automatically Upgrade"
+                    icon="AllIcons.Actions.Suspend"/>
+
+            <!-- Розділювач -->
+            <separator/>
+
+            <!-- Діагностична дія -->
+            <action id="HotReload.Diagnose"
+                    class="ua.com.pimenov.hotreload.action.DiagnoseHotReloadAction"
+                    text="Diagnosis"
+                    description="Show Hot Reload Status"
+                    icon="AllIcons.General.InspectionsEye"/>
+
+            <!-- Розділювач -->
+            <separator/>
+
+            <!-- Швидкий доступ до налаштувань -->
+            <action id="HotReload.OpenSettings"
+                    class="ua.com.pimenov.hotreload.action.OpenSettingsAction"
+                    text="Settings"
+                    description="Open Hot Reload Settings"
+                    icon="AllIcons.General.Settings"/>
+        </group>
+
+        <!-- Run with HotReload залишається в контекстних меню -->
+        <action id="HotReload.RunWith"
+                class="ua.com.pimenov.hotreload.action.RunWithHotReloadAction"
+                text="Run with Hot Reload"
+                description="Open the HTML file in the browser with the active Hot Reload"
+                icon="AllIcons.Actions.Execute">
+            <!-- Додаємо в контекстне меню файлів -->
+            <add-to-group group-id="EditorPopupMenu" anchor="first"/>
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
+            <!-- Додаємо на панель інструментів -->
+            <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="RunClass"/>
+        </action>
+    </actions>
+</idea-plugin>
