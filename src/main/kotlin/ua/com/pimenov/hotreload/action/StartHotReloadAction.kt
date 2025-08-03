@@ -15,8 +15,8 @@ class StartHotReloadAction : AnAction() {
         if (service.isRunning()) {
             showNotification(project, "ℹ️ Hot Reload", "Hot Reload already started", NotificationType.INFORMATION)
         } else {
-            service.start()
-            showNotification(project, "🚀 Hot Reload", "HotReload started successfully", NotificationType.INFORMATION)
+            service.startForProject(project)
+            showNotification(project, "🚀 Hot Reload", "HotReload started successfully for project: ${project.name}", NotificationType.INFORMATION)
         }
     }
 

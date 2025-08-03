@@ -6,6 +6,7 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.sun.net.httpserver.HttpExchange
 import com.sun.net.httpserver.HttpHandler
 import com.sun.net.httpserver.HttpServer
+import java.io.IOException
 import java.net.InetSocketAddress
 import java.net.URLDecoder
 import java.util.concurrent.Executors
@@ -34,7 +35,7 @@ class FileServerService {
             logger.info("The file server is running on $baseUrl")
             return baseUrl
         } catch (e: Exception) {
-            logger.error("Fale Server Failed", e)
+            logger.error("File Server Failed", e)
             throw e
         }
     }
@@ -62,15 +63,21 @@ class FileServerService {
             "woff2" -> "font/woff2"
             "ttf" -> "font/ttf"
             "eot" -> "application/vnd.ms-fontobject"
+            "webp" -> "image/webp"
+            "xml" -> "application/xml"
+            "txt" -> "text/plain; charset=utf-8"
             else -> "application/octet-stream"
         }
     }
 
     private inner class FileHandler : HttpHandler {
         override fun handle(exchange: HttpExchange) {
+            var responseBody: java.io.OutputStream? = null
             try {
                 val path = URLDecoder.decode(exchange.requestURI.path, "UTF-8")
                 val requestedPath = if (path == "/") "/index.html" else path
+
+                logger.debug("Hot Reload - Serving file: $requestedPath")
 
                 val file = findFile(requestedPath)
                 if (file != null && file.exists()) {
@@ -83,40 +90,105 @@ class FileServerService {
                     }
 
                     val mimeType = getMimeType(file.name)
-                    exchange.responseHeaders.set("Content-Type", mimeType)
-                    exchange.responseHeaders.set("Cache-Control", "no-cache, no-store, must-revalidate")
-                    exchange.responseHeaders.set("Access-Control-Allow-Origin", "*")
 
+                    // Встановлюємо заголовки
+                    exchange.responseHeaders.apply {
+                        set("Content-Type", mimeType)
+                        set("Cache-Control", "no-cache, no-store, must-revalidate")
+                        set("Pragma", "no-cache")
+                        set("Expires", "0")
+                        set("Access-Control-Allow-Origin", "*")
+                        set("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
+                        set("Access-Control-Allow-Headers", "Content-Type")
+                    }
+
+                    // Відправляємо заголовки відповіді
                     exchange.sendResponseHeaders(200, content.size.toLong())
-                    exchange.responseBody.write(content)
+                    responseBody = exchange.responseBody
+
+                    // Записуємо контент частинами для великих файлів
+                    writeContentSafely(responseBody, content)
+
+                    logger.debug("Hot Reload - Successfully served: ${file.name} (${content.size} bytes)")
                 } else {
+                    // Файл не знайдено
+                    logger.warn("Hot Reload - File not found: $requestedPath")
                     val notFoundMessage = "File not found: $requestedPath"
                     val notFoundBytes = notFoundMessage.toByteArray(Charsets.UTF_8)
-                    exchange.responseHeaders.set("Content-Type", "text/plain")
+
+                    exchange.responseHeaders.set("Content-Type", "text/plain; charset=utf-8")
                     exchange.sendResponseHeaders(404, notFoundBytes.size.toLong())
-                    exchange.responseBody.write(notFoundBytes)
+                    responseBody = exchange.responseBody
+
+                    writeContentSafely(responseBody, notFoundBytes)
+                }
+            } catch (e: IOException) {
+                // Ця помилка виникає коли клієнт розірвав з'єднання
+                if (e.message?.contains("connection was aborted") == true ||
+                    e.message?.contains("connection reset") == true ||
+                    e.message?.contains("Broken pipe") == true) {
+                    logger.debug("Hot Reload - Client disconnected during file transfer: ${e.message}")
+                } else {
+                    logger.warn("Hot Reload - IO error serving file: ${e.message}")
                 }
             } catch (e: Exception) {
-                logger.error("File service error", e)
-                val errorMessage = "Server error: ${e.message}"
-                val errorBytes = errorMessage.toByteArray(Charsets.UTF_8)
-                exchange.responseHeaders.set("Content-Type", "text/plain")
-                exchange.sendResponseHeaders(500, errorBytes.size.toLong())
-                exchange.responseBody.write(errorBytes)
+                logger.error("Hot Reload - Unexpected error serving file", e)
+
+                // Спробуємо відправити помилку клієнту, якщо з'єднання ще активне
+                try {
+                    if (responseBody == null) {
+                        val errorMessage = "Server error: ${e.message}"
+                        val errorBytes = errorMessage.toByteArray(Charsets.UTF_8)
+                        exchange.responseHeaders.set("Content-Type", "text/plain; charset=utf-8")
+                        exchange.sendResponseHeaders(500, errorBytes.size.toLong())
+                        responseBody = exchange.responseBody
+                        writeContentSafely(responseBody, errorBytes)
+                    }
+                } catch (sendErrorException: Exception) {
+                    logger.debug("Hot Reload - Could not send error response: ${sendErrorException.message}")
+                }
             } finally {
-                exchange.responseBody.close()
+                // Безпечно закриваємо OutputStream
+                try {
+                    responseBody?.close()
+                } catch (e: Exception) {
+                    logger.debug("Hot Reload - Error closing response stream: ${e.message}")
+                }
+            }
+        }
+
+        private fun writeContentSafely(outputStream: java.io.OutputStream, content: ByteArray) {
+            try {
+                val chunkSize = 8192 // 8KB chunks
+                var offset = 0
+
+                while (offset < content.size) {
+                    val length = minOf(chunkSize, content.size - offset)
+                    outputStream.write(content, offset, length)
+                    outputStream.flush()
+                    offset += length
+                }
+            } catch (e: IOException) {
+                // Клієнт розірвав з'єднання під час передачі
+                throw e
             }
         }
 
         private fun findFile(path: String): VirtualFile? {
             val projectRoot = this@FileServerService.projectRoot ?: return null
 
-            // Видаляємо початковий слеш
-            val relativePath = path.removePrefix("/")
+            // Видаляємо початковий слеш та нормалізуємо шлях
+            val relativePath = path.removePrefix("/").replace("\\", "/")
 
             if (relativePath.isEmpty()) {
                 // Шукаємо index.html в корені проекту
                 return projectRoot.findChild("index.html")
+            }
+
+            // Запобігаємо шляхам типу ../../../
+            if (relativePath.contains("../") || relativePath.contains("..\\")) {
+                logger.warn("Hot Reload - Blocked suspicious path: $path")
+                return null
             }
 
             // Розділяємо шлях на частини
@@ -132,10 +204,25 @@ class FileServerService {
     }
 
     private fun injectHotReloadScript(htmlContent: String): String {
+        val settings = ua.com.pimenov.hotreload.settings.HotReloadSettings.getInstance()
+        val indicatorPosition = ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition)
+
+        // Визначаємо CSS стилі для позиції індикатора
+        val positionStyles = when (indicatorPosition) {
+            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.TOP_LEFT ->
+                "'top: 10px;' + 'left: 10px;'"
+            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.TOP_RIGHT ->
+                "'top: 10px;' + 'right: 10px;'"
+            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.BOTTOM_LEFT ->
+                "'bottom: 10px;' + 'left: 10px;'"
+            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.BOTTOM_RIGHT ->
+                "'bottom: 10px;' + 'right: 10px;'"
+        }
+
         val hotReloadScript = """
             <script>
             (function() {
-                console.log('🔥 Hot Reload activated on the port $webSocketPort');
+                console.log('🔥 Hot Reload activated on port $webSocketPort');
                 
                 let ws;
                 let reconnectAttempts = 0;
@@ -149,7 +236,7 @@ class FileServerService {
                         ws = new WebSocket('ws://localhost:$webSocketPort');
                         
                         ws.onopen = function(event) {
-                            console.log('🔗 HotReload: WebSocket Connected');
+                            console.log('🔗 Hot Reload: WebSocket Connected');
                             reconnectAttempts = 0;
                             updateIndicator('connected');
                         };
@@ -159,12 +246,12 @@ class FileServerService {
                                 const data = JSON.parse(event.data);
                                 if (data.type === 'reload') {
                                     isReloading = true;
-                                    console.log('🔄 HotReload: Changes in file have been detected:', data.file || 'Unknown');
+                                    console.log('🔄 Hot Reload: File changed:', data.file || 'Unknown');
                                     
-                                    // Додаємо плавний ефект перед оновленням
+                                    // Плавний ефект перед оновленням
                                     if (document.body) {
                                         document.body.style.transition = 'opacity 0.2s';
-                                        document.body.style.opacity = '0.7';
+                                        document.body.style.opacity = '0.8';
                                     }
                                     
                                     setTimeout(() => {
@@ -172,7 +259,7 @@ class FileServerService {
                                     }, 200);
                                 }
                             } catch (error) {
-                                console.error('❌ Hot Reload: Parsing error message:', error);
+                                console.error('❌ Hot Reload: Message parse error:', error);
                             }
                         };
                         
@@ -181,14 +268,13 @@ class FileServerService {
                                 console.log('🔌 Hot Reload: WebSocket Disconnected, code:', event.code);
                                 updateIndicator('disconnected');
                                 
-                                // Спробуємо переподключитися
                                 if (reconnectAttempts < maxReconnectAttempts) {
                                     reconnectAttempts++;
                                     const delay = Math.min(5000, 1000 * reconnectAttempts);
-                                    console.log('🔄 Hot Reload: Attempting to reconnect ' + reconnectAttempts + '/' + maxReconnectAttempts + ' через ' + delay + 'мс');
+                                    console.log('🔄 Hot Reload: Reconnecting ' + reconnectAttempts + '/' + maxReconnectAttempts + ' in ' + delay + 'ms');
                                     setTimeout(connectWebSocket, delay);
                                 } else {
-                                    console.error('❌ Hot Reload: Failed to reconnect after', maxReconnectAttempts, 'спроб');
+                                    console.error('❌ Hot Reload: Failed to reconnect after', maxReconnectAttempts, 'attempts');
                                     updateIndicator('failed');
                                 }
                             }
@@ -203,7 +289,6 @@ class FileServerService {
                         console.error('❌ Hot Reload: Failed to create WebSocket:', error);
                         updateIndicator('error');
                         
-                        // Спробуємо ще раз
                         if (reconnectAttempts < maxReconnectAttempts) {
                             reconnectAttempts++;
                             setTimeout(connectWebSocket, 2000);
@@ -218,22 +303,20 @@ class FileServerService {
                     indicator.innerHTML = '🔥';
                     indicator.style.cssText = 
                         'position: fixed;' +
-                        'top: 10px;' +
-                        'right: 10px;' +
+                        $positionStyles +
                         'background: #4CAF50;' +
                         'color: white;' +
                         'padding: 5px 10px;' +
                         'border-radius: 4px;' +
                         'font-family: monospace;' +
                         'font-size: 12px;' +
-                        'z-index: 9999;' +
+                        'z-index: 2147483647;' +
                         'box-shadow: 0 2px 4px rgba(0,0,0,0.2);' +
                         'transition: all 0.3s ease;' +
                         'cursor: pointer;';
                     
-                    // Додаємо клік для показу статусу
                     indicator.addEventListener('click', function() {
-                        console.log('🔥 Hot Reload staus:', {
+                        console.log('🔥 Hot Reload status:', {
                             connected: ws && ws.readyState === WebSocket.OPEN,
                             readyState: ws ? ws.readyState : 'not created',
                             reconnectAttempts: reconnectAttempts,
@@ -251,7 +334,7 @@ class FileServerService {
                         case 'connected':
                             indicator.style.background = '#4CAF50';
                             indicator.innerHTML = '🔥';
-                            indicator.title = 'Hot Reload connected (click for details)';
+                            indicator.title = 'Hot Reload connected (click for status)';
                             break;
                         case 'disconnected':
                             indicator.style.background = '#FF9800';
@@ -273,7 +356,7 @@ class FileServerService {
                     indicator = createIndicator();
                     document.body.appendChild(indicator);
                     
-                    // Ховаємо індикатор через 5 секунд, якщо все добре
+                    // Приховуємо індикатор через 5 секунд
                     setTimeout(function() {
                         if (indicator && ws && ws.readyState === WebSocket.OPEN) {
                             indicator.style.opacity = '0.7';
@@ -286,20 +369,19 @@ class FileServerService {
                     }, 5000);
                 }
                 
-                // Ініціалізуємо після завантаження DOM
                 function initialize() {
                     showIndicator();
                     connectWebSocket();
                 }
                 
-                // Запускаємо ініціалізацію
+                // Запускаємо після завантаження DOM
                 if (document.readyState === 'loading') {
                     document.addEventListener('DOMContentLoaded', initialize);
                 } else {
                     initialize();
                 }
                 
-                // Очищуємо ресурси при закритті сторінки
+                // Очищуємо ресурси при закритті
                 window.addEventListener('beforeunload', function() {
                     if (ws) {
                         ws.close();
@@ -318,7 +400,6 @@ class FileServerService {
                 htmlContent.replace("</body>", "$hotReloadScript\n</body>", ignoreCase = true)
             }
             else -> {
-                // Якщо немає тегів head або body, додаємо в кінець
                 "$htmlContent\n$hotReloadScript"
             }
         }

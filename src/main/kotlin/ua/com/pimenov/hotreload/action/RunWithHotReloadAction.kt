@@ -13,6 +13,8 @@ import ua.com.pimenov.hotreload.service.FileServerService
 import ua.com.pimenov.hotreload.service.HotReloadService
 import ua.com.pimenov.hotreload.settings.HotReloadSettings
 import java.net.URI
+import java.net.URLEncoder
+import java.nio.charset.StandardCharsets
 
 class RunWithHotReloadAction : AnAction() {
 
@@ -29,12 +31,12 @@ class RunWithHotReloadAction : AnAction() {
         val settings = HotReloadSettings.getInstance()
 
         try {
-            // Запускаємо WebSocket сервер для HotReload
+            // Запускаємо WebSocket сервер для HotReload з прив'язкою до проекту
             if (!hotReloadService.isRunning()) {
-                hotReloadService.start()
+                hotReloadService.startForProject(project)
             }
 
-            // Знаходимо корінь проекту (використовуємо новий API)
+            // Знаходимо корінь проекту
             val projectRoot = project.guessProjectDir() ?: virtualFile.parent
 
             // Запускаємо HTTP сервер
@@ -51,9 +53,7 @@ class RunWithHotReloadAction : AnAction() {
             showSuccessNotification(
                 project,
                 "🔥 Hot Reload is Running",
-                "The file is open in browser with an autorenewal\n" +
-                        "WebSocket: ws://localhost:${settings.webSocketPort}\n" +
-                        "HTTP: $fileUrl"
+                "The file is open in browser with an autorenewal"
             )
 
         } catch (e: Exception) {
@@ -79,11 +79,16 @@ class RunWithHotReloadAction : AnAction() {
         val base = basePath.replace('\\', '/').removeSuffix("/")
         val file = filePath.replace('\\', '/')
 
-        return if (file.startsWith(base)) {
+        val relativePath = if (file.startsWith(base)) {
             file.substring(base.length).removePrefix("/")
         } else {
             // Якщо файл не в проекті, повертаємо тільки ім'я файла
             file.substringAfterLast('/')
+        }
+
+        // Кодуємо шлях для використання в URL
+        return relativePath.split("/").joinToString("/") { segment ->
+            URLEncoder.encode(segment, StandardCharsets.UTF_8.toString())
         }
     }
 

@@ -14,18 +14,17 @@ class HotReloadConfigurable : Configurable {
         panel = panel {
             group("General settings") {
                 row {
-                    checkBox("Enable Hot Reload Service")
-                        .bindSelected(settings::isEnabled)
-                }
-
-                row {
-                    checkBox("Automatically run the service with 'Run with Hot Reload'")
-                        .bindSelected(settings::autoStartServer)
-                }
-
-                row {
                     checkBox("Show Hot Reload indicator on page")
                         .bindSelected(settings::showHotReloadIndicator)
+                }
+
+                row("Indicator position:") {
+                    comboBox(HotReloadSettings.IndicatorPosition.values().toList())
+                        .bindItem(
+                            { HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition) },
+                            { position -> settings.indicatorPosition = position?.value ?: "top_right" }
+                        )
+                        .comment("Position of the Hot Reload indicator on the page")
                 }
             }
 
@@ -45,7 +44,7 @@ class HotReloadConfigurable : Configurable {
                 row("Update delay (MS):") {
                     intTextField(0..5000)
                         .bindIntText(settings::browserRefreshDelay)
-                        .comment("Delay before the browser update")
+                        .comment("Delay before browser update")
                 }
             }
 
@@ -53,7 +52,14 @@ class HotReloadConfigurable : Configurable {
                 row("Files Extensions for tracking:") {
                     textField()
                         .bindText(settings::watchedExtensions)
-                        .comment("Expanding files through coma (for example: html,css,js)")
+                        .comment("File extensions separated by comma (example: html,css,js)")
+                        .columns(COLUMNS_LARGE)
+                }
+
+                row("Excluded folders:") {
+                    textField()
+                        .bindText(settings::excludedFolders)
+                        .comment("Folders to exclude from tracking (example: .idea,.git,node_modules)")
                         .columns(COLUMNS_LARGE)
                 }
             }
@@ -63,16 +69,13 @@ class HotReloadConfigurable : Configurable {
                     text("1. Right-click on html file")
                 }
                 row {
-                    text("2. Choice 'Run with HotReload'")
+                    text("2. Choose 'Run with HotReload'")
                 }
                 row {
                     text("3. The file automatically opens in the browser with active Hot Reload")
                 }
                 row {
-                    text("4. When you save any track file the page will be updated")
-                }
-                row {
-                    text("Note: Two ports are used - one for WebSocket, the other for HTTP server")
+                    text("4. When you save any tracked file the page will be updated")
                 }
             }
         }
