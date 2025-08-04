@@ -70,9 +70,7 @@ class DiagnoseHotReloadAction : AnAction() {
         // Відстеження файлів
         sb.appendLine("📁 FILE TRACKING:")
         sb.appendLine("  • Watched Extensions: ${settings.watchedExtensions}")
-        sb.appendLine("  • Extensions Set: ${settings.getWatchedExtensionsSet().joinToString(", ")}")
         sb.appendLine("  • Excluded Folders: ${settings.excludedFolders}")
-        sb.appendLine("  • Excluded Set: ${settings.getExcludedFoldersSet().joinToString(", ")}")
         sb.appendLine()
 
         // Інформація про проекти
@@ -101,11 +99,6 @@ class DiagnoseHotReloadAction : AnAction() {
 
         // Поради з усунення неполадок
         sb.appendLine("🔧 TROUBLESHOOTING TIPS:")
-
-        if (!settings.isEnabled) {
-            sb.appendLine("  ⚠️  Hot Reload is disabled in settings!")
-            sb.appendLine("     → Go to Settings > Tools > Hot Reload and enable the service")
-        }
 
         if (!hotReloadService.isRunning()) {
             sb.appendLine("  ⚠️  Hot Reload service is not running!")

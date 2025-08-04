@@ -306,8 +306,12 @@ class FileServerService {
                         $positionStyles +
                         'background: #4CAF50;' +
                         'color: white;' +
-                        'padding: 5px 10px;' +
-                        'border-radius: 4px;' +
+                        'width: 24px;' +
+                        'height: 24px;' +
+                        'display: flex;' +
+                        'align-items: center;' +
+                        'justify-content: center;' +
+                        'border-radius: 50%;' +
                         'font-family: monospace;' +
                         'font-size: 12px;' +
                         'z-index: 2147483647;' +

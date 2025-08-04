@@ -1,17 +1,19 @@
 # Hot Reload Plugin for IntelliJ IDEA
 
-Automatically updates the page open in the browser when changing project files, providing a seamless development
-experience.
+<!-- Plugin description -->
+Hot Reload is a powerful development tool that automatically refreshes your web browser whenever you make changes to
+your project files. It establishes a WebSocket connection between your IDE and browser to instantly reflect code
+modifications without manual page reloads. Perfect for web developers who want to streamline their development workflow and see changes instantly in the browser.
+<!-- Plugin description end -->
 
 ## Features
 
 - Real-time browser refresh on file changes
-- Configurable file extensions monitoring
 - Built-in WebSocket server for instant updates
-- No temporary files creation
-- Configurable refresh delay
-- Visual reload indicator (optional)
-- Toolbar and context menu integration
+- Support for multiple file types (HTML, CSS, JS, TypeScript)
+- Configurable refresh delay and file monitoring
+- Visual indicators for reload status
+- Easy integration with IDE toolbar and context menus
 
 ## Requirements
 
@@ -61,7 +63,7 @@ This project is licensed under the MIT License.
 
 You can install plugin from:
 
-[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/xxxxx-hot-reload)
+[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/12213-hot-reload)
 
 Or directly from your IDE:
 1. Install a compatible JetBrains IDE, such as WebStorm, or other IntelliJ-based IDEs
@@ -70,16 +72,27 @@ Or directly from your IDE:
 
 ## Supported Platforms
 
-+ **AppCode** — build 251.0+
-+ **CLion** — 2025.1+
-+ **GoLand** — 2025.1+
-+ **IntelliJ** IDEA Ultimate — 2025.1+
-+ **PhpStorm** — 2025.1+
-+ **PyCharm Pro** — 2025.1+
-+ **Rider** — 2025.1+
-+ **RubyMine** — 2025.1+
-+ **RustRover** — 2025.1+
-+ **WebStorm** — 2025.1+
++ Android Studio — Narwhal | 2025.1.1+
++ AppCode — build 251.0+
++ Aqua — build 251.0+
++ CLion — 2025.1+
++ Code With Me Guest — 1.0+
++ DataGrip — 2025.1+
++ DataSpell — 2025.1+
++ GoLand — 2025.1+
++ IntelliJ IDEA Community — 2025.1+
++ IntelliJ IDEA Ultimate — 2025.1+
++ JetBrains Client — 1.0+
++ JetBrains Gateway — 2025.1+
++ MPS — 2025.1+
++ PhpStorm — 2025.1+
++ PyCharm — 2025.1+
++ PyCharm Community — 2025.1+
++ Rider — 2025.1+
++ RubyMine — 2025.1+
++ RustRover — 2025.1+
++ WebStorm — 2025.1+
++ Writerside — build 251.0+
 
 --- 
 ## Support

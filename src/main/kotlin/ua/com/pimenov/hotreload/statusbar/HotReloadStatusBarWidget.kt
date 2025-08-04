@@ -27,7 +27,10 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
 
     override fun ID(): String = ID
 
-    override fun getPresentation(): StatusBarWidget.WidgetPresentation = this
+    @Suppress("DEPRECATION", "OVERRIDE_DEPRECATION")
+    override fun getPresentation(): StatusBarWidget.WidgetPresentation {
+        return this
+    }
 
     override fun install(statusBar: StatusBar) {
         this.statusBar = statusBar
@@ -39,9 +42,13 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
     }
 
     override fun getIcon(): Icon {
-        return if (hotReloadService.isRunning()) {
-            HotReloadIcons.HOTRELOAD_ACTIVE
-        } else {
+        return try {
+            if (hotReloadService.isRunning()) {
+                HotReloadIcons.HOTRELOAD_ACTIVE
+            } else {
+                HotReloadIcons.HOTRELOAD_INACTIVE
+            }
+        } catch (e: Exception) {
             HotReloadIcons.HOTRELOAD_INACTIVE
         }
     }
@@ -53,6 +60,7 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
                 hotReloadService.getActiveConnectionsCount() > 0 -> {
                     "Hot Reload: ${hotReloadService.getActiveConnectionsCount()} connection(s) active"
                 }
+
                 else -> "Hot Reload: Running (no connections)"
             }
         } catch (e: Exception) {
@@ -63,7 +71,11 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
     override fun getClickConsumer(): Consumer<MouseEvent>? {
         return Consumer { event ->
             if (event.button == MouseEvent.BUTTON1) {
-                showPopup(event)
+                try {
+                    showPopup(event)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
             }
         }
     }
@@ -110,9 +122,15 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
     }
 
     private fun schedulePeriodicUpdate() {
-        alarm.addRequest({
-            statusBar?.updateWidget(ID)
-            schedulePeriodicUpdate() // Повторне планування
-        }, 2000) // Кожні 2 секунди
+        if (!project.isDisposed) {
+            alarm.addRequest({
+                try {
+                    statusBar?.updateWidget(ID)
+                    schedulePeriodicUpdate()
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                }
+            }, 2000)
+        }
     }
 }

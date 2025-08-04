@@ -205,7 +205,7 @@ class HotReloadService {
      */
     private fun showAutoStopNotification() {
         val settings = HotReloadSettings.getInstance()
-        val content = "Hot Reload Service is automatically stopped due to lack of connections over ${settings.autoStopDelaySeconds} секунд"
+        val content = "Hot Reload stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds."
 
         NotificationGroupManager.getInstance()
             .getNotificationGroup("HotReload")
@@ -364,7 +364,7 @@ class HotReloadService {
 
     private fun updateStatusBar() {
         // Оновлюємо для всіх відкритих проектів
-        com.intellij.openapi.project.ProjectManager.getInstance().openProjects.forEach { project ->
+        ProjectManager.getInstance().openProjects.forEach { project ->
             if (!project.isDisposed) {
                 val statusBar = WindowManager.getInstance().getStatusBar(project)
                 statusBar?.updateWidget(HotReloadStatusBarWidget.ID)
