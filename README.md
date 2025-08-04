@@ -1,7 +1,7 @@
-# Hot Reload Plugin for IntelliJ IDEA
+# Hot Reloader Plugin for IntelliJ IDEA
 
 <!-- Plugin description -->
-Hot Reload is a powerful development tool that automatically refreshes your web browser whenever you make changes to
+Hot Reloader is a powerful development tool that automatically refreshes your web browser whenever you make changes to
 your project files. It establishes a WebSocket connection between your IDE and browser to instantly reflect code
 modifications without manual page reloads. Perfect for web developers who want to streamline their development workflow and see changes instantly in the browser.
 <!-- Plugin description end -->
@@ -50,7 +50,7 @@ Go to `Settings/Preferences → Tools → Hot Reload` to configure:
 
 ### Default Settings
 
-- Watched extensions: html, css, js, jsx, ts, tsx, json
+- Watched extensions: html, css, js
 - WebSocket port: 4081
 - HTTP port: 4080
 - Refresh delay: 100ms
@@ -63,12 +63,12 @@ This project is licensed under the MIT License.
 
 You can install plugin from:
 
-[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/12213-hot-reload)
+[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/12213-hot-reloader)
 
 Or directly from your IDE:
 1. Install a compatible JetBrains IDE, such as WebStorm, or other IntelliJ-based IDEs
 2. Launch the IDE and open plugin settings
-3. Search for `Hot Reload` and click install
+3. Search for `Hot Reloader` and click install
 
 ## Supported Platforms
 
