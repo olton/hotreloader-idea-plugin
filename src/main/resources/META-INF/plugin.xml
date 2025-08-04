@@ -34,6 +34,15 @@
         <applicationService
                 serviceImplementation="ua.com.pimenov.hotreload.service.FileServerService"/>
 
+        <!-- Група повідомлень для Hot Reload -->
+        <notificationGroup id="HotReload" displayType="BALLOON"/>
+
+        <!-- StatusBar Widget -->
+        <statusBarWidgetFactory
+                id="ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidgetFactory"
+                implementation="ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidgetFactory"
+                order="before selectionInfo"/>
+
     </extensions>
 
     <actions>

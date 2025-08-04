@@ -94,7 +94,7 @@ class RunWithHotReloadAction : AnAction() {
 
     private fun showSuccessNotification(project: com.intellij.openapi.project.Project, title: String, content: String) {
         val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload.Notifications")
+            .getNotificationGroup("HotReload")
 
         if (notificationGroup != null) {
             val notification = notificationGroup.createNotification(title, content, NotificationType.INFORMATION)
@@ -102,7 +102,7 @@ class RunWithHotReloadAction : AnAction() {
         } else {
             // Fallback якщо група не знайдена
             val notification = Notification(
-                "HotReload.Notifications",
+                "HotReload",
                 title,
                 content,
                 NotificationType.INFORMATION
@@ -113,7 +113,7 @@ class RunWithHotReloadAction : AnAction() {
 
     private fun showErrorNotification(project: com.intellij.openapi.project.Project, title: String, content: String) {
         val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload.Notifications")
+            .getNotificationGroup("HotReload")
 
         if (notificationGroup != null) {
             val notification = notificationGroup.createNotification(title, content, NotificationType.ERROR)
@@ -121,7 +121,7 @@ class RunWithHotReloadAction : AnAction() {
         } else {
             // Fallback якщо група не знайдена
             val notification = Notification(
-                "HotReload.Notifications",
+                "HotReload",
                 title,
                 content,
                 NotificationType.ERROR

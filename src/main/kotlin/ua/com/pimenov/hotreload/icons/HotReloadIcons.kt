@@ -6,4 +6,6 @@ import javax.swing.Icon
 object HotReloadIcons {
     @JvmField
     val HOTRELOAD: Icon = IconLoader.getIcon("/icons/hotreload.svg", HotReloadIcons::class.java)
+    val HOTRELOAD_ACTIVE: Icon = IconLoader.getIcon("/icons/hotreload.svg", HotReloadIcons::class.java)
+    val HOTRELOAD_INACTIVE: Icon = IconLoader.getIcon("/icons/hotreload-white.svg", HotReloadIcons::class.java)
 }

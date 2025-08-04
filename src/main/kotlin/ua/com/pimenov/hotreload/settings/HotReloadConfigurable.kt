@@ -3,6 +3,7 @@ package ua.com.pimenov.hotreload.settings
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.ui.DialogPanel
 import com.intellij.ui.dsl.builder.*
+import javax.swing.JCheckBox
 import javax.swing.JComponent
 
 class HotReloadConfigurable : Configurable {
@@ -13,6 +14,32 @@ class HotReloadConfigurable : Configurable {
     override fun createComponent(): JComponent {
         panel = panel {
             group("General settings") {
+                row("Threads:") {
+                    intTextField(1..Runtime.getRuntime().availableProcessors())
+                        .bindIntText(settings::corePoolSize)
+                        .comment("Number of threads for Hot Reload service (default: ${settings.corePoolSize})")
+                }
+
+                row("WebSocket port:") {
+                    intTextField(1024..65535)
+                        .bindIntText(settings::webSocketPort)
+                        .comment("WebSocket port connection with browser 1024-65535")
+                }
+
+                row("HTTP port:") {
+                    intTextField(1024..65535)
+                        .bindIntText(settings::httpPort)
+                        .comment("Port for http file server connection 1024-65535")
+                }
+
+                row("Update delay (MS):") {
+                    intTextField(0..5000)
+                        .bindIntText(settings::browserRefreshDelay)
+                        .comment("Delay before browser update (0-5000 ms)")
+                }
+            }
+
+            group("Web Page") {
                 row {
                     checkBox("Show Hot Reload indicator on page")
                         .bindSelected(settings::showHotReloadIndicator)
@@ -28,23 +55,19 @@ class HotReloadConfigurable : Configurable {
                 }
             }
 
-            group("Network settings") {
-                row("WebSocket port:") {
-                    intTextField(1024..65535)
-                        .bindIntText(settings::webSocketPort)
-                        .comment("WebSocket port connection with browser")
-                }
+            group("Automatic stop") {
+                lateinit var autoStopCheckBox: Cell<JCheckBox>
 
-                row("HTTP port:") {
-                    intTextField(1024..65535)
-                        .bindIntText(settings::httpPort)
-                        .comment("Port for http file server")
+                row {
+                    autoStopCheckBox = checkBox("Stop when no clients connected")
+                        .bindSelected(settings::autoStopEnabled)
+                        .comment("Automatically stops Hot Reload Service when all clients have disconnected")
                 }
-
-                row("Update delay (MS):") {
-                    intTextField(0..5000)
-                        .bindIntText(settings::browserRefreshDelay)
-                        .comment("Delay before browser update")
+                row("Delay before stopping (seconds):") {
+                    intTextField(range = 10..3600)
+                        .bindIntText(settings::autoStopDelaySeconds)
+                        .comment("Waiting time before service automatically stopping (10-3600 seconds)")
+                        .enabledIf(autoStopCheckBox.selected)
                 }
             }
 

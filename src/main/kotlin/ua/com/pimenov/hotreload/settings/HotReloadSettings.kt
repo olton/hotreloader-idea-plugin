@@ -20,6 +20,9 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var showHotReloadIndicator: Boolean = true
     var indicatorPosition: String = "top_right"
     var excludedFolders: String = ".idea,.git,node_modules"
+    var autoStopEnabled: Boolean = false // Нова опція
+    var autoStopDelaySeconds: Int = 300
+    var corePoolSize: Int = 3
 
     override fun getState(): HotReloadSettings = this
 

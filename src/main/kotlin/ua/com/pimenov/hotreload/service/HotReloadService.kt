@@ -1,5 +1,7 @@
 package ua.com.pimenov.hotreload.service
 
+import com.intellij.notification.NotificationGroupManager
+import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -14,8 +16,13 @@ import com.intellij.util.messages.MessageBusConnection
 import ua.com.pimenov.hotreload.settings.HotReloadSettings
 import ua.com.pimenov.hotreload.websocket.WebSocketServer
 import java.util.concurrent.Executors
+import java.util.concurrent.ScheduledExecutorService
+import java.util.concurrent.ScheduledFuture
 import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
+import java.util.concurrent.atomic.AtomicLong
+import com.intellij.openapi.wm.WindowManager
+import ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidget
 
 @Service
 class HotReloadService {
@@ -23,13 +30,16 @@ class HotReloadService {
     private val logger = thisLogger()
     private val isRunning = AtomicBoolean(false)
     private var webSocketServer: WebSocketServer? = null
-//    private val executor = Executors.newSingleThreadScheduledExecutor()
-    private val executor = Executors.newScheduledThreadPool(2)
+    private var executor: ScheduledExecutorService? = null
     private var messageBusConnection: MessageBusConnection? = null
     private var currentProject: Project? = null
 
     // Кеш для відстеження змін файлів
     private val recentChanges = mutableSetOf<String>()
+
+    // Змінні для автоматичного зупинення
+    private var autoStopTask: ScheduledFuture<*>? = null
+    private val lastClientDisconnectTime = AtomicLong(0)
 
     fun start() {
         if (isRunning.get()) {
@@ -40,8 +50,16 @@ class HotReloadService {
         val settings = HotReloadSettings.getInstance()
 
         try {
+            // Створюємо executor з налаштованим розміром пула потоків
+            executor = Executors.newScheduledThreadPool(settings.corePoolSize)
+            logger.info("Hot Reload - Created thread pool with ${settings.corePoolSize} threads")
+
             // Запускаємо WebSocket сервер
             webSocketServer = WebSocketServer(settings.webSocketPort)
+            // Налаштовуємо callback для відстеження підключень
+            webSocketServer?.onConnectionsChanged = { connectionCount ->
+                handleConnectionsChanged(connectionCount)
+            }
             webSocketServer?.start()
 
             // Підключаємося до Message Bus для отримання подій файлової системи
@@ -64,6 +82,7 @@ class HotReloadService {
             })
 
             isRunning.set(true)
+            updateStatusBar()
             logger.info("Hot Reload started on WebSocket Port ${settings.webSocketPort}")
         } catch (e: Exception) {
             logger.error("Hot Reload Server Failed", e)
@@ -82,15 +101,35 @@ class HotReloadService {
         }
 
         try {
+            // Скасовуємо задачу автозупинення
+            autoStopTask?.cancel(false)
+            autoStopTask = null
+
             messageBusConnection?.disconnect()
             messageBusConnection = null
 
             webSocketServer?.stop()
             webSocketServer = null
+
+            // Зупиняємо executor
+            executor?.shutdown()
+            try {
+                if (executor?.awaitTermination(5, TimeUnit.SECONDS) == false) {
+                    logger.warn("Hot Reload - Executor did not terminate gracefully, forcing shutdown")
+                    executor?.shutdownNow()
+                }
+            } catch (e: InterruptedException) {
+                logger.warn("Hot Reload - Interrupted while shutting down executor")
+                executor?.shutdownNow()
+                Thread.currentThread().interrupt()
+            }
+            executor = null
+
             isRunning.set(false)
             currentProject = null
             recentChanges.clear()
             logger.info("Hot Reload stopped")
+            updateStatusBar()
         } catch (e: Exception) {
             logger.error("Error Hot Reload stop action", e)
         }
@@ -105,6 +144,87 @@ class HotReloadService {
         } else {
             logger.warn("Hot Reload not started, can't send a message")
         }
+    }
+
+    /**
+     * Обробляє зміни в кількості підключень
+     */
+    private fun handleConnectionsChanged(connectionCount: Int) {
+        val settings = HotReloadSettings.getInstance()
+
+        if (!settings.autoStopEnabled) {
+            return // Автозупинення вимкнено
+        }
+
+        if (connectionCount == 0) {
+            // Всі клієнти відключились - запускаємо таймер
+            lastClientDisconnectTime.set(System.currentTimeMillis())
+            scheduleAutoStop(settings.autoStopDelaySeconds)
+            logger.info("Hot Reload - All clients disconnected. Auto-stop scheduled in ${settings.autoStopDelaySeconds} seconds")
+        } else {
+            // З'явились нові підключення - скасовуємо автозупинення
+            autoStopTask?.cancel(false)
+            autoStopTask = null
+            lastClientDisconnectTime.set(0)
+            logger.info("Hot Reload - Client connected. Auto-stop cancelled")
+        }
+    }
+
+    /**
+     * Планує автоматичне зупинення сервісу через визначений час
+     */
+    private fun scheduleAutoStop(delaySeconds: Int) {
+        // Спочатку скасовуємо попередню задачу, якщо вона є
+        autoStopTask?.cancel(false)
+
+        autoStopTask = executor?.schedule({
+            try {
+                // Перевіряємо чи дійсно немає підключень перед зупиненням
+                val currentConnectionCount = webSocketServer?.getActiveConnectionsCount() ?: 0
+                if (currentConnectionCount == 0 && isRunning.get()) {
+                    logger.info("Hot Reload - Auto-stopping service: no clients for $delaySeconds seconds")
+
+                    // Зупиняємо сервіс в UI потоці
+                    ApplicationManager.getApplication().invokeLater {
+                        stop()
+
+                        // Показуємо повідомлення користувачу
+                        showAutoStopNotification()
+                    }
+                } else {
+                    logger.info("Hot Reload - Auto-stop cancelled: clients reconnected")
+                }
+            } catch (e: Exception) {
+                logger.error("Hot Reload - Error during auto-stop", e)
+            }
+        }, delaySeconds.toLong(), TimeUnit.SECONDS)
+    }
+
+    /**
+     * Показує повідомлення про автоматичне зупинення
+     */
+    private fun showAutoStopNotification() {
+        val settings = HotReloadSettings.getInstance()
+        val content = "Hot Reload Service is automatically stopped due to lack of connections over ${settings.autoStopDelaySeconds} секунд"
+
+        NotificationGroupManager.getInstance()
+            .getNotificationGroup("HotReload")
+            .createNotification(content, NotificationType.INFORMATION)
+            .notify(currentProject)
+    }
+
+    /**
+     * Повертає кількість активних підключень
+     */
+    fun getActiveConnectionsCount(): Int {
+        return webSocketServer?.getActiveConnectionsCount() ?: 0
+    }
+
+    /**
+     * Повертає час останнього відключення клієнта (в мілісекундах)
+     */
+    fun getLastClientDisconnectTime(): Long {
+        return lastClientDisconnectTime.get()
     }
 
     private fun handleFileEvent(event: VFileEvent) {
@@ -183,7 +303,7 @@ class HotReloadService {
 
             logger.info("Hot Reload - Scheduling reload for ${file.name} in ${delay}ms")
 
-            executor.schedule({
+            executor?.schedule({
                 try {
                     notifyFileChanged(file.name)
                     logger.info("Hot Reload - Notification sent for ${file.name}")
@@ -240,6 +360,16 @@ class HotReloadService {
     private fun containsFolderInPath(filePath: String, folderName: String): Boolean {
         val pathParts = filePath.replace('\\', '/').split('/')
         return pathParts.any { part -> part == folderName }
+    }
+
+    private fun updateStatusBar() {
+        // Оновлюємо для всіх відкритих проектів
+        com.intellij.openapi.project.ProjectManager.getInstance().openProjects.forEach { project ->
+            if (!project.isDisposed) {
+                val statusBar = WindowManager.getInstance().getStatusBar(project)
+                statusBar?.updateWidget(HotReloadStatusBarWidget.ID)
+            }
+        }
     }
 
     companion object {

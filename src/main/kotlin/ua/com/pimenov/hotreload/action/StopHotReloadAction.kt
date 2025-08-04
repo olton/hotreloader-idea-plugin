@@ -27,7 +27,7 @@ class StopHotReloadAction : AnAction() {
 
     private fun showNotification(project: com.intellij.openapi.project.Project, title: String, content: String, type: NotificationType) {
         val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload.Notifications")
+            .getNotificationGroup("HotReload")
 
         val notification = notificationGroup?.createNotification(title, content, type)
         notification?.notify(project)
