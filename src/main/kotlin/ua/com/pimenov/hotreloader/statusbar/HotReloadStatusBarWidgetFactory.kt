@@ -1,9 +1,9 @@
-package ua.com.pimenov.hotreload.statusbar
+package ua.com.pimenov.hotreloader.statusbar
 
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.openapi.wm.StatusBarWidgetFactory
-import ua.com.pimenov.hotreload.settings.HotReloadSettings
+import ua.com.pimenov.hotreloader.settings.HotReloadSettings
 
 class HotReloadStatusBarWidgetFactory : StatusBarWidgetFactory {
 

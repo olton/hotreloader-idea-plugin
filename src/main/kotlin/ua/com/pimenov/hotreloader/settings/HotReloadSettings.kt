@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.settings
+package ua.com.pimenov.hotreloader.settings
 
 import com.intellij.openapi.components.*
 import com.intellij.util.xmlb.XmlSerializerUtil

@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.service
+package ua.com.pimenov.hotreloader.service
 
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -77,7 +77,7 @@ class FileServerService {
                 val path = URLDecoder.decode(exchange.requestURI.path, "UTF-8")
                 val requestedPath = if (path == "/") "/index.html" else path
 
-                logger.debug("Hot Reload - Serving file: $requestedPath")
+                logger.debug("Hot Reloader - Serving file: $requestedPath")
 
                 val file = findFile(requestedPath)
                 if (file != null && file.exists()) {
@@ -109,10 +109,10 @@ class FileServerService {
                     // Записуємо контент частинами для великих файлів
                     writeContentSafely(responseBody, content)
 
-                    logger.debug("Hot Reload - Successfully served: ${file.name} (${content.size} bytes)")
+                    logger.debug("Hot Reloader - Successfully served: ${file.name} (${content.size} bytes)")
                 } else {
                     // Файл не знайдено
-                    logger.warn("Hot Reload - File not found: $requestedPath")
+                    logger.warn("Hot Reloader - File not found: $requestedPath")
                     val notFoundMessage = "File not found: $requestedPath"
                     val notFoundBytes = notFoundMessage.toByteArray(Charsets.UTF_8)
 
@@ -127,12 +127,12 @@ class FileServerService {
                 if (e.message?.contains("connection was aborted") == true ||
                     e.message?.contains("connection reset") == true ||
                     e.message?.contains("Broken pipe") == true) {
-                    logger.debug("Hot Reload - Client disconnected during file transfer: ${e.message}")
+                    logger.debug("Hot Reloader - Client disconnected during file transfer: ${e.message}")
                 } else {
-                    logger.warn("Hot Reload - IO error serving file: ${e.message}")
+                    logger.warn("Hot Reloader - IO error serving file: ${e.message}")
                 }
             } catch (e: Exception) {
-                logger.error("Hot Reload - Unexpected error serving file", e)
+                logger.error("Hot Reloader - Unexpected error serving file", e)
 
                 // Спробуємо відправити помилку клієнту, якщо з'єднання ще активне
                 try {
@@ -145,14 +145,14 @@ class FileServerService {
                         writeContentSafely(responseBody, errorBytes)
                     }
                 } catch (sendErrorException: Exception) {
-                    logger.debug("Hot Reload - Could not send error response: ${sendErrorException.message}")
+                    logger.debug("Hot Reloader - Could not send error response: ${sendErrorException.message}")
                 }
             } finally {
                 // Безпечно закриваємо OutputStream
                 try {
                     responseBody?.close()
                 } catch (e: Exception) {
-                    logger.debug("Hot Reload - Error closing response stream: ${e.message}")
+                    logger.debug("Hot Reloader - Error closing response stream: ${e.message}")
                 }
             }
         }
@@ -187,7 +187,7 @@ class FileServerService {
 
             // Запобігаємо шляхам типу ../../../
             if (relativePath.contains("../") || relativePath.contains("..\\")) {
-                logger.warn("Hot Reload - Blocked suspicious path: $path")
+                logger.warn("Hot Reloader - Blocked suspicious path: $path")
                 return null
             }
 
@@ -204,25 +204,25 @@ class FileServerService {
     }
 
     private fun injectHotReloadScript(htmlContent: String): String {
-        val settings = ua.com.pimenov.hotreload.settings.HotReloadSettings.getInstance()
-        val indicatorPosition = ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition)
+        val settings = ua.com.pimenov.hotreloader.settings.HotReloadSettings.getInstance()
+        val indicatorPosition = ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition)
 
         // Визначаємо CSS стилі для позиції індикатора
         val positionStyles = when (indicatorPosition) {
-            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.TOP_LEFT ->
+            ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.TOP_LEFT ->
                 "'top: 10px;' + 'left: 10px;'"
-            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.TOP_RIGHT ->
+            ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.TOP_RIGHT ->
                 "'top: 10px;' + 'right: 10px;'"
-            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.BOTTOM_LEFT ->
+            ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.BOTTOM_LEFT ->
                 "'bottom: 10px;' + 'left: 10px;'"
-            ua.com.pimenov.hotreload.settings.HotReloadSettings.IndicatorPosition.BOTTOM_RIGHT ->
+            ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.BOTTOM_RIGHT ->
                 "'bottom: 10px;' + 'right: 10px;'"
         }
 
         val hotReloadScript = """
             <script>
             (function() {
-                console.log('🔥 Hot Reload activated on port $webSocketPort');
+                console.log('🔥 Hot Reloader activated on port $webSocketPort');
                 
                 let ws;
                 let reconnectAttempts = 0;
@@ -236,7 +236,7 @@ class FileServerService {
                         ws = new WebSocket('ws://localhost:$webSocketPort');
                         
                         ws.onopen = function(event) {
-                            console.log('🔗 Hot Reload: WebSocket Connected');
+                            console.log('🔗 Hot Reloader: WebSocket Connected');
                             reconnectAttempts = 0;
                             updateIndicator('connected');
                         };
@@ -246,7 +246,7 @@ class FileServerService {
                                 const data = JSON.parse(event.data);
                                 if (data.type === 'reload') {
                                     isReloading = true;
-                                    console.log('🔄 Hot Reload: File changed:', data.file || 'Unknown');
+                                    console.log('🔄 Hot Reloader: File changed:', data.file || 'Unknown');
                                     
                                     // Плавний ефект перед оновленням
                                     if (document.body) {
@@ -259,34 +259,34 @@ class FileServerService {
                                     }, 200);
                                 }
                             } catch (error) {
-                                console.error('❌ Hot Reload: Message parse error:', error);
+                                console.error('❌ Hot Reloader: Message parse error:', error);
                             }
                         };
                         
                         ws.onclose = function(event) {
                             if (!isReloading) {
-                                console.log('🔌 Hot Reload: WebSocket Disconnected, code:', event.code);
+                                console.log('🔌 Hot Reloader: WebSocket Disconnected, code:', event.code);
                                 updateIndicator('disconnected');
                                 
                                 if (reconnectAttempts < maxReconnectAttempts) {
                                     reconnectAttempts++;
                                     const delay = Math.min(5000, 1000 * reconnectAttempts);
-                                    console.log('🔄 Hot Reload: Reconnecting ' + reconnectAttempts + '/' + maxReconnectAttempts + ' in ' + delay + 'ms');
+                                    console.log('🔄 Hot Reloader: Reconnecting ' + reconnectAttempts + '/' + maxReconnectAttempts + ' in ' + delay + 'ms');
                                     setTimeout(connectWebSocket, delay);
                                 } else {
-                                    console.error('❌ Hot Reload: Failed to reconnect after', maxReconnectAttempts, 'attempts');
+                                    console.error('❌ Hot Reloader: Failed to reconnect after', maxReconnectAttempts, 'attempts');
                                     updateIndicator('failed');
                                 }
                             }
                         };
                         
                         ws.onerror = function(error) {
-                            console.error('❌ Hot Reload: WebSocket Error:', error);
+                            console.error('❌ Hot Reloader: WebSocket Error:', error);
                             updateIndicator('error');
                         };
                         
                     } catch (error) {
-                        console.error('❌ Hot Reload: Failed to create WebSocket:', error);
+                        console.error('❌ Hot Reloader: Failed to create WebSocket:', error);
                         updateIndicator('error');
                         
                         if (reconnectAttempts < maxReconnectAttempts) {
@@ -320,7 +320,7 @@ class FileServerService {
                         'cursor: pointer;';
                     
                     indicator.addEventListener('click', function() {
-                        console.log('🔥 Hot Reload status:', {
+                        console.log('🔥 Hot Reloader status:', {
                             connected: ws && ws.readyState === WebSocket.OPEN,
                             readyState: ws ? ws.readyState : 'not created',
                             reconnectAttempts: reconnectAttempts,
@@ -338,18 +338,18 @@ class FileServerService {
                         case 'connected':
                             indicator.style.background = '#4CAF50';
                             indicator.innerHTML = '🔥';
-                            indicator.title = 'Hot Reload connected (click for status)';
+                            indicator.title = 'Hot Reloader connected (click for status)';
                             break;
                         case 'disconnected':
                             indicator.style.background = '#FF9800';
                             indicator.innerHTML = '🔄';
-                            indicator.title = 'Hot Reload reconnecting...';
+                            indicator.title = 'Hot Reloader reconnecting...';
                             break;
                         case 'error':
                         case 'failed':
                             indicator.style.background = '#F44336';
                             indicator.innerHTML = '❌';
-                            indicator.title = 'Hot Reload connection error';
+                            indicator.title = 'Hot Reloader connection error';
                             break;
                     }
                 }

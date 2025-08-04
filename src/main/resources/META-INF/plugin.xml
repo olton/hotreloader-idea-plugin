@@ -1,12 +1,12 @@
 <idea-plugin>
-    <id>ua.com.pimenov.HotReload</id>
-    <name>Hot Reload Service</name>
+    <id>ua.com.pimenov.hotreloader</id>
+    <name>Hot Reloader</name>
     <vendor url="https://www.pimenov.com">Serhii Pimenov</vendor>
 
     <description><![CDATA[
-    Automatically updates the page open in the browser when changing the project files.
-    Supports File Expansion Settings for Tracking.
-    Saves relative paths to resources without creating temporary files.
+    Hot Reloader is a powerful development tool that automatically refreshes your web browser whenever you make changes to
+    your project files. It establishes a WebSocket connection between your IDE and browser to instantly reflect code
+    modifications without manual page reloads. Perfect for web developers who want to streamline their development workflow and see changes instantly in the browser.
     ]]></description>
 
     <idea-version since-build="251"/>
@@ -16,31 +16,25 @@
         <!-- Налаштування плагіна -->
         <applicationConfigurable
                 parentId="tools"
-                instance="ua.com.pimenov.hotreload.settings.HotReloadConfigurable"
-                id="ua.com.pimenov.hotreload.settings"
-                displayName="Hot Reload"/>
-
-        <!-- Група нотифікацій -->
-        <notificationGroup
-                id="HotReload.Notifications"
-                displayName="Hot Reload"
-                displayType="BALLOON"/>
+                instance="ua.com.pimenov.hotreloader.settings.HotReloadConfigurable"
+                id="ua.com.pimenov.hotreloader.settings"
+                displayName="Hot Reloader"/>
 
         <!-- Сервіси -->
         <applicationService
-                serviceImplementation="ua.com.pimenov.hotreload.settings.HotReloadSettings"/>
+                serviceImplementation="ua.com.pimenov.hotreloader.settings.HotReloadSettings"/>
         <applicationService
-                serviceImplementation="ua.com.pimenov.hotreload.service.HotReloadService"/>
+                serviceImplementation="ua.com.pimenov.hotreloader.service.HotReloadService"/>
         <applicationService
-                serviceImplementation="ua.com.pimenov.hotreload.service.FileServerService"/>
+                serviceImplementation="ua.com.pimenov.hotreloader.service.FileServerService"/>
 
         <!-- Група повідомлень для Hot Reload -->
         <notificationGroup id="HotReload" displayType="BALLOON"/>
 
         <!-- StatusBar Widget -->
         <statusBarWidgetFactory
-                id="ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidgetFactory"
-                implementation="ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidgetFactory"
+                id="ua.com.pimenov.hotreloader.statusbar.HotReloadStatusBarWidgetFactory"
+                implementation="ua.com.pimenov.hotreloader.statusbar.HotReloadStatusBarWidgetFactory"
                 order="before selectionInfo"/>
 
     </extensions>
@@ -48,22 +42,22 @@
     <actions>
         <!-- Створюємо групу для HotReload -->
         <group id="HotReload.ToolsMenu"
-               text="Hot Reload"
-               description="Actions to control Hot Reload"
-               icon="ua.com.pimenov.hotreload.icons.HotReloadIcons.HOTRELOAD"
+               text="Hot Reloader"
+               description="Actions to control Hot Reloader"
+               icon="ua.com.pimenov.hotreloader.icons.HotReloadIcons.HOTRELOAD"
                popup="true">
             <add-to-group group-id="ToolsMenu" anchor="last"/>
 
             <!-- Дії для запуску/зупинки всередині групи -->
             <action id="HotReload.Start"
-                    class="ua.com.pimenov.hotreload.action.StartHotReloadAction"
-                    text="Start Hot Reload"
+                    class="ua.com.pimenov.hotreloader.action.StartHotReloadAction"
+                    text="Start Hot Reloader"
                     description="Run Browser Automatic Update"
                     icon="AllIcons.Actions.Execute"/>
 
             <action id="HotReload.Stop"
-                    class="ua.com.pimenov.hotreload.action.StopHotReloadAction"
-                    text="Stop Hot Reload"
+                    class="ua.com.pimenov.hotreloader.action.StopHotReloadAction"
+                    text="Stop Hot Reloader"
                     description="Stop Browser Automatically Upgrade"
                     icon="AllIcons.Actions.Suspend"/>
 
@@ -72,9 +66,9 @@
 
             <!-- Діагностична дія -->
             <action id="HotReload.Diagnose"
-                    class="ua.com.pimenov.hotreload.action.DiagnoseHotReloadAction"
+                    class="ua.com.pimenov.hotreloader.action.DiagnoseHotReloadAction"
                     text="Diagnosis"
-                    description="Show Hot Reload Status"
+                    description="Show Hot Reloader Status"
                     icon="AllIcons.General.InspectionsEye"/>
 
             <!-- Розділювач -->
@@ -82,17 +76,17 @@
 
             <!-- Швидкий доступ до налаштувань -->
             <action id="HotReload.OpenSettings"
-                    class="ua.com.pimenov.hotreload.action.OpenSettingsAction"
+                    class="ua.com.pimenov.hotreloader.action.OpenSettingsAction"
                     text="Settings"
-                    description="Open Hot Reload Settings"
+                    description="Open Hot Reloader Settings"
                     icon="AllIcons.General.Settings"/>
         </group>
 
         <!-- Run with HotReload залишається в контекстних меню -->
         <action id="HotReload.RunWith"
-                class="ua.com.pimenov.hotreload.action.RunWithHotReloadAction"
-                text="Run with Hot Reload"
-                description="Open the HTML file in the browser with the active Hot Reload"
+                class="ua.com.pimenov.hotreloader.action.RunWithHotReloadAction"
+                text="Run with Hot Reloader"
+                description="Open the HTML file in the browser with the active Hot Reloader"
                 icon="AllIcons.Actions.Execute">
             <!-- Додаємо в контекстне меню файлів -->
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>

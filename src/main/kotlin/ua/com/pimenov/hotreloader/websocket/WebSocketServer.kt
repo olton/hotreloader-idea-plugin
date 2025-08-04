@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.websocket
+package ua.com.pimenov.hotreloader.websocket
 
 import com.intellij.openapi.diagnostic.thisLogger
 import org.java_websocket.WebSocket
@@ -16,30 +16,30 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
 
     override fun onOpen(conn: WebSocket, handshake: ClientHandshake) {
         connections.add(conn)
-        logger.info("Hot Reload - The new client is connected: ${conn.remoteSocketAddress}")
-        logger.info("Hot Reload - Active connections: ${connections.size}")
+        logger.info("Hot Reloader - The new client is connected: ${conn.remoteSocketAddress}")
+        logger.info("Hot Reloader - Active connections: ${connections.size}")
         onConnectionsChanged?.invoke(connections.size)
     }
 
     override fun onClose(conn: WebSocket, code: Int, reason: String, remote: Boolean) {
         connections.remove(conn)
-        logger.info("Hot Reload - Client disconnected: ${conn.remoteSocketAddress}")
-        logger.info("Hot Reload - Active connections: ${connections.size}")
+        logger.info("Hot Reloader - Client disconnected: ${conn.remoteSocketAddress}")
+        logger.info("Hot Reloader - Active connections: ${connections.size}")
         onConnectionsChanged?.invoke(connections.size)
     }
 
     override fun onMessage(conn: WebSocket, message: String) {
-        logger.debug("Hot Reload - Received message: $message")
+        logger.debug("Hot Reloader - Received message: $message")
     }
 
     override fun onError(conn: WebSocket?, ex: Exception) {
-        logger.error("Hot Reload - WebSocket Error", ex)
+        logger.error("Hot Reloader - WebSocket Error", ex)
         conn?.let { connections.remove(it) }
         onConnectionsChanged?.invoke(connections.size)
     }
 
     override fun onStart() {
-        logger.info("Hot Reload - WebSocket Server started")
+        logger.info("Hot Reloader - WebSocket Server started")
     }
 
     fun broadcastReload(fileName: String) {
@@ -49,7 +49,7 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
                 conn.send(message)
             }
         }
-        logger.debug("Hot Reload - The update signal for file has been sent: $fileName")
+        logger.debug("Hot Reloader - The update signal for file has been sent: $fileName")
     }
 
     /**

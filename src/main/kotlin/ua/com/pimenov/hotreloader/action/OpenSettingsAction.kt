@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.action
+package ua.com.pimenov.hotreloader.action
 
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -12,7 +12,7 @@ class OpenSettingsAction : AnAction() {
         // Відкриваємо налаштування HotReload
         ShowSettingsUtil.getInstance().showSettingsDialog(
             project,
-            "Hot Reload"  // displayName з applicationConfigurable
+            "Hot Reloader"  // displayName з applicationConfigurable
         )
     }
 

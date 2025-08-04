@@ -1,10 +1,10 @@
-package ua.com.pimenov.hotreload.action
+package ua.com.pimenov.hotreloader.action
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
-import ua.com.pimenov.hotreload.service.HotReloadService
+import ua.com.pimenov.hotreloader.service.HotReloadService
 
 class StartHotReloadAction : AnAction() {
 
@@ -13,10 +13,10 @@ class StartHotReloadAction : AnAction() {
         val service = HotReloadService.getInstance()
 
         if (service.isRunning()) {
-            showNotification(project, "ℹ️ Hot Reload", "Hot Reload already started", NotificationType.INFORMATION)
+            showNotification(project, "ℹ️ Hot Reloader", "Hot Reloader already started", NotificationType.INFORMATION)
         } else {
             service.startForProject(project)
-            showNotification(project, "🚀 Hot Reload", "HotReload started successfully for project: ${project.name}", NotificationType.INFORMATION)
+            showNotification(project, "🚀 Hot Reloader", "HotReloader started successfully for project: ${project.name}", NotificationType.INFORMATION)
         }
     }
 

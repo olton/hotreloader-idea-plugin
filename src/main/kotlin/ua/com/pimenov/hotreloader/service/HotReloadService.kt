@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.service
+package ua.com.pimenov.hotreloader.service
 
 import com.intellij.notification.NotificationGroupManager
 import com.intellij.notification.NotificationType
@@ -13,8 +13,8 @@ import com.intellij.openapi.vfs.VirtualFileManager
 import com.intellij.openapi.vfs.newvfs.BulkFileListener
 import com.intellij.openapi.vfs.newvfs.events.*
 import com.intellij.util.messages.MessageBusConnection
-import ua.com.pimenov.hotreload.settings.HotReloadSettings
-import ua.com.pimenov.hotreload.websocket.WebSocketServer
+import ua.com.pimenov.hotreloader.settings.HotReloadSettings
+import ua.com.pimenov.hotreloader.websocket.WebSocketServer
 import java.util.concurrent.Executors
 import java.util.concurrent.ScheduledExecutorService
 import java.util.concurrent.ScheduledFuture
@@ -22,7 +22,7 @@ import java.util.concurrent.TimeUnit
 import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
 import com.intellij.openapi.wm.WindowManager
-import ua.com.pimenov.hotreload.statusbar.HotReloadStatusBarWidget
+import ua.com.pimenov.hotreloader.statusbar.HotReloadStatusBarWidget
 
 @Service
 class HotReloadService {
@@ -43,7 +43,7 @@ class HotReloadService {
 
     fun start() {
         if (isRunning.get()) {
-            logger.warn("Hot Reload already started")
+            logger.warn("Hot Reloader already started")
             return
         }
 
@@ -52,7 +52,7 @@ class HotReloadService {
         try {
             // Створюємо executor з налаштованим розміром пула потоків
             executor = Executors.newScheduledThreadPool(settings.corePoolSize)
-            logger.info("Hot Reload - Created thread pool with ${settings.corePoolSize} threads")
+            logger.info("Hot Reloader - Created thread pool with ${settings.corePoolSize} threads")
 
             // Запускаємо WebSocket сервер
             webSocketServer = WebSocketServer(settings.webSocketPort)
@@ -68,14 +68,14 @@ class HotReloadService {
                 override fun before(events: MutableList<out VFileEvent>) {
                     // Логування подій перед виконанням
                     for (event in events) {
-                        logger.debug("Hot Reload - Before event: ${event.javaClass.simpleName} for ${event.path}")
+                        logger.debug("Hot Reloader - Before event: ${event.javaClass.simpleName} for ${event.path}")
                     }
                 }
 
                 override fun after(events: MutableList<out VFileEvent>) {
-                    logger.info("Hot Reload - Processing ${events.size} file events")
+                    logger.info("Hot Reloader - Processing ${events.size} file events")
                     for (event in events) {
-                        logger.info("Hot Reload - Event: ${event.javaClass.simpleName}, path: ${event.path}")
+                        logger.info("Hot Reloader - Event: ${event.javaClass.simpleName}, path: ${event.path}")
                         handleFileEvent(event)
                     }
                 }
@@ -83,9 +83,9 @@ class HotReloadService {
 
             isRunning.set(true)
             updateStatusBar()
-            logger.info("Hot Reload started on WebSocket Port ${settings.webSocketPort}")
+            logger.info("Hot Reloader started on WebSocket Port ${settings.webSocketPort}")
         } catch (e: Exception) {
-            logger.error("Hot Reload Server Failed", e)
+            logger.error("Hot Reloader Server Failed", e)
         }
     }
 
@@ -96,7 +96,7 @@ class HotReloadService {
 
     fun stop() {
         if (!isRunning.get()) {
-            logger.warn("Hot Reload not started")
+            logger.warn("Hot Reloader not started")
             return
         }
 
@@ -115,11 +115,11 @@ class HotReloadService {
             executor?.shutdown()
             try {
                 if (executor?.awaitTermination(5, TimeUnit.SECONDS) == false) {
-                    logger.warn("Hot Reload - Executor did not terminate gracefully, forcing shutdown")
+                    logger.warn("Hot Reloader - Executor did not terminate gracefully, forcing shutdown")
                     executor?.shutdownNow()
                 }
             } catch (e: InterruptedException) {
-                logger.warn("Hot Reload - Interrupted while shutting down executor")
+                logger.warn("Hot Reloader - Interrupted while shutting down executor")
                 executor?.shutdownNow()
                 Thread.currentThread().interrupt()
             }
@@ -128,21 +128,21 @@ class HotReloadService {
             isRunning.set(false)
             currentProject = null
             recentChanges.clear()
-            logger.info("Hot Reload stopped")
+            logger.info("Hot Reloader stopped")
             updateStatusBar()
         } catch (e: Exception) {
-            logger.error("Error Hot Reload stop action", e)
+            logger.error("Error Hot Reloader stop action", e)
         }
     }
 
     fun isRunning(): Boolean = isRunning.get()
 
     fun notifyFileChanged(fileName: String) {
-        logger.info("Hot Reload - Sending a file change message: $fileName")
+        logger.info("Hot Reloader - Sending a file change message: $fileName")
         if (isRunning.get()) {
             webSocketServer?.broadcastReload(fileName)
         } else {
-            logger.warn("Hot Reload not started, can't send a message")
+            logger.warn("Hot Reloader not started, can't send a message")
         }
     }
 
@@ -160,13 +160,13 @@ class HotReloadService {
             // Всі клієнти відключились - запускаємо таймер
             lastClientDisconnectTime.set(System.currentTimeMillis())
             scheduleAutoStop(settings.autoStopDelaySeconds)
-            logger.info("Hot Reload - All clients disconnected. Auto-stop scheduled in ${settings.autoStopDelaySeconds} seconds")
+            logger.info("Hot Reloader - All clients disconnected. Auto-stop scheduled in ${settings.autoStopDelaySeconds} seconds")
         } else {
             // З'явились нові підключення - скасовуємо автозупинення
             autoStopTask?.cancel(false)
             autoStopTask = null
             lastClientDisconnectTime.set(0)
-            logger.info("Hot Reload - Client connected. Auto-stop cancelled")
+            logger.info("Hot Reloader - Client connected. Auto-stop cancelled")
         }
     }
 
@@ -182,7 +182,7 @@ class HotReloadService {
                 // Перевіряємо чи дійсно немає підключень перед зупиненням
                 val currentConnectionCount = webSocketServer?.getActiveConnectionsCount() ?: 0
                 if (currentConnectionCount == 0 && isRunning.get()) {
-                    logger.info("Hot Reload - Auto-stopping service: no clients for $delaySeconds seconds")
+                    logger.info("Hot Reloader - Auto-stopping service: no clients for $delaySeconds seconds")
 
                     // Зупиняємо сервіс в UI потоці
                     ApplicationManager.getApplication().invokeLater {
@@ -192,10 +192,10 @@ class HotReloadService {
                         showAutoStopNotification()
                     }
                 } else {
-                    logger.info("Hot Reload - Auto-stop cancelled: clients reconnected")
+                    logger.info("Hot Reloader - Auto-stop cancelled: clients reconnected")
                 }
             } catch (e: Exception) {
-                logger.error("Hot Reload - Error during auto-stop", e)
+                logger.error("Hot Reloader - Error during auto-stop", e)
             }
         }, delaySeconds.toLong(), TimeUnit.SECONDS)
     }
@@ -205,7 +205,7 @@ class HotReloadService {
      */
     private fun showAutoStopNotification() {
         val settings = HotReloadSettings.getInstance()
-        val content = "Hot Reload stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds."
+        val content = "Hot Reloader stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds."
 
         NotificationGroupManager.getInstance()
             .getNotificationGroup("HotReload")
@@ -231,30 +231,30 @@ class HotReloadService {
         when (event) {
             is VFileContentChangeEvent -> {
                 event.file?.let { virtualFile ->
-                    logger.info("Hot Reload - File content changed: ${virtualFile.name}")
+                    logger.info("Hot Reloader - File content changed: ${virtualFile.name}")
                     handleFileChange(virtualFile)
                 }
             }
             is VFileCreateEvent -> {
                 event.file?.let { virtualFile ->
-                    logger.info("Hot Reload - File created: ${virtualFile.name}")
+                    logger.info("Hot Reloader - File created: ${virtualFile.name}")
                     handleFileChange(virtualFile)
                 }
             }
             is VFileMoveEvent -> {
                 event.file?.let { virtualFile ->
-                    logger.info("Hot Reload - File moved: ${virtualFile.name}")
+                    logger.info("Hot Reloader - File moved: ${virtualFile.name}")
                     handleFileChange(virtualFile)
                 }
             }
             is VFileDeleteEvent -> {
-                logger.info("Hot Reload - File deleted: ${event.path}")
+                logger.info("Hot Reloader - File deleted: ${event.path}")
                 // Можна додати логіку для видалення файлів, якщо потрібно
             }
             is VFilePropertyChangeEvent -> {
                 if (event.propertyName == VirtualFile.PROP_NAME) {
                     event.file?.let { virtualFile ->
-                        logger.info("Hot Reload - File renamed: ${virtualFile.name}")
+                        logger.info("Hot Reloader - File renamed: ${virtualFile.name}")
                         handleFileChange(virtualFile)
                     }
                 }
@@ -268,53 +268,53 @@ class HotReloadService {
         val fileKey = "${file.path}:${timestamp / 100}" // Групуємо по секундах
 
         if (recentChanges.contains(fileKey)) {
-            logger.debug("Hot Reload - Duplicate event ignored: ${file.name}")
+            logger.debug("Hot Reloader - Duplicate event ignored: ${file.name}")
             return
         }
 
         recentChanges.add(fileKey)
 
-        logger.info("Hot Reload - Processing file change: ${file.name} at ${file.path}")
+        logger.info("Hot Reloader - Processing file change: ${file.name} at ${file.path}")
 
         if (!settings.isEnabled) {
-            logger.debug("Hot Reload disabled in settings")
+            logger.debug("Hot Reloader disabled in settings")
             return
         }
 
         if (!isRunning.get()) {
-            logger.debug("Hot Reload server not started")
+            logger.debug("Hot Reloader server not started")
             return
         }
 
         // Перевіряємо чи файл належить до проекту
         if (!isCurrentProjectFile(file)) {
-            logger.debug("Hot Reload - File not from current project: ${file.path}")
+            logger.debug("Hot Reloader - File not from current project: ${file.path}")
             return
         }
 
         val extension = file.extension?.lowercase() ?: return
         val watchedExtensions = settings.getWatchedExtensionsSet()
 
-        logger.info("Hot Reload - File extension: $extension, watched: $watchedExtensions")
+        logger.info("Hot Reloader - File extension: $extension, watched: $watchedExtensions")
 
         if (extension in watchedExtensions) {
             // Перевіряємо дублікати
             val delay = maxOf(settings.browserRefreshDelay.toLong(), 50L) // Мінімум 50мс
 
-            logger.info("Hot Reload - Scheduling reload for ${file.name} in ${delay}ms")
+            logger.info("Hot Reloader - Scheduling reload for ${file.name} in ${delay}ms")
 
             executor?.schedule({
                 try {
                     notifyFileChanged(file.name)
-                    logger.info("Hot Reload - Notification sent for ${file.name}")
+                    logger.info("Hot Reloader - Notification sent for ${file.name}")
                 } catch (e: Exception) {
-                    logger.error("Hot Reload - Error sending notification", e)
+                    logger.error("Hot Reloader - Error sending notification", e)
                 }
                 
                 cleanOldCacheEntries()
             }, delay, TimeUnit.MILLISECONDS)
         } else {
-            logger.debug("Hot Reload - File extension not tracked: $extension")
+            logger.debug("Hot Reloader - File extension not tracked: $extension")
         }
     }
 

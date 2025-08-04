@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.action
+package ua.com.pimenov.hotreloader.action
 
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
@@ -8,9 +8,9 @@ import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.ui.DialogWrapper
 import com.intellij.ui.components.JBScrollPane
 import com.intellij.ui.components.JBTextArea
-import ua.com.pimenov.hotreload.service.FileServerService
-import ua.com.pimenov.hotreload.service.HotReloadService
-import ua.com.pimenov.hotreload.settings.HotReloadSettings
+import ua.com.pimenov.hotreloader.service.FileServerService
+import ua.com.pimenov.hotreloader.service.HotReloadService
+import ua.com.pimenov.hotreloader.settings.HotReloadSettings
 import java.awt.Dimension
 import java.awt.Font
 import javax.swing.Action
@@ -41,13 +41,13 @@ class DiagnoseHotReloadAction : AnAction() {
         val sb = StringBuilder()
 
         // Заголовок
-        sb.appendLine("🔥 Hot Reload Diagnostic Information")
+        sb.appendLine("🔥 Diagnostic Information")
         sb.appendLine("=" * 50)
         sb.appendLine()
 
         // Статус сервісів
         sb.appendLine("📊 SERVICE STATUS:")
-        sb.appendLine("  • Hot Reload Service: ${if (hotReloadService.isRunning()) "✅ Running" else "❌ Stopped"}")
+        sb.appendLine("  • Hot Reloader Service: ${if (hotReloadService.isRunning()) "✅ Running" else "❌ Stopped"}")
         sb.appendLine("  • File Server Service: ${getFileServerStatus()}")
         sb.appendLine()
 
@@ -101,25 +101,25 @@ class DiagnoseHotReloadAction : AnAction() {
         sb.appendLine("🔧 TROUBLESHOOTING TIPS:")
 
         if (!hotReloadService.isRunning()) {
-            sb.appendLine("  ⚠️  Hot Reload service is not running!")
-            sb.appendLine("     → Use 'Tools > Hot Reload > Start Hot Reload' or")
-            sb.appendLine("     → Right-click on HTML file and select 'Run with Hot Reload'")
+            sb.appendLine("  ⚠️  Hot Reloader service is not running!")
+            sb.appendLine("     → Use 'Tools > Hot Reloader > Start Hot Reload' or")
+            sb.appendLine("     → Right-click on HTML file and select 'Run with Hot Reloader'")
         }
 
         if (settings.getWatchedExtensionsSet().isEmpty()) {
             sb.appendLine("  ⚠️  No file extensions are being watched!")
-            sb.appendLine("     → Add extensions in Settings > Tools > Hot Reload")
+            sb.appendLine("     → Add extensions in Settings > Tools > Hot Reloader")
         }
 
         if (openProjects.isEmpty()) {
             sb.appendLine("  ⚠️  No projects are open!")
-            sb.appendLine("     → Open a project to use Hot Reload")
+            sb.appendLine("     → Open a project to use Hot Reloader")
         }
 
         sb.appendLine()
         sb.appendLine("📝 HOW TO USE:")
         sb.appendLine("  1. Right-click on an HTML file")
-        sb.appendLine("  2. Select 'Run with Hot Reload'")
+        sb.appendLine("  2. Select 'Run with Hot Reloader'")
         sb.appendLine("  3. The file will open in browser with auto-refresh")
         sb.appendLine("  4. Edit and save tracked files to see changes")
 
@@ -145,7 +145,7 @@ class DiagnoseHotReloadAction : AnAction() {
 class DiagnosticDialog(private val diagnosticInfo: String) : DialogWrapper(true) {
 
     init {
-        title = "Hot Reload Diagnostic"
+        title = "Hot Reloader Diagnostic"
         init()
     }
 

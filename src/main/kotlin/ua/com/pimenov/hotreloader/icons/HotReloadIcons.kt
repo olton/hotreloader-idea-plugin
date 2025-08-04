@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.icons
+package ua.com.pimenov.hotreloader.icons
 
 import com.intellij.openapi.util.IconLoader
 import javax.swing.Icon

@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.settings
+package ua.com.pimenov.hotreloader.settings
 
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.ui.DialogPanel
@@ -17,7 +17,7 @@ class HotReloadConfigurable : Configurable {
                 row("Threads:") {
                     intTextField(1..Runtime.getRuntime().availableProcessors())
                         .bindIntText(settings::corePoolSize)
-                        .comment("Number of threads for Hot Reload service (default: ${settings.corePoolSize})")
+                        .comment("Number of threads (default: ${settings.corePoolSize})")
                 }
 
                 row("WebSocket port:") {
@@ -41,7 +41,7 @@ class HotReloadConfigurable : Configurable {
 
             group("Web Page") {
                 row {
-                    checkBox("Show Hot Reload indicator on page")
+                    checkBox("Show Hot Reloader indicator on page")
                         .bindSelected(settings::showHotReloadIndicator)
                 }
 
@@ -51,7 +51,7 @@ class HotReloadConfigurable : Configurable {
                             { HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition) },
                             { position -> settings.indicatorPosition = position?.value ?: "top_right" }
                         )
-                        .comment("Position of the Hot Reload indicator on the page")
+                        .comment("Position of the Hot Reloader indicator on the page")
                 }
             }
 
@@ -61,7 +61,7 @@ class HotReloadConfigurable : Configurable {
                 row {
                     autoStopCheckBox = checkBox("Stop when no clients connected")
                         .bindSelected(settings::autoStopEnabled)
-                        .comment("Automatically stops Hot Reload Service when all clients have disconnected")
+                        .comment("Automatically stops Hot Reloader Service when all clients have disconnected")
                 }
                 row("Delay before stopping (seconds):") {
                     intTextField(range = 10..3600)
@@ -95,7 +95,7 @@ class HotReloadConfigurable : Configurable {
                     text("2. Choose 'Run with HotReload'")
                 }
                 row {
-                    text("3. The file automatically opens in the browser with active Hot Reload")
+                    text("3. The file automatically opens in the browser with active Hot Reloader")
                 }
                 row {
                     text("4. When you save any tracked file the page will be updated")
@@ -116,5 +116,5 @@ class HotReloadConfigurable : Configurable {
         panel.reset()
     }
 
-    override fun getDisplayName(): String = "Hot Reload"
+    override fun getDisplayName(): String = "Hot Reloader"
 }

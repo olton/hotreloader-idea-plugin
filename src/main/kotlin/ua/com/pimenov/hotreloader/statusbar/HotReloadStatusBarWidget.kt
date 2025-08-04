@@ -1,4 +1,4 @@
-package ua.com.pimenov.hotreload.statusbar
+package ua.com.pimenov.hotreloader.statusbar
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
@@ -8,9 +8,9 @@ import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.util.Alarm
 import com.intellij.util.Consumer
-import ua.com.pimenov.hotreload.icons.HotReloadIcons
-import ua.com.pimenov.hotreload.service.HotReloadService
-import ua.com.pimenov.hotreload.settings.HotReloadSettings
+import ua.com.pimenov.hotreloader.icons.HotReloadIcons
+import ua.com.pimenov.hotreloader.service.HotReloadService
+import ua.com.pimenov.hotreloader.settings.HotReloadSettings
 import java.awt.event.MouseEvent
 import javax.swing.Icon
 
@@ -56,15 +56,15 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
     override fun getTooltipText(): String {
         return try {
             when {
-                !hotReloadService.isRunning() -> "Hot Reload: Stopped"
+                !hotReloadService.isRunning() -> "Hot Reloader: Stopped"
                 hotReloadService.getActiveConnectionsCount() > 0 -> {
-                    "Hot Reload: ${hotReloadService.getActiveConnectionsCount()} connection(s) active"
+                    "Hot Reloader: ${hotReloadService.getActiveConnectionsCount()} connection(s) active"
                 }
 
-                else -> "Hot Reload: Running (no connections)"
+                else -> "Hot Reloader: Running (no connections)"
             }
         } catch (e: Exception) {
-            "Hot Reload: Unknown state"
+            "Hot Reloader: Unknown state"
         }
     }
 
@@ -103,13 +103,13 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
                     appendLine("🔥 HotReload Stopped")
                 }
             } catch (e: Exception) {
-                appendLine("❗ Error retrieving Hot Reload status: ${e.message}")
+                appendLine("❗ Error retrieving Hot Reloader status: ${e.message}")
             }
         }
 
         return JBPopupFactory.getInstance()
             .createComponentPopupBuilder(createPopupContent(content), null)
-            .setTitle("Hot Reload Status")
+            .setTitle("Hot Reloader Status")
             .setResizable(false)
             .setMovable(false)
             .createPopup()

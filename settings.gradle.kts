@@ -1,1 +1,1 @@
-rootProject.name = "HotReload"
+rootProject.name = "HotReloader"

@@ -72,27 +72,27 @@ Or directly from your IDE:
 
 ## Supported Platforms
 
-+ Android Studio — Narwhal | 2025.1.1+
-+ AppCode — build 251.0+
-+ Aqua — build 251.0+
-+ CLion — 2025.1+
-+ Code With Me Guest — 1.0+
-+ DataGrip — 2025.1+
-+ DataSpell — 2025.1+
-+ GoLand — 2025.1+
-+ IntelliJ IDEA Community — 2025.1+
-+ IntelliJ IDEA Ultimate — 2025.1+
-+ JetBrains Client — 1.0+
-+ JetBrains Gateway — 2025.1+
-+ MPS — 2025.1+
-+ PhpStorm — 2025.1+
-+ PyCharm — 2025.1+
-+ PyCharm Community — 2025.1+
-+ Rider — 2025.1+
-+ RubyMine — 2025.1+
-+ RustRover — 2025.1+
-+ WebStorm — 2025.1+
-+ Writerside — build 251.0+
++ Android Studio — build 2025.1.1 — 2025.1.3 Canary 3
++ AppCode — build 251.0 — 253.*
++ Aqua — build 251.0 — 253.*
++ CLion — 2025.1 — 2025.2
++ Code With Me Guest — build 251.0 — 253.*
++ DataGrip — 2025.1 — 2025.2
++ DataSpell — 2025.1 — 2025.2
++ GoLand — 2025.1 — 2025.2
++ IntelliJ IDEA Community — 2025.1 — 2025.2
++ IntelliJ IDEA Ultimate — 2025.1 — 2025.2
++ JetBrains Client — build 251.0 — 253.*
++ JetBrains Gateway — 2025.1 — 2025.2
++ MPS — 2025.1 — 2025.2-RC1
++ PhpStorm — 2025.1 — 2025.2
++ PyCharm — 2025.1 — 2025.2
++ PyCharm Community — 2025.1 — 2025.2
++ Rider — 2025.1 — 2025.2-RC1
++ RubyMine — 2025.1 — 2025.2
++ RustRover — 2025.1 — 2025.2
++ WebStorm — 2025.1 — 2025.2
++ Writerside — build 251.0 — 253.*
 
 --- 
 ## Support
