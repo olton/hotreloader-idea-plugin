@@ -1,7 +1,5 @@
 package ua.com.pimenov.hotreloader.service
 
-import com.intellij.notification.NotificationGroupManager
-import com.intellij.notification.NotificationType
 import com.intellij.openapi.application.ApplicationManager
 import com.intellij.openapi.components.Service
 import com.intellij.openapi.diagnostic.thisLogger
@@ -23,6 +21,8 @@ import java.util.concurrent.atomic.AtomicBoolean
 import java.util.concurrent.atomic.AtomicLong
 import com.intellij.openapi.wm.WindowManager
 import ua.com.pimenov.hotreloader.statusbar.HotReloadStatusBarWidget
+import ua.com.pimenov.hotreloader.utils.Network
+import ua.com.pimenov.hotreloader.utils.Notification
 
 @Service
 class HotReloadService {
@@ -43,13 +43,36 @@ class HotReloadService {
 
     fun start() {
         if (isRunning.get()) {
-            logger.warn("Hot Reloader already started")
+            logger.warn("Hot Reloader - Service already started")
             return
         }
 
         val settings = HotReloadSettings.getInstance()
 
         try {
+            if (!Network.isPortAvailable(settings.webSocketPort)) {
+                if (settings.searchFreePort) {
+                    // Спробуємо знайти вільний порт
+                    logger.info("Hot Reloader - Finding free port for WebSocket Server...")
+                    var foundPort = false
+                    for (port in settings.webSocketPort..65535) {
+                        if (Network.isPortAvailable(port)) {
+                            foundPort = true
+                            settings.webSocketPort = port
+                            logger.info("Hot Reloader - Found free WebSocket port: ${settings.webSocketPort}")
+                            break
+                        }
+                    }
+                    if (!foundPort) {
+                        Notification.error(currentProject, "Hot Reloader", "Failed to find free port for WebSocket Server")
+                        return
+                    }
+                } else {
+                    Notification.error(currentProject, "Hot Reloader", "Port ${settings.webSocketPort} for WebSocket Server is busy.")
+                    return
+                }
+            }
+
             // Створюємо executor з налаштованим розміром пула потоків
             executor = Executors.newScheduledThreadPool(settings.corePoolSize)
             logger.info("Hot Reloader - Created thread pool with ${settings.corePoolSize} threads")
@@ -83,7 +106,6 @@ class HotReloadService {
 
             isRunning.set(true)
             updateStatusBar()
-            logger.info("Hot Reloader started on WebSocket Port ${settings.webSocketPort}")
         } catch (e: Exception) {
             logger.error("Hot Reloader Server Failed", e)
         }
@@ -207,10 +229,7 @@ class HotReloadService {
         val settings = HotReloadSettings.getInstance()
         val content = "Hot Reloader stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds."
 
-        NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload")
-            .createNotification(content, NotificationType.INFORMATION)
-            .notify(currentProject)
+        Notification.info(currentProject, "Hot Reloader", content)
     }
 
     /**

@@ -1,9 +1,6 @@
 package ua.com.pimenov.hotreloader.action
 
 import com.intellij.ide.BrowserUtil
-import com.intellij.notification.Notification
-import com.intellij.notification.NotificationGroupManager
-import com.intellij.notification.NotificationType
 import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
@@ -12,11 +9,15 @@ import com.intellij.openapi.project.guessProjectDir
 import ua.com.pimenov.hotreloader.service.FileServerService
 import ua.com.pimenov.hotreloader.service.HotReloadService
 import ua.com.pimenov.hotreloader.settings.HotReloadSettings
+import ua.com.pimenov.hotreloader.utils.Network
 import java.net.URI
 import java.net.URLEncoder
 import java.nio.charset.StandardCharsets
+import com.intellij.openapi.diagnostic.thisLogger
+import ua.com.pimenov.hotreloader.utils.Notification
 
 class RunWithHotReloadAction : AnAction() {
+    val logger = thisLogger()
 
     override fun getActionUpdateThread(): ActionUpdateThread {
         return ActionUpdateThread.BGT
@@ -39,6 +40,28 @@ class RunWithHotReloadAction : AnAction() {
             // Знаходимо корінь проекту
             val projectRoot = project.guessProjectDir() ?: virtualFile.parent
 
+            if (!Network.isPortAvailable(settings.httpPort)) {
+                if (settings.searchFreePort) {
+                    // Спробуємо знайти вільний порт
+                    var foundPort = false
+                    for (port in settings.httpPort..65535) {
+                        if (Network.isPortAvailable(port)) {
+                            foundPort = true
+                            settings.httpPort = port
+                            logger.info("Hot Reloader - Found free HTTP port: ${settings.httpPort}")
+                            break
+                        }
+                    }
+                    if (!foundPort) {
+                        Notification.error(project, "Hot Reloader","Failed to find free port for HTTP Server")
+                        return
+                    }
+                } else {
+                    Notification.error(project, "Hot Reloader","Port ${settings.httpPort} for HTTP Server is busy")
+                    return
+                }
+            }
+
             // Запускаємо HTTP сервер
             val baseUrl = fileServerService.start(settings.httpPort, projectRoot, settings.webSocketPort)
 
@@ -50,7 +73,7 @@ class RunWithHotReloadAction : AnAction() {
             BrowserUtil.browse(URI(fileUrl))
 
             // Показуємо toast notification замість діалогового вікна
-            showSuccessNotification(
+            Notification.info(
                 project,
                 "🔥 Hot Reloader is Running",
                 "The file is open in browser with an autorenewal"
@@ -58,10 +81,10 @@ class RunWithHotReloadAction : AnAction() {
 
         } catch (e: Exception) {
             // Показуємо помилку через notification
-            showErrorNotification(
+            Notification.error(
                 project,
                 "❌ Hot Reloader Error",
-                "Failed to open the file: ${e.message}"
+                "${e.message}"
             )
         }
     }
@@ -89,44 +112,6 @@ class RunWithHotReloadAction : AnAction() {
         // Кодуємо шлях для використання в URL
         return relativePath.split("/").joinToString("/") { segment ->
             URLEncoder.encode(segment, StandardCharsets.UTF_8.toString())
-        }
-    }
-
-    private fun showSuccessNotification(project: com.intellij.openapi.project.Project, title: String, content: String) {
-        val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload")
-
-        if (notificationGroup != null) {
-            val notification = notificationGroup.createNotification(title, content, NotificationType.INFORMATION)
-            notification.notify(project)
-        } else {
-            // Fallback якщо група не знайдена
-            val notification = Notification(
-                "HotReload",
-                title,
-                content,
-                NotificationType.INFORMATION
-            )
-            notification.notify(project)
-        }
-    }
-
-    private fun showErrorNotification(project: com.intellij.openapi.project.Project, title: String, content: String) {
-        val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload")
-
-        if (notificationGroup != null) {
-            val notification = notificationGroup.createNotification(title, content, NotificationType.ERROR)
-            notification.notify(project)
-        } else {
-            // Fallback якщо група не знайдена
-            val notification = Notification(
-                "HotReload",
-                title,
-                content,
-                NotificationType.ERROR
-            )
-            notification.notify(project)
         }
     }
 }

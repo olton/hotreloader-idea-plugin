@@ -39,7 +39,7 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
     }
 
     override fun onStart() {
-        logger.info("Hot Reloader - WebSocket Server started")
+        logger.info("Hot Reloader - WebSocket Server started on port $port")
     }
 
     fun broadcastReload(fileName: String) {

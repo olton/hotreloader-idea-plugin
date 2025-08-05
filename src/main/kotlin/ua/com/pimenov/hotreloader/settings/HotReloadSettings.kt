@@ -11,9 +11,9 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
 
     var isEnabled: Boolean = true
-    var webSocketPort: Int = 4081
+    var webSocketPort: Int = 3000
     var httpPort: Int = 4080
-    var watchedExtensions: String = "html,css,js"
+    var watchedExtensions: String = "html,css,js,less"
     var browserRefreshDelay: Int = 100
     var autoStartServer: Boolean = true
     var autoStartService: Boolean = false
@@ -23,6 +23,7 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var autoStopEnabled: Boolean = false // Нова опція
     var autoStopDelaySeconds: Int = 300
     var corePoolSize: Int = 3
+    var searchFreePort: Boolean = true
 
     override fun getState(): HotReloadSettings = this
 

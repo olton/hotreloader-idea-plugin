@@ -1,22 +1,21 @@
 package ua.com.pimenov.hotreloader.action
 
-import com.intellij.notification.NotificationGroupManager
-import com.intellij.notification.NotificationType
+import com.intellij.openapi.actionSystem.ActionUpdateThread
 import com.intellij.openapi.actionSystem.AnAction
 import com.intellij.openapi.actionSystem.AnActionEvent
 import ua.com.pimenov.hotreloader.service.HotReloadService
+import ua.com.pimenov.hotreloader.utils.Notification
 
 class StartHotReloadAction : AnAction() {
-
     override fun actionPerformed(e: AnActionEvent) {
         val project = e.project ?: return
         val service = HotReloadService.getInstance()
 
         if (service.isRunning()) {
-            showNotification(project, "ℹ️ Hot Reloader", "Hot Reloader already started", NotificationType.INFORMATION)
+            Notification.info(project, "ℹ️ Hot Reloader", "Hot Reloader already started")
         } else {
             service.startForProject(project)
-            showNotification(project, "🚀 Hot Reloader", "HotReloader started successfully for project: ${project.name}", NotificationType.INFORMATION)
+            Notification.info(project, "🚀 Hot Reloader", "HotReloader started successfully for project: ${project.name}")
         }
     }
 
@@ -25,11 +24,7 @@ class StartHotReloadAction : AnAction() {
         e.presentation.isEnabled = !service.isRunning()
     }
 
-    private fun showNotification(project: com.intellij.openapi.project.Project, title: String, content: String, type: NotificationType) {
-        val notificationGroup = NotificationGroupManager.getInstance()
-            .getNotificationGroup("HotReload")
-
-        val notification = notificationGroup?.createNotification(title, content, type)
-        notification?.notify(project)
+    override fun getActionUpdateThread(): ActionUpdateThread {
+        return ActionUpdateThread.BGT // ?
     }
 }

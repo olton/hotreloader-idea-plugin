@@ -2,6 +2,7 @@ package ua.com.pimenov.hotreloader.settings
 
 import com.intellij.openapi.options.Configurable
 import com.intellij.openapi.ui.DialogPanel
+import com.intellij.ui.SimpleListCellRenderer
 import com.intellij.ui.dsl.builder.*
 import javax.swing.JCheckBox
 import javax.swing.JComponent
@@ -17,25 +18,26 @@ class HotReloadConfigurable : Configurable {
                 row("Threads:") {
                     intTextField(1..Runtime.getRuntime().availableProcessors())
                         .bindIntText(settings::corePoolSize)
-                        .comment("Number of threads (default: ${settings.corePoolSize})")
-                }
-
-                row("WebSocket port:") {
-                    intTextField(1024..65535)
-                        .bindIntText(settings::webSocketPort)
-                        .comment("WebSocket port connection with browser 1024-65535")
                 }
 
                 row("HTTP port:") {
                     intTextField(1024..65535)
                         .bindIntText(settings::httpPort)
-                        .comment("Port for http file server connection 1024-65535")
+                }
+
+                row("WebSocket port:") {
+                    intTextField(1024..65535)
+                        .bindIntText(settings::webSocketPort)
+                }
+
+                row {
+                    checkBox("Search free port")
+                        .bindSelected(settings::searchFreePort)
                 }
 
                 row("Update delay (MS):") {
                     intTextField(0..5000)
                         .bindIntText(settings::browserRefreshDelay)
-                        .comment("Delay before browser update (0-5000 ms)")
                 }
             }
 
@@ -51,7 +53,11 @@ class HotReloadConfigurable : Configurable {
                             { HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition) },
                             { position -> settings.indicatorPosition = position?.value ?: "top_right" }
                         )
-                        .comment("Position of the Hot Reloader indicator on the page")
+                        .component.apply {
+                            renderer = SimpleListCellRenderer.create { label, value, _ ->
+                                label.text = value?.displayName ?: "Top Right"
+                            }
+                        }
                 }
             }
 
@@ -61,18 +67,16 @@ class HotReloadConfigurable : Configurable {
                 row {
                     autoStopCheckBox = checkBox("Stop when no clients connected")
                         .bindSelected(settings::autoStopEnabled)
-                        .comment("Automatically stops Hot Reloader Service when all clients have disconnected")
                 }
                 row("Delay before stopping (seconds):") {
                     intTextField(range = 10..3600)
                         .bindIntText(settings::autoStopDelaySeconds)
-                        .comment("Waiting time before service automatically stopping (10-3600 seconds)")
                         .enabledIf(autoStopCheckBox.selected)
                 }
             }
 
             group("File tracking") {
-                row("Files Extensions for tracking:") {
+                row("Tracked Extensions:") {
                     textField()
                         .bindText(settings::watchedExtensions)
                         .comment("File extensions separated by comma (example: html,css,js)")

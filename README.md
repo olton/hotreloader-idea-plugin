@@ -63,7 +63,7 @@ This project is licensed under the MIT License.
 
 You can install plugin from:
 
-[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/12213-hot-reloader)
+[![Marketplace](marketplace.svg)](https://plugins.jetbrains.com/plugin/28099-hot-reloader--hot-reloading-for-html-css-js-and-more)
 
 Or directly from your IDE:
 1. Install a compatible JetBrains IDE, such as WebStorm, or other IntelliJ-based IDEs
