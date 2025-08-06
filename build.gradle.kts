@@ -26,6 +26,12 @@ dependencies {
 
     intellijPlatform {
         create(providers.gradleProperty("platformType"), providers.gradleProperty("platformVersion"))
+
+        // Plugin Dependencies. Uses `platformBundledPlugins` property from the gradle.properties file for bundled IntelliJ Platform plugins.
+        bundledPlugins(providers.gradleProperty("platformBundledPlugins").map { it.split(',') })
+
+        // Plugin Dependencies. Uses `platformPlugins` property from the gradle.properties file for plugin from JetBrains Marketplace.
+        plugins(providers.gradleProperty("platformPlugins").map { it.split(',') })
     }
 }
 
@@ -64,12 +70,6 @@ intellijPlatform {
             sinceBuild = providers.gradleProperty("pluginSinceBuild")
             untilBuild = providers.gradleProperty("pluginUntilBuild")
         }
-
-        changeNotes.set(provider {
-            changelog.renderItem(
-                changelog.getOrNull(providers.gradleProperty("pluginVersion").get()) ?: changelog.getUnreleased()
-            )
-        })
     }
 
     signing {
