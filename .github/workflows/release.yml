@@ -42,17 +42,6 @@ jobs:
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
 
-      - name: Patch Changelog
-        if: ${{ github.event.release.body != '' }}
-        env:
-          CHANGELOG: ${{ github.event.release.body }}
-        run: |
-          RELEASE_NOTE="./build/tmp/release_note.txt"
-          echo "$CHANGELOG" > $RELEASE_NOTE
-          
-          ${{ github.event.release.body }}
-          ./gradlew patchChangelog --release-note-file=$RELEASE_NOTE
-
       # Publish the plugin to JetBrains Marketplace
       - name: Publish Plugin
         env:
