@@ -8,6 +8,7 @@ import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.project.guessProjectDir
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileManager
+import com.intellij.openapi.vfs.VfsUtilCore
 import com.intellij.openapi.vfs.newvfs.BulkFileListener
 import com.intellij.openapi.vfs.newvfs.events.*
 import com.intellij.util.messages.MessageBusConnection
@@ -215,9 +216,11 @@ class HotReloadService {
                     }
                 } else {
                     logger.info("Hot Reloader - Auto-stop cancelled: clients reconnected")
+                    Notification.info(currentProject, "Hot Reloader - Auto-stop cancelled: clients reconnected")
                 }
             } catch (e: Exception) {
                 logger.error("Hot Reloader - Error during auto-stop", e)
+                Notification.error(currentProject, "${e.message}")
             }
         }, delaySeconds.toLong(), TimeUnit.SECONDS)
     }
@@ -356,19 +359,22 @@ class HotReloadService {
             return false
         }
 
-        // Отримуємо виключені папки з налаштувань
         val settings = HotReloadSettings.getInstance()
         val excludedFolders = settings.getExcludedFoldersSet()
+            .map { it.replace('\\', '/').trim('/') }
+            .filter { it.isNotEmpty() }
+            .toSet()
 
-        // Перевіряємо чи шлях містить будь-яку з виключених папок
-        return excludedFolders.none { excludedFolder ->
-            containsFolderInPath(filePath, excludedFolder)
+        // Відносний шлях файлу від кореня проєкту (з прямими слешами)
+        val relativePath = VfsUtilCore.getRelativePath(file, projectDir, '/') ?: return false
+
+        // Виключаємо, якщо відносний шлях дорівнює виключеному шляху
+        // або починається з "виключенийШлях/"
+        val isExcluded = excludedFolders.any { excluded ->
+            relativePath == excluded || relativePath.startsWith("$excluded/")
         }
-    }
 
-    private fun containsFolderInPath(filePath: String, folderName: String): Boolean {
-        val pathParts = filePath.replace('\\', '/').split('/')
-        return pathParts.any { part -> part == folderName }
+        return !isExcluded
     }
 
     private fun updateStatusBar() {

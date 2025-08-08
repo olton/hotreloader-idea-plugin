@@ -9,6 +9,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import ua.com.pimenov.hotreloader.settings.HotReloadSettings
 
 class Notification {
     companion object {
@@ -22,7 +23,7 @@ class Notification {
             title: String = "Hot Reloader",
             content: String = "",
             type: NotificationType = NotificationType.INFORMATION,
-            expireTime: Long = DEFAULT_EXPIRATION_TIME
+            expireTime: Long = HotReloadSettings.getInstance().notificationTimeout.toLong()
         ) {
             val notificationGroup = NotificationGroupManager.getInstance()
                 .getNotificationGroup(GROUP_ID)

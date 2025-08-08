@@ -7,6 +7,12 @@
     <list default="true" id="fe9d20bf-fb98-475b-8837-81419eddd65f" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.intellijPlatform/coroutines-javaagent-legacy.jar" beforeDir="false" afterPath="$PROJECT_DIR$/.intellijPlatform/coroutines-javaagent-legacy.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadConfigurable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadConfigurable.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadSettings.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/utils/Notofication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/utils/Notofication.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,7 +55,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master",
+    "git-widget-placeholder": "dev",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -98,6 +104,7 @@
       <workItem from="1754495848030" duration="1664000" />
       <workItem from="1754639374719" duration="1984000" />
       <workItem from="1754654658078" duration="45000" />
+      <workItem from="1754655805770" duration="2270000" />
     </task>
     <servers />
   </component>

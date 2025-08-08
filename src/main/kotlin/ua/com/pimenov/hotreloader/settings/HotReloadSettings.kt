@@ -24,6 +24,7 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var autoStopDelaySeconds: Int = 300
     var corePoolSize: Int = 3
     var searchFreePort: Boolean = true
+    var notificationTimeout: Int = 3000
 
     override fun getState(): HotReloadSettings = this
 

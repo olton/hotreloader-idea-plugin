@@ -14,7 +14,7 @@ class HotReloadConfigurable : Configurable {
 
     override fun createComponent(): JComponent {
         panel = panel {
-            group("General settings") {
+            group("General Settings") {
                 row("Threads:") {
                     intTextField(1..Runtime.getRuntime().availableProcessors())
                         .bindIntText(settings::corePoolSize)
@@ -30,8 +30,8 @@ class HotReloadConfigurable : Configurable {
                         .bindIntText(settings::webSocketPort)
                 }
 
-                row {
-                    checkBox("Search free port")
+                row ("Search free port:") {
+                    checkBox("")
                         .bindSelected(settings::searchFreePort)
                 }
 
@@ -43,7 +43,7 @@ class HotReloadConfigurable : Configurable {
 
             group("Web Page") {
                 row {
-                    checkBox("Show Hot Reloader indicator on page")
+                    checkBox("Show indicator on page")
                         .bindSelected(settings::showHotReloadIndicator)
                 }
 
@@ -61,11 +61,11 @@ class HotReloadConfigurable : Configurable {
                 }
             }
 
-            group("Automatic stop") {
+            group("Automatic Stop") {
                 lateinit var autoStopCheckBox: Cell<JCheckBox>
 
                 row {
-                    autoStopCheckBox = checkBox("Stop when no clients connected")
+                    autoStopCheckBox = checkBox("Stop Hot Reloader when no clients connected")
                         .bindSelected(settings::autoStopEnabled)
                 }
                 row("Delay before stopping (seconds):") {
@@ -75,7 +75,7 @@ class HotReloadConfigurable : Configurable {
                 }
             }
 
-            group("File tracking") {
+            group("Files Tracking") {
                 row("Tracked Extensions:") {
                     textField()
                         .bindText(settings::watchedExtensions)
@@ -86,12 +86,20 @@ class HotReloadConfigurable : Configurable {
                 row("Excluded folders:") {
                     textField()
                         .bindText(settings::excludedFolders)
-                        .comment("Folders to exclude from tracking (example: .idea,.git,node_modules)")
+                        .comment("Folders to exclude from tracking (example: .idea,.git,node_modules) -<br> interpreted as paths relative to the root of the project")
                         .columns(COLUMNS_LARGE)
                 }
             }
 
-            group("How to use") {
+            group("Other") {
+                row("Notification timeout (ms):") {
+                    intTextField(range = 0..30000)
+                        .bindIntText(settings::notificationTimeout)
+                        .comment("Time after which notifications will automatically disappear")
+                }
+            }
+
+            group("How To Use") {
                 row {
                     text("1. Right-click on html file")
                 }
