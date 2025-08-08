@@ -12,10 +12,10 @@ class StopHotReloadAction : AnAction() {
         val service = HotReloadService.getInstance()
 
         if (!service.isRunning()) {
-            Notification.warning(project, "ℹ️ Hot Reloader", "Hot Reloader not started")
+            Notification.warning(project,"Hot Reloader not started")
         } else {
             service.stop()
-            Notification.info(project, "🛑 Hot Reloader", "Hot Reloader stopped")
+            Notification.info(project, "Hot Reloader stopped")
         }
     }
 

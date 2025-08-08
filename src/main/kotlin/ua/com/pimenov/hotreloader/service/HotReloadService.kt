@@ -64,11 +64,11 @@ class HotReloadService {
                         }
                     }
                     if (!foundPort) {
-                        Notification.error(currentProject, "Hot Reloader", "Failed to find free port for WebSocket Server")
+                        Notification.error(currentProject, "Failed to find free port for WebSocket Server")
                         return
                     }
                 } else {
-                    Notification.error(currentProject, "Hot Reloader", "Port ${settings.webSocketPort} for WebSocket Server is busy.")
+                    Notification.error(currentProject, "Port ${settings.webSocketPort} for WebSocket Server is busy.")
                     return
                 }
             }
@@ -196,6 +196,7 @@ class HotReloadService {
      * Планує автоматичне зупинення сервісу через визначений час
      */
     private fun scheduleAutoStop(delaySeconds: Int) {
+        val settings = HotReloadSettings.getInstance()
         // Спочатку скасовуємо попередню задачу, якщо вона є
         autoStopTask?.cancel(false)
 
@@ -209,9 +210,8 @@ class HotReloadService {
                     // Зупиняємо сервіс в UI потоці
                     ApplicationManager.getApplication().invokeLater {
                         stop()
-
                         // Показуємо повідомлення користувачу
-                        showAutoStopNotification()
+                        Notification.info(currentProject, "Hot Reloader stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds.")
                     }
                 } else {
                     logger.info("Hot Reloader - Auto-stop cancelled: clients reconnected")
@@ -220,16 +220,6 @@ class HotReloadService {
                 logger.error("Hot Reloader - Error during auto-stop", e)
             }
         }, delaySeconds.toLong(), TimeUnit.SECONDS)
-    }
-
-    /**
-     * Показує повідомлення про автоматичне зупинення
-     */
-    private fun showAutoStopNotification() {
-        val settings = HotReloadSettings.getInstance()
-        val content = "Hot Reloader stopped due to a lack of connections over ${settings.autoStopDelaySeconds} seconds."
-
-        Notification.info(currentProject, "Hot Reloader", content)
     }
 
     /**

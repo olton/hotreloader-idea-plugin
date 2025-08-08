@@ -12,10 +12,10 @@ class StartHotReloadAction : AnAction() {
         val service = HotReloadService.getInstance()
 
         if (service.isRunning()) {
-            Notification.info(project, "ℹ️ Hot Reloader", "Hot Reloader already started")
+            Notification.info(project, "Hot Reloader already started")
         } else {
             service.startForProject(project)
-            Notification.info(project, "🚀 Hot Reloader", "HotReloader started successfully for project: ${project.name}")
+            Notification.info(project, "HotReloader started successfully for project: ${project.name}")
         }
     }
 

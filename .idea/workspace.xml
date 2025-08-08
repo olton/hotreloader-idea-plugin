@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe9d20bf-fb98-475b-8837-81419eddd65f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.github/workflows/release.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/release.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.intellijPlatform/coroutines-javaagent-legacy.jar" beforeDir="false" afterPath="$PROJECT_DIR$/.intellijPlatform/coroutines-javaagent-legacy.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.intellijPlatform/self-update.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.intellijPlatform/self-update.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/RunWithHotReloadAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/RunWithHotReloadAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/StartHotReloadAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/StartHotReloadAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/StopHotReloadAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/StopHotReloadAction.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/utils/Notofication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/utils/Notofication.kt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,7 +103,8 @@
       <workItem from="1754383302218" duration="4112000" />
       <workItem from="1754387889094" duration="7803000" />
       <workItem from="1754466056702" duration="1406000" />
-      <workItem from="1754495848030" duration="357000" />
+      <workItem from="1754495848030" duration="1664000" />
+      <workItem from="1754639374719" duration="1984000" />
     </task>
     <servers />
   </component>

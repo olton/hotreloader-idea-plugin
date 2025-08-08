@@ -53,11 +53,11 @@ class RunWithHotReloadAction : AnAction() {
                         }
                     }
                     if (!foundPort) {
-                        Notification.error(project, "Hot Reloader","Failed to find free port for HTTP Server")
+                        Notification.error(project, "Failed to find free port for HTTP Server")
                         return
                     }
                 } else {
-                    Notification.error(project, "Hot Reloader","Port ${settings.httpPort} for HTTP Server is busy")
+                    Notification.error(project, "Port ${settings.httpPort} for HTTP Server is busy")
                     return
                 }
             }
@@ -69,23 +69,12 @@ class RunWithHotReloadAction : AnAction() {
             val relativePath = getRelativePath(projectRoot.path, virtualFile.path)
             val fileUrl = "$baseUrl/$relativePath"
 
-            // Відкриваємо в браузері
             BrowserUtil.browse(URI(fileUrl))
 
-            // Показуємо toast notification замість діалогового вікна
-            Notification.info(
-                project,
-                "🔥 Hot Reloader is Running",
-                "The file is open in browser with an autorenewal"
-            )
-
+            Notification.info(project,"File ${virtualFile.name} opened in browser with auto-refresh feature.")
         } catch (e: Exception) {
             // Показуємо помилку через notification
-            Notification.error(
-                project,
-                "❌ Hot Reloader Error",
-                "${e.message}"
-            )
+            Notification.error(project,"${e.message}")
         }
     }
 
