@@ -40,7 +40,7 @@ jobs:
       - name: Fetch Sources
         uses: actions/checkout@v4
         with:
-          ref: 'master'
+          ref: master
 
       # Set up Java environment for the next steps
       - name: Setup Java
@@ -107,7 +107,7 @@ jobs:
       - name: Fetch Sources
         uses: actions/checkout@v4
         with:
-          ref: 'master'
+          ref: master
 
       # Set up Java environment for the next steps
       - name: Setup Java
@@ -157,7 +157,7 @@ jobs:
       - name: Fetch Sources
         uses: actions/checkout@v4
         with:
-          ref: 'master'
+          ref: master
 
       # Remove old release drafts by using the curl request for the available releases with a draft flag
       - name: Remove Old Release Drafts
