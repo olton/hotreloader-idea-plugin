@@ -6,6 +6,7 @@
 ### Added
 - Added tracking changes in the special folder.
 - Added Hot Reload Run to `MainToolbar`
+- Added apply settings changes without restarting the service.
 
 ### Changed
 - Changed the behavior of the `Hot Reload` button in status bar, now click on this button starts or stops HotReloader service.
