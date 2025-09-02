@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+## [0.3.0] - 2025-09-02
+### Added
+- Added tracking changes in the special folder.
+- Added Hot Reload Run to `MainToolbar`
+
+### Changed
+- Changed the behavior of the `Hot Reload` button in status bar, now click on this button starts or stops HotReloader service.
+
 ## [0.2.2] - 2025-08-08
 ### Added
 - Added setting for notification timeout.

@@ -39,6 +39,11 @@ class HotReloadConfigurable : Configurable {
                     intTextField(0..5000)
                         .bindIntText(settings::browserRefreshDelay)
                 }
+
+                row("Reconnect Attempts:") {
+                    intTextField()
+                        .bindIntText(settings::reconnectAttempts)
+                }
             }
 
             group("Web Page") {
@@ -88,6 +93,29 @@ class HotReloadConfigurable : Configurable {
                         .bindText(settings::excludedFolders)
                         .comment("Folders to exclude from tracking (example: .idea,.git,node_modules) -<br> interpreted as paths relative to the root of the project")
                         .columns(COLUMNS_LARGE)
+                }
+
+                lateinit var watchExternalCheckBox: Cell<JCheckBox>
+
+                row {
+                    watchExternalCheckBox = checkBox("Watch External Changes")
+                        .bindSelected(settings::watchExternalChanges)
+                        .comment("Enable watching for file changes made by external tools (bundlers, etc.)")
+                }
+
+                row("External Watch Folders:") {
+                    textField()
+                        .bindText(settings::externalWatchPaths)
+                        .comment("Additional folders to track for external changes (example: dist,build,public)")
+                        .columns(COLUMNS_LARGE)
+                        .enabledIf(watchExternalCheckBox.selected)
+                }
+
+                row {
+                    checkBox("Force VFS Synchronization")
+                        .bindSelected(settings::forceVfsSync)
+                        .comment("Automatically sync IntelliJ VFS when external changes detected")
+                        .enabledIf(watchExternalCheckBox.selected)
                 }
             }
 

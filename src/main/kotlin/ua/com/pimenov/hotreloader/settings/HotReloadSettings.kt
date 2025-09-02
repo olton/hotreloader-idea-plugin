@@ -25,11 +25,22 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var corePoolSize: Int = 3
     var searchFreePort: Boolean = true
     var notificationTimeout: Int = 3000
+    var reconnectAttempts: Int = 5
+    var forceVfsSync: Boolean = true // Нове налаштування
+    var watchExternalChanges: Boolean = true // Нове налаштування
+    var externalWatchPaths: String = "dist,build,lib" // Нове налаштування
 
     override fun getState(): HotReloadSettings = this
 
     override fun loadState(state: HotReloadSettings) {
         XmlSerializerUtil.copyBean(state, this)
+    }
+
+    fun getExternalWatchPathsSet(): Set<String> {
+        return externalWatchPaths.split(",")
+            .map { it.trim() }
+            .filter { it.isNotEmpty() }
+            .toSet()
     }
 
     fun getWatchedExtensionsSet(): Set<String> {

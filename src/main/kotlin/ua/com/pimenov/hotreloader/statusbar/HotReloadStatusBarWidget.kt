@@ -8,6 +8,7 @@ import com.intellij.openapi.wm.StatusBar
 import com.intellij.openapi.wm.StatusBarWidget
 import com.intellij.util.Alarm
 import com.intellij.util.Consumer
+import com.intellij.vcsUtil.showAbove
 import ua.com.pimenov.hotreloader.icons.HotReloadIcons
 import ua.com.pimenov.hotreloader.service.HotReloadService
 import ua.com.pimenov.hotreloader.settings.HotReloadSettings
@@ -55,34 +56,51 @@ class HotReloadStatusBarWidget(private val project: Project) : StatusBarWidget, 
 
     override fun getTooltipText(): String {
         return try {
-            when {
+            val baseStatus = when {
                 !hotReloadService.isRunning() -> "Hot Reloader: Stopped"
                 hotReloadService.getActiveConnectionsCount() > 0 -> {
-                    "Hot Reloader: ${hotReloadService.getActiveConnectionsCount()} connection(s) active"
+                    "Hot Reloader: ${hotReloadService.getActiveConnectionsCount()} active connection(s)"
                 }
-
-                else -> "Hot Reloader: Running (no connections)"
+                else -> "Hot Reloader: Started (no active connections)"
             }
+            "$baseStatus<br>Click to start/stop"
         } catch (e: Exception) {
-            "Hot Reloader: Unknown state"
+            "Hot Reloader: Unknown state<br>Click to start/stop"
         }
     }
 
     override fun getClickConsumer(): Consumer<MouseEvent>? {
         return Consumer { event ->
-            if (event.button == MouseEvent.BUTTON1) {
-                try {
-                    showPopup(event)
-                } catch (e: Exception) {
-                    e.printStackTrace()
+            when (event.button) {
+                MouseEvent.BUTTON1 -> {
+                    try {
+                        // Ліва кнопка миші - перемикання стану HotReloader
+                        toggleHotReloader()
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
                 }
             }
         }
     }
 
+    private fun toggleHotReloader() {
+        try {
+            if (hotReloadService.isRunning()) {
+                hotReloadService.stop()
+                ua.com.pimenov.hotreloader.utils.Notification.info(project, "Hot Reloader stopped")
+            } else {
+                hotReloadService.startForProject(project)
+                ua.com.pimenov.hotreloader.utils.Notification.info(project, "Hot Reloader started")
+            }
+        } catch (e: Exception) {
+            ua.com.pimenov.hotreloader.utils.Notification.error(project, "Error Hot Reloader changing state: ${e.message}")
+        }
+    }
+
     private fun showPopup(event: MouseEvent) {
         val popup = createStatusPopup()
-        popup.showUnderneathOf(event.component)
+        popup.showAbove(event.component)
     }
 
     private fun createStatusPopup(): JBPopup {

@@ -69,6 +69,10 @@ class DiagnoseHotReloadAction : AnAction() {
 
         // Відстеження файлів
         sb.appendLine("📁 FILE TRACKING:")
+        sb.appendLine("  • VFS Listener: ${if (hotReloadService.isRunning()) "✅ Active" else "❌ Inactive"}")
+        sb.appendLine("  • External Watcher: ${if (settings.watchExternalChanges) "✅ Enabled" else "❌ Disabled"}")
+        sb.appendLine("  • Force VFS Sync: ${if (settings.forceVfsSync) "✅ Enabled" else "❌ Disabled"}")
+        sb.appendLine("  • Watch Paths: ${settings.externalWatchPaths}")
         sb.appendLine("  • Watched Extensions: ${settings.watchedExtensions}")
         sb.appendLine("  • Excluded Folders: ${settings.excludedFolders}")
         sb.appendLine()

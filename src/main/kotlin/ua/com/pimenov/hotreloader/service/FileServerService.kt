@@ -111,16 +111,30 @@ class FileServerService {
 
                     logger.debug("Hot Reloader - Successfully served: ${file.name} (${content.size} bytes)")
                 } else {
-                    // Файл не знайдено
-                    logger.warn("Hot Reloader - File not found: $requestedPath")
-                    val notFoundMessage = "File not found: $requestedPath"
-                    val notFoundBytes = notFoundMessage.toByteArray(Charsets.UTF_8)
+                    // Файл не знайдено - перевіряємо чи це HTML файл
+                    val isHtmlRequest = requestedPath.endsWith(".html", ignoreCase = true) || requestedPath == "/"
 
-                    exchange.responseHeaders.set("Content-Type", "text/plain; charset=utf-8")
-                    exchange.sendResponseHeaders(404, notFoundBytes.size.toLong())
-                    responseBody = exchange.responseBody
+                    if (isHtmlRequest) {
+                        // Для HTML файлів створюємо мінімальну сторінку з HotReload скриптом
+                        logger.warn("Hot Reloader - HTML file not found: $requestedPath, creating minimal page with HotReload")
+                        val minimalHtml = createMinimalHtmlWithHotReload(requestedPath)
+                        val htmlBytes = minimalHtml.toByteArray(Charsets.UTF_8)
 
-                    writeContentSafely(responseBody, notFoundBytes)
+                        exchange.responseHeaders.set("Content-Type", "text/html; charset=utf-8")
+                        exchange.sendResponseHeaders(404, htmlBytes.size.toLong())
+                        responseBody = exchange.responseBody
+                        writeContentSafely(responseBody, htmlBytes)
+                    } else {
+                        // Для інших типів файлів - стандартна 404 помилка
+                        logger.warn("Hot Reloader - File not found: $requestedPath")
+                        val notFoundMessage = "File not found: $requestedPath"
+                        val notFoundBytes = notFoundMessage.toByteArray(Charsets.UTF_8)
+
+                        exchange.responseHeaders.set("Content-Type", "text/plain; charset=utf-8")
+                        exchange.sendResponseHeaders(404, notFoundBytes.size.toLong())
+                        responseBody = exchange.responseBody
+                        writeContentSafely(responseBody, notFoundBytes)
+                    }
                 }
             } catch (e: IOException) {
                 // Ця помилка виникає коли клієнт розірвав з'єднання
@@ -203,6 +217,70 @@ class FileServerService {
         }
     }
 
+    private fun createMinimalHtmlWithHotReload(requestedPath: String): String {
+        val minimalHtml = """
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hot Reloader - File not found</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 40px;
+            background: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #e74c3c;
+            margin-top: 0;
+        }
+        .path {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 4px;
+            font-family: monospace;
+            word-break: break-all;
+            margin: 20px 0;
+        }
+        .hot-reload-status {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            padding: 15px;
+            border-radius: 4px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔥 Hot Reloader Active</h1>
+        <p><strong>File not found:</strong></p>
+        <div class="path">$requestedPath</div>
+        <div class="hot-reload-status">
+            ✅ Hot Reloader is active and monitoring file changes.<br>
+            Create the file and it will automatically reload this page.
+        </div>
+        <p>The Hot Reloader will continue to work and automatically refresh this page when the file becomes available.</p>
+    </div>
+</body>
+</html>
+        """.trimIndent()
+
+        return injectHotReloadScript(minimalHtml)
+    }
+
     private fun injectHotReloadScript(htmlContent: String): String {
         val settings = ua.com.pimenov.hotreloader.settings.HotReloadSettings.getInstance()
         val indicatorPosition = ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition)
@@ -210,190 +288,25 @@ class FileServerService {
         // Визначаємо CSS стилі для позиції індикатора
         val positionStyles = when (indicatorPosition) {
             ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.TOP_LEFT ->
-                "'top: 10px;' + 'left: 10px;'"
+                "top: 10px;' + 'left: 10px;"
             ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.TOP_RIGHT ->
-                "'top: 10px;' + 'right: 10px;'"
+                "top: 10px;' + 'right: 10px;"
             ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.BOTTOM_LEFT ->
-                "'bottom: 10px;' + 'left: 10px;'"
+                "bottom: 10px;' + 'left: 10px;"
             ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.BOTTOM_RIGHT ->
-                "'bottom: 10px;' + 'right: 10px;'"
+                "bottom: 10px;' + 'right: 10px;"
         }
 
-        val hotReloadScript = """
-            <script>
-            (function() {
-                console.log('🔥 Hot Reloader activated on port $webSocketPort');
-                
-                let ws;
-                let reconnectAttempts = 0;
-                const maxReconnectAttempts = 5;
-                let isReloading = false;
-                
-                function connectWebSocket() {
-                    if (isReloading) return;
-                    
-                    try {
-                        ws = new WebSocket('ws://localhost:$webSocketPort');
-                        
-                        ws.onopen = function(event) {
-                            console.log('🔗 Hot Reloader: WebSocket Connected');
-                            reconnectAttempts = 0;
-                            updateIndicator('connected');
-                        };
-                        
-                        ws.onmessage = function(event) {
-                            try {
-                                const data = JSON.parse(event.data);
-                                if (data.type === 'reload') {
-                                    isReloading = true;
-                                    console.log('🔄 Hot Reloader: File changed:', data.file || 'Unknown');
-                                    
-                                    // Плавний ефект перед оновленням
-                                    if (document.body) {
-                                        document.body.style.transition = 'opacity 0.2s';
-                                        document.body.style.opacity = '0.8';
-                                    }
-                                    
-                                    setTimeout(() => {
-                                        location.reload();
-                                    }, 200);
-                                }
-                            } catch (error) {
-                                console.error('❌ Hot Reloader: Message parse error:', error);
-                            }
-                        };
-                        
-                        ws.onclose = function(event) {
-                            if (!isReloading) {
-                                console.log('🔌 Hot Reloader: WebSocket Disconnected, code:', event.code);
-                                updateIndicator('disconnected');
-                                
-                                if (reconnectAttempts < maxReconnectAttempts) {
-                                    reconnectAttempts++;
-                                    const delay = Math.min(5000, 1000 * reconnectAttempts);
-                                    console.log('🔄 Hot Reloader: Reconnecting ' + reconnectAttempts + '/' + maxReconnectAttempts + ' in ' + delay + 'ms');
-                                    setTimeout(connectWebSocket, delay);
-                                } else {
-                                    console.error('❌ Hot Reloader: Failed to reconnect after', maxReconnectAttempts, 'attempts');
-                                    updateIndicator('failed');
-                                }
-                            }
-                        };
-                        
-                        ws.onerror = function(error) {
-                            console.error('❌ Hot Reloader: WebSocket Error:', error);
-                            updateIndicator('error');
-                        };
-                        
-                    } catch (error) {
-                        console.error('❌ Hot Reloader: Failed to create WebSocket:', error);
-                        updateIndicator('error');
-                        
-                        if (reconnectAttempts < maxReconnectAttempts) {
-                            reconnectAttempts++;
-                            setTimeout(connectWebSocket, 2000);
-                        }
-                    }
-                }
-                
-                let indicator;
-                
-                function createIndicator() {
-                    indicator = document.createElement('div');
-                    indicator.innerHTML = '🔥';
-                    indicator.style.cssText = 
-                        'position: fixed;' +
-                        $positionStyles +
-                        'background: #4CAF50;' +
-                        'color: white;' +
-                        'width: 24px;' +
-                        'height: 24px;' +
-                        'display: flex;' +
-                        'align-items: center;' +
-                        'justify-content: center;' +
-                        'border-radius: 50%;' +
-                        'font-family: monospace;' +
-                        'font-size: 12px;' +
-                        'z-index: 2147483647;' +
-                        'box-shadow: 0 2px 4px rgba(0,0,0,0.2);' +
-                        'transition: all 0.3s ease;' +
-                        'cursor: pointer;';
-                    
-                    indicator.addEventListener('click', function() {
-                        console.log('🔥 Hot Reloader status:', {
-                            connected: ws && ws.readyState === WebSocket.OPEN,
-                            readyState: ws ? ws.readyState : 'not created',
-                            reconnectAttempts: reconnectAttempts,
-                            port: $webSocketPort
-                        });
-                    });
-                    
-                    return indicator;
-                }
-                
-                function updateIndicator(status) {
-                    if (!indicator) return;
-                    
-                    switch (status) {
-                        case 'connected':
-                            indicator.style.background = '#4CAF50';
-                            indicator.innerHTML = '🔥';
-                            indicator.title = 'Hot Reloader connected (click for status)';
-                            break;
-                        case 'disconnected':
-                            indicator.style.background = '#FF9800';
-                            indicator.innerHTML = '🔄';
-                            indicator.title = 'Hot Reloader reconnecting...';
-                            break;
-                        case 'error':
-                        case 'failed':
-                            indicator.style.background = '#F44336';
-                            indicator.innerHTML = '❌';
-                            indicator.title = 'Hot Reloader connection error';
-                            break;
-                    }
-                }
-                
-                function showIndicator() {
-                    if (!document.body) return;
-                    
-                    indicator = createIndicator();
-                    document.body.appendChild(indicator);
-                    
-                    // Приховуємо індикатор через 5 секунд
-                    setTimeout(function() {
-                        if (indicator && ws && ws.readyState === WebSocket.OPEN) {
-                            indicator.style.opacity = '0.7';
-                            setTimeout(function() {
-                                if (indicator && indicator.parentNode) {
-                                    indicator.style.opacity = '0.3';
-                                }
-                            }, 2000);
-                        }
-                    }, 5000);
-                }
-                
-                function initialize() {
-                    showIndicator();
-                    connectWebSocket();
-                }
-                
-                // Запускаємо після завантаження DOM
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', initialize);
-                } else {
-                    initialize();
-                }
-                
-                // Очищуємо ресурси при закритті
-                window.addEventListener('beforeunload', function() {
-                    if (ws) {
-                        ws.close();
-                    }
-                });
-            })();
-            </script>
-        """.trimIndent()
+        // Завантажуємо скрипт з ресурсів
+        val scriptTemplate = loadHotReloadScript()
+
+        // Замінюємо плейсхолдери на реальні значення
+        val hotReloadScript = "<script>\n" +
+                scriptTemplate
+                    .replace("{{maxReconnectAttempts}}", settings.reconnectAttempts.toString())
+                    .replace("{{webSocketPort}}", webSocketPort.toString())
+                    .replace("{{positionStyles}}", positionStyles) +
+                "\n</script>"
 
         // Вставляємо скрипт перед закриваючим тегом </head> або </body>
         return when {
@@ -406,6 +319,24 @@ class FileServerService {
             else -> {
                 "$htmlContent\n$hotReloadScript"
             }
+        }
+    }
+
+    private fun loadHotReloadScript(): String {
+        return try {
+            val inputStream = this::class.java.classLoader.getResourceAsStream("javascript/hotreload.js")
+                ?: throw IllegalStateException("Hot reload script not found in resources")
+
+            inputStream.use { stream ->
+                stream.bufferedReader(Charsets.UTF_8).readText()
+            }
+        } catch (e: Exception) {
+            logger.error("Failed to load hot reload script from resources", e)
+            // Fallback до простого скрипта
+            """
+            console.log('🔥 Hot Reloader fallback script');
+            console.error('Failed to load main hot reload script');
+            """.trimIndent()
         }
     }
 

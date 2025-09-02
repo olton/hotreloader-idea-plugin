@@ -6,6 +6,7 @@ import com.intellij.openapi.diagnostic.thisLogger
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManager
 import com.intellij.openapi.project.guessProjectDir
+import com.intellij.openapi.vfs.VfsUtil
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.openapi.vfs.VirtualFileManager
 import com.intellij.openapi.vfs.VfsUtilCore
@@ -24,6 +25,14 @@ import com.intellij.openapi.wm.WindowManager
 import ua.com.pimenov.hotreloader.statusbar.HotReloadStatusBarWidget
 import ua.com.pimenov.hotreloader.utils.Network
 import ua.com.pimenov.hotreloader.utils.Notification
+import java.nio.file.FileSystems
+import java.nio.file.Files
+import java.nio.file.Path
+import java.nio.file.Paths
+import java.nio.file.StandardWatchEventKinds
+import java.nio.file.WatchKey
+import java.nio.file.WatchService
+import java.util.concurrent.ConcurrentHashMap
 
 @Service
 class HotReloadService {
@@ -34,6 +43,11 @@ class HotReloadService {
     private var executor: ScheduledExecutorService? = null
     private var messageBusConnection: MessageBusConnection? = null
     private var currentProject: Project? = null
+
+    // Додаємо File Watcher для відстеження змін поза VFS
+    private var fileWatcher: WatchService? = null
+    private var watcherThread: Thread? = null
+    private val watchedPaths = ConcurrentHashMap<Path, WatchKey>()
 
     // Кеш для відстеження змін файлів
     private val recentChanges = mutableSetOf<String>()
@@ -105,6 +119,11 @@ class HotReloadService {
                 }
             })
 
+            // Додаємо file watcher для файлів поза VFS (тільки якщо увімкнено)
+            if (settings.watchExternalChanges) {
+                startFileWatcher()
+            }
+
             isRunning.set(true)
             updateStatusBar()
         } catch (e: Exception) {
@@ -115,6 +134,32 @@ class HotReloadService {
     fun startForProject(project: Project) {
         currentProject = project
         start()
+
+        // Додаємо відстеження папок з налаштувань
+        val settings = HotReloadSettings.getInstance()
+        if (settings.watchExternalChanges && fileWatcher != null) {
+            project.guessProjectDir()?.let { projectDir ->
+                try {
+                    val projectPath = Paths.get(projectDir.path)
+
+                    // Додаємо папки з налаштувань
+                    settings.getExternalWatchPathsSet().forEach { watchPath ->
+                        val path = projectPath.resolve(watchPath)
+                        if (Files.exists(path)) {
+                            addWatchPath(path)
+                            logger.info("Hot Reloader - Added configured watch path: $path")
+                        } else {
+                            logger.debug("Hot Reloader - Configured watch path does not exist: $path")
+                        }
+                    }
+
+                    // Також додаємо корінь проекту для загального відстеження
+                    addWatchPath(projectPath)
+                } catch (e: Exception) {
+                    logger.error("Hot Reloader - Error setting up watch paths for project", e)
+                }
+            }
+        }
     }
 
     fun stop() {
@@ -124,6 +169,9 @@ class HotReloadService {
         }
 
         try {
+            // Зупиняємо file watcher
+            stopFileWatcher()
+
             // Скасовуємо задачу автозупинення
             autoStopTask?.cancel(false)
             autoStopTask = null
@@ -166,6 +214,146 @@ class HotReloadService {
             webSocketServer?.broadcastReload(fileName)
         } else {
             logger.warn("Hot Reloader not started, can't send a message")
+        }
+    }
+
+    private fun startFileWatcher() {
+        try {
+            fileWatcher = FileSystems.getDefault().newWatchService()
+            watcherThread = Thread({
+                watchFiles()
+            }, "HotReloadFileWatcher")
+            watcherThread?.isDaemon = true
+            watcherThread?.start()
+            logger.info("Hot Reloader - File watcher started")
+        } catch (e: Exception) {
+            logger.error("Hot Reloader - Failed to start file watcher", e)
+        }
+    }
+
+    private fun watchFiles() {
+        val watcher = fileWatcher ?: return
+        try {
+            while (!Thread.currentThread().isInterrupted) {
+                val key = watcher.take()
+
+                for (event in key.pollEvents()) {
+                    val kind = event.kind()
+
+                    if (kind == StandardWatchEventKinds.OVERFLOW) {
+                        continue
+                    }
+
+                    val filename = event.context() as? Path ?: continue
+
+                    // Безпечне створення повного шляху
+                    val watchedPath = key.watchable() as? Path ?: continue
+                    val fullPath = try {
+                        // Використовуємо toString() для уникнення ProviderMismatchException
+                        Paths.get(watchedPath.toString(), filename.toString())
+                    } catch (e: Exception) {
+                        logger.warn("Hot Reloader - Failed to resolve path: $watchedPath + $filename", e)
+                        continue
+                    }
+
+                    logger.info("Hot Reloader - External file change detected: $fullPath")
+
+                    // Перевіряємо розширення файла
+                    val settings = HotReloadSettings.getInstance()
+                    val extension = filename.toString().substringAfterLast('.', "").lowercase()
+
+                    if (extension in settings.getWatchedExtensionsSet()) {
+                        logger.info("Hot Reloader - Processing external change for: ${filename}")
+
+                        // Додаємо в кеш для уникнення дублікатів
+                        val timestamp = System.currentTimeMillis()
+                        val fileKey = "${fullPath}:${timestamp / 100}"
+
+                        if (!recentChanges.contains(fileKey)) {
+                            recentChanges.add(fileKey)
+
+                            // Примусово синхронізуємо VFS, якщо увімкнено
+                            if (settings.forceVfsSync) {
+                                ApplicationManager.getApplication().invokeLater {
+                                    try {
+                                        val vFile = VfsUtil.findFile(fullPath, true)
+                                        if (vFile != null) {
+                                            VfsUtil.markDirtyAndRefresh(false, false, false, vFile)
+                                        }
+                                    } catch (e: Exception) {
+                                        logger.debug("Hot Reloader - Failed to sync VFS for: $fullPath", e)
+                                    }
+                                }
+                            }
+
+                            // Відправляємо повідомлення про зміну файла
+                            executor?.schedule({
+                                try {
+                                    notifyFileChanged(filename.toString())
+                                    logger.info("Hot Reloader - External change notification sent for ${filename}")
+                                } catch (e: Exception) {
+                                    logger.error("Hot Reloader - Error sending external change notification", e)
+                                }
+                                cleanOldCacheEntries()
+                            }, settings.browserRefreshDelay.toLong(), TimeUnit.MILLISECONDS)
+                        }
+                    }
+                }
+
+                if (!key.reset()) {
+                    watchedPaths.remove(key.watchable())
+                    if (watchedPaths.isEmpty()) {
+                        break
+                    }
+                }
+            }
+        } catch (e: InterruptedException) {
+            Thread.currentThread().interrupt()
+            logger.info("Hot Reloader - File watcher thread interrupted")
+        } catch (e: Exception) {
+            logger.error("Hot Reloader - File watcher error", e)
+        }
+    }
+
+    fun addWatchPath(path: Path) {
+        val watcher = fileWatcher ?: return
+        try {
+            if (!watchedPaths.containsKey(path) && Files.exists(path) && Files.isDirectory(path)) {
+                val key = path.register(
+                    watcher,
+                    StandardWatchEventKinds.ENTRY_CREATE,
+                    StandardWatchEventKinds.ENTRY_MODIFY,
+                    StandardWatchEventKinds.ENTRY_DELETE
+                )
+                watchedPaths[path] = key
+                logger.info("Hot Reloader - Added watch path: $path")
+            }
+        } catch (e: Exception) {
+            logger.error("Hot Reloader - Failed to add watch path: $path", e)
+
+            // Якщо це критична помилка - вимикаємо зовнішнє відстеження
+            if (e is java.nio.file.ProviderMismatchException ||
+                e is java.nio.file.FileSystemException) {
+                logger.warn("Hot Reloader - Disabling external file watching due to path compatibility issues")
+                try {
+                    stopFileWatcher()
+                } catch (stopException: Exception) {
+                    logger.error("Hot Reloader - Error stopping file watcher", stopException)
+                }
+            }
+        }
+    }
+
+    private fun stopFileWatcher() {
+        try {
+            watcherThread?.interrupt()
+            fileWatcher?.close()
+            watchedPaths.clear()
+            watcherThread = null
+            fileWatcher = null
+            logger.info("Hot Reloader - External file watcher stopped")
+        } catch (e: Exception) {
+            logger.error("Hot Reloader - Error stopping file watcher", e)
         }
     }
 

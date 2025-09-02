@@ -34,7 +34,21 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
 
     override fun onError(conn: WebSocket?, ex: Exception) {
         logger.error("Hot Reloader - WebSocket Error", ex)
-        conn?.let { connections.remove(it) }
+        conn?.let {
+            connections.remove(it)
+            // Додаємо перевірку на тип помилки
+            when {
+                ex.message?.contains("Connection reset") == true -> {
+                    logger.debug("Hot Reloader - Client forcibly closed connection")
+                }
+                ex.message?.contains("Connection timed out") == true -> {
+                    logger.debug("Hot Reloader - Connection timed out")
+                }
+                else -> {
+                    logger.warn("Hot Reloader - Unexpected WebSocket error: ${ex.message}")
+                }
+            }
+        }
         onConnectionsChanged?.invoke(connections.size)
     }
 
@@ -44,12 +58,29 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
 
     fun broadcastReload(fileName: String) {
         val message = """{"type": "reload", "file": "$fileName"}"""
+        val connectionsToRemove = mutableSetOf<WebSocket>()
+
         connections.forEach { conn ->
-            if (conn.isOpen) {
-                conn.send(message)
+            try {
+                if (conn.isOpen) {
+                    conn.send(message)
+                } else {
+                    connectionsToRemove.add(conn)
+                }
+            } catch (e: Exception) {
+                logger.warn("Hot Reloader - Failed to send message to client: ${e.message}")
+                connectionsToRemove.add(conn)
             }
         }
-        logger.debug("Hot Reloader - The update signal for file has been sent: $fileName")
+
+        // Видаляємо неактивні з'єднання
+        connectionsToRemove.forEach { connections.remove(it) }
+
+        if (connectionsToRemove.isNotEmpty()) {
+            onConnectionsChanged?.invoke(connections.size)
+        }
+
+        logger.debug("Hot Reloader - The update signal for file has been sent: $fileName to ${connections.size} clients")
     }
 
     /**

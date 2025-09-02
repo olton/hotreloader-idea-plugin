@@ -92,7 +92,28 @@
             <add-to-group group-id="EditorPopupMenu" anchor="first"/>
             <add-to-group group-id="ProjectViewPopupMenu" anchor="first"/>
             <!-- Додаємо на панель інструментів -->
-            <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="RunClass"/>
+            <add-to-group group-id="MainToolBar" anchor="after" relative-to-action="RunConfiguration"/>
+        </action>
+
+        <!-- Додаємо кнопку Hot Reloader для HTML файлів в контекстне меню View -->
+        <action id="HotReload.OpenInBrowser"
+                class="ua.com.pimenov.hotreloader.action.RunWithHotReloadAction"
+                text="Open with Hot Reloader"
+                description="Open HTML file in browser with Hot Reloader enabled"
+                icon="ua.com.pimenov.hotreloader.icons.HotReloadIcons.HOTRELOAD_RUN">
+            <!-- Додаємо до меню View -->
+            <add-to-group group-id="ViewMenu" anchor="after" relative-to-action="WebOpenInAction"/>
+            <!-- Додаємо в EditorTabPopup для швидкого доступу -->
+            <add-to-group group-id="EditorTabPopupMenu" anchor="first"/>
+            <!-- Додаємо на головну панель інструментів -->
+            <add-to-group group-id="MainToolbarRight" anchor="before" relative-to-action="RunConfigurationsActionGroup"/>
+        </action>
+
+        <action id="AddWatchFolderAction"
+                class="ua.com.pimenov.hotreloader.action.AddWatchFolderAction"
+                text="Add to Hot Reload Watching"
+                description="Add a folder to Hot Reload Tracking">
+            <add-to-group group-id="ProjectViewPopupMenu" anchor="after" relative-to-action="RunWithHotReloadAction"/>
         </action>
     </actions>
 </idea-plugin>
