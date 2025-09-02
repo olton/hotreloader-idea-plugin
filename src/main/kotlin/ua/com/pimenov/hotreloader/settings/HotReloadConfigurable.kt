@@ -106,7 +106,7 @@ class HotReloadConfigurable : Configurable {
                 row("External Watch Folders:") {
                     textField()
                         .bindText(settings::externalWatchPaths)
-                        .comment("Additional folders to track for external changes (example: dist,build,public)")
+                        .comment("Additional folders to track for external changes (example: dist,build,lib)")
                         .columns(COLUMNS_LARGE)
                         .enabledIf(watchExternalCheckBox.selected)
                 }
@@ -150,10 +150,14 @@ class HotReloadConfigurable : Configurable {
 
     override fun apply() {
         panel.apply()
+        // Повідомляємо про застосування змін
+        settings.notifySettingsApplied()
     }
 
     override fun reset() {
         panel.reset()
+        // Повідомляємо про застосування змін
+        settings.notifySettingsApplied()
     }
 
     override fun getDisplayName(): String = "Hot Reloader"

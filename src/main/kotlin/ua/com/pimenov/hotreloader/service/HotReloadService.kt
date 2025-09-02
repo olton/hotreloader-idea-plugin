@@ -35,7 +35,7 @@ import java.nio.file.WatchService
 import java.util.concurrent.ConcurrentHashMap
 
 @Service
-class HotReloadService {
+class HotReloadService : HotReloadSettings.SettingsChangeListener {
 
     private val logger = thisLogger()
     private val isRunning = AtomicBoolean(false)
@@ -55,6 +55,156 @@ class HotReloadService {
     // Змінні для автоматичного зупинення
     private var autoStopTask: ScheduledFuture<*>? = null
     private val lastClientDisconnectTime = AtomicLong(0)
+
+    init {
+        // Підписуємось на зміни налаштувань
+        HotReloadSettings.getInstance().addChangeListener(this)
+    }
+
+    /**
+     * Обробка змін налаштувань
+     */
+    override fun onSettingsChanged(oldState: HotReloadSettings?, newState: HotReloadSettings) {
+        if (!isRunning.get()) {
+            return // Якщо сервіс не запущений, нічого не робимо
+        }
+
+        logger.info("Hot Reloader - Settings changed, updating service configuration")
+
+        try {
+            // Перевіряємо, чи змінились критичні налаштування, які вимагають перезапуску
+            val needsRestart = oldState?.let {
+                it.webSocketPort != newState.webSocketPort ||
+                        it.httpPort != newState.httpPort ||
+                        it.corePoolSize != newState.corePoolSize ||
+                        it.searchFreePort != newState.searchFreePort
+            } ?: false
+
+            if (needsRestart) {
+                logger.info("Hot Reloader - Critical settings changed, restarting service")
+                restartService()
+                return
+            }
+
+            // Оновлюємо налаштування file watcher'а
+            updateFileWatcherSettings(oldState, newState)
+
+            // Оновлюємо автозупинення
+            updateAutoStopSettings(oldState, newState)
+
+            // Оновлюємо статус бар
+            updateStatusBar()
+
+            logger.info("Hot Reloader - Service configuration updated successfully")
+
+        } catch (e: Exception) {
+            logger.error("Hot Reloader - Error updating service configuration", e)
+            Notification.error(currentProject, "Error updating Hot Reloader settings: ${e.message}")
+        }
+    }
+
+    /**
+     * Оновлює налаштування file watcher'а
+     */
+    private fun updateFileWatcherSettings(oldState: HotReloadSettings?, newState: HotReloadSettings) {
+        val watchExternalChanged = oldState?.watchExternalChanges != newState.watchExternalChanges
+        val watchPathsChanged = oldState?.externalWatchPaths != newState.externalWatchPaths
+
+        if (watchExternalChanged) {
+            if (newState.watchExternalChanges) {
+                // Увімкнули зовнішнє відстеження - запускаємо file watcher
+                if (fileWatcher == null) {
+                    startFileWatcher()
+                    setupWatchPaths() // Налаштовуємо шляхи відстеження
+                }
+            } else {
+                // Вимкнули зовнішнє відстеження - зупиняємо file watcher
+                stopFileWatcher()
+            }
+        } else if (watchPathsChanged && newState.watchExternalChanges) {
+            // Змінились шляхи відстеження, але функція залишилась увімкненою
+            updateWatchPaths()
+        }
+    }
+
+    /**
+     * Оновлює шляхи відстеження для file watcher'а
+     */
+    private fun updateWatchPaths() {
+        if (fileWatcher == null) return
+
+        // Очищаємо старі шляхи
+        watchedPaths.values.forEach { key ->
+            key.cancel()
+        }
+        watchedPaths.clear()
+
+        // Додаємо нові шляхи
+        setupWatchPaths()
+    }
+
+    /**
+     * Налаштовує шляхи відстеження
+     */
+    private fun setupWatchPaths() {
+        currentProject?.guessProjectDir()?.let { projectDir ->
+            try {
+                val projectPath = Paths.get(projectDir.path)
+                val settings = HotReloadSettings.getInstance()
+
+                // Додаємо папки з налаштувань
+                settings.getExternalWatchPathsSet().forEach { watchPath ->
+                    val path = projectPath.resolve(watchPath)
+                    if (Files.exists(path)) {
+                        addWatchPath(path)
+                        logger.info("Hot Reloader - Added watch path: $path")
+                    }
+                }
+
+                // Додаємо корінь проекту
+                addWatchPath(projectPath)
+            } catch (e: Exception) {
+                logger.error("Hot Reloader - Error setting up watch paths", e)
+            }
+        }
+    }
+
+    /**
+     * Оновлює налаштування автозупинення
+     */
+    private fun updateAutoStopSettings(oldState: HotReloadSettings?, newState: HotReloadSettings) {
+        val autoStopChanged = oldState?.autoStopEnabled != newState.autoStopEnabled
+        val delayChanged = oldState?.autoStopDelaySeconds != newState.autoStopDelaySeconds
+
+        if (autoStopChanged || delayChanged) {
+            if (newState.autoStopEnabled && getActiveConnectionsCount() == 0) {
+                // Автозупинення увімкнено і немає підключень - перепланувати
+                scheduleAutoStop(newState.autoStopDelaySeconds)
+            } else {
+                // Автозупинення вимкнено або є підключення - скасувати
+                autoStopTask?.cancel(false)
+                autoStopTask = null
+            }
+        }
+    }
+
+    /**
+     * Перезапускає сервіс
+     */
+    private fun restartService() {
+        val wasRunning = isRunning.get()
+        val project = currentProject
+
+        stop()
+
+        if (wasRunning) {
+            if (project != null) {
+                startForProject(project)
+            } else {
+                start()
+            }
+        }
+    }
 
     fun start() {
         if (isRunning.get()) {
@@ -135,30 +285,9 @@ class HotReloadService {
         currentProject = project
         start()
 
-        // Додаємо відстеження папок з налаштувань
-        val settings = HotReloadSettings.getInstance()
-        if (settings.watchExternalChanges && fileWatcher != null) {
-            project.guessProjectDir()?.let { projectDir ->
-                try {
-                    val projectPath = Paths.get(projectDir.path)
-
-                    // Додаємо папки з налаштувань
-                    settings.getExternalWatchPathsSet().forEach { watchPath ->
-                        val path = projectPath.resolve(watchPath)
-                        if (Files.exists(path)) {
-                            addWatchPath(path)
-                            logger.info("Hot Reloader - Added configured watch path: $path")
-                        } else {
-                            logger.debug("Hot Reloader - Configured watch path does not exist: $path")
-                        }
-                    }
-
-                    // Також додаємо корінь проекту для загального відстеження
-                    addWatchPath(projectPath)
-                } catch (e: Exception) {
-                    logger.error("Hot Reloader - Error setting up watch paths for project", e)
-                }
-            }
+        // Додаємо відстеження додаткових папок з налаштувань
+        if (fileWatcher != null) {
+            setupWatchPaths()
         }
     }
 

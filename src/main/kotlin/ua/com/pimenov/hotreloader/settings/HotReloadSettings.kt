@@ -2,6 +2,9 @@ package ua.com.pimenov.hotreloader.settings
 
 import com.intellij.openapi.components.*
 import com.intellij.util.xmlb.XmlSerializerUtil
+import java.util.concurrent.CopyOnWriteArrayList
+import com.intellij.openapi.diagnostic.thisLogger
+import ua.com.pimenov.hotreloader.service.HotReloadService
 
 @State(
     name = "HotReloadSettings",
@@ -9,6 +12,7 @@ import com.intellij.util.xmlb.XmlSerializerUtil
 )
 @Service
 class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
+    private val logger = thisLogger()
 
     var isEnabled: Boolean = true
     var webSocketPort: Int = 3000
@@ -20,7 +24,7 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var showHotReloadIndicator: Boolean = true
     var indicatorPosition: String = "top_right"
     var excludedFolders: String = ".idea,.git,node_modules"
-    var autoStopEnabled: Boolean = false // Нова опція
+    var autoStopEnabled: Boolean = false
     var autoStopDelaySeconds: Int = 300
     var corePoolSize: Int = 3
     var searchFreePort: Boolean = true
@@ -30,10 +34,57 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
     var watchExternalChanges: Boolean = true // Нове налаштування
     var externalWatchPaths: String = "dist,build,lib" // Нове налаштування
 
+    // Список слухачів змін налаштувань
+    private val changeListeners = CopyOnWriteArrayList<SettingsChangeListener>()
+
     override fun getState(): HotReloadSettings = this
 
     override fun loadState(state: HotReloadSettings) {
+        val oldState = HotReloadSettings().apply {
+            XmlSerializerUtil.copyBean(this@HotReloadSettings, this)
+        }
         XmlSerializerUtil.copyBean(state, this)
+
+        // Повідомляємо про зміни після завантаження стану
+        notifySettingsChanged(oldState, this)
+    }
+
+    /**
+     * Викликається після застосування змін у конфігураторі
+     */
+    fun notifySettingsApplied() {
+        val currentState = HotReloadSettings().apply {
+            XmlSerializerUtil.copyBean(this@HotReloadSettings, this)
+        }
+        notifySettingsChanged(null, currentState)
+    }
+
+    /**
+     * Додає слухача змін налаштувань
+     */
+    fun addChangeListener(listener: SettingsChangeListener) {
+        changeListeners.add(listener)
+    }
+
+    /**
+     * Видаляє слухача змін налаштувань
+     */
+    fun removeChangeListener(listener: SettingsChangeListener) {
+        changeListeners.remove(listener)
+    }
+
+    /**
+     * Повідомляє всіх слухачів про зміни налаштувань
+     */
+    private fun notifySettingsChanged(oldState: HotReloadSettings?, newState: HotReloadSettings) {
+        changeListeners.forEach { listener ->
+            try {
+                listener.onSettingsChanged(oldState, newState)
+            } catch (e: Exception) {
+                // Логуємо помилки, але не зупиняємо обробку інших слухачів
+                logger.error("Error in settings change listener", e)
+            }
+        }
     }
 
     fun getExternalWatchPathsSet(): Set<String> {
@@ -68,6 +119,13 @@ class HotReloadSettings : PersistentStateComponent<HotReloadSettings> {
                 return values().find { it.value == value } ?: TOP_RIGHT
             }
         }
+    }
+
+    /**
+     * Інтерфейс для слухачів змін налаштувань
+     */
+    interface SettingsChangeListener {
+        fun onSettingsChanged(oldState: HotReloadSettings?, newState: HotReloadSettings)
     }
 
     companion object {

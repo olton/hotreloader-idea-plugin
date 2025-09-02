@@ -5,23 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fe9d20bf-fb98-475b-8837-81419eddd65f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/AddWatchFolderAction.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/icons/hotreload-green.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/javascript/hotreload.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.intellijPlatform/self-update.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.intellijPlatform/self-update.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CHANGELOG.md" beforeDir="false" afterPath="$PROJECT_DIR$/CHANGELOG.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/DiagnoseHotReloadAction.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/action/DiagnoseHotReloadAction.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/icons/HotReloadIcons.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/icons/HotReloadIcons.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/FileServerService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/FileServerService.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TODO.md" beforeDir="false" afterPath="$PROJECT_DIR$/TODO.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/service/HotReloadService.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadConfigurable.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadConfigurable.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadSettings.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/settings/HotReloadSettings.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/statusbar/HotReloadStatusBarWidget.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/statusbar/HotReloadStatusBarWidget.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/websocket/WebSocketServer.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ua/com/pimenov/hotreloader/websocket/WebSocketServer.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/plugin.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "dev",
+    "git-widget-placeholder": "apply-setting",
     "junie.onboarding.icon.badge.shown": "true",
     "kotlin-language-version-configured": "true",
     "node.js.detected.package.eslint": "true",
@@ -118,7 +106,7 @@
       <workItem from="1754736396625" duration="264000" />
       <workItem from="1754737072377" duration="521000" />
       <workItem from="1756317640916" duration="6000" />
-      <workItem from="1756744995953" duration="14209000" />
+      <workItem from="1756744995953" duration="15781000" />
     </task>
     <servers />
   </component>
