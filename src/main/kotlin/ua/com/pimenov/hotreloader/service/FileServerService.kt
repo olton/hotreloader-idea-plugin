@@ -19,8 +19,19 @@ class FileServerService {
     private var projectRoot: VirtualFile? = null
     private var webSocketPort: Int = 8080
 
+    fun isRunning(): Boolean = server != null
+
     fun start(port: Int, projectRootFile: VirtualFile, wsPort: Int): String {
-        stop() // Зупиняємо попередній сервер якщо він був
+        // Не зупиняємо сервер якщо він вже працює на тому ж порті та проекті
+        if (server != null &&
+            this.webSocketPort == wsPort &&
+            this.projectRoot?.path == projectRootFile.path) {
+            val baseUrl = "http://localhost:$port"
+            logger.info("Hot Reloader - HTTP server is already running on $baseUrl for the same project")
+            return baseUrl
+        }
+
+        stop() // Зупиняємо тільки якщо параметри змінились
 
         this.projectRoot = projectRootFile
         this.webSocketPort = wsPort
@@ -285,6 +296,9 @@ class FileServerService {
         val settings = ua.com.pimenov.hotreloader.settings.HotReloadSettings.getInstance()
         val indicatorPosition = ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.fromValue(settings.indicatorPosition)
 
+        // Генеруємо унікальний ідентифікатор для кожного HTML файлу
+        val fileId = "hr_${System.currentTimeMillis()}_${(0..9999).random()}"
+
         // Визначаємо CSS стилі для позиції індикатора
         val positionStyles = when (indicatorPosition) {
             ua.com.pimenov.hotreloader.settings.HotReloadSettings.IndicatorPosition.TOP_LEFT ->
@@ -305,7 +319,8 @@ class FileServerService {
                 scriptTemplate
                     .replace("{{maxReconnectAttempts}}", settings.reconnectAttempts.toString())
                     .replace("{{webSocketPort}}", webSocketPort.toString())
-                    .replace("{{positionStyles}}", positionStyles) +
+                    .replace("{{positionStyles}}", positionStyles)
+                    .replace("{{fileId}}", fileId) +
                 "\n</script>"
 
         // Вставляємо скрипт перед закриваючим тегом </head> або </body>

@@ -2,6 +2,13 @@
 
 ## [Unreleased]
 
+## [0.3.1] - 2025-09-03
+### Added
+- Added support for CSS Hot reload - update page style without reloading the page.
+
+### Fixed
+- Fixed Multiple HTML files work simultaneously
+
 ## [0.3.0] - 2025-09-02
 ### Added
 - Added tracking changes in the special folder.

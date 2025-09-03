@@ -40,30 +40,38 @@ class RunWithHotReloadAction : AnAction() {
             // Знаходимо корінь проекту
             val projectRoot = project.guessProjectDir() ?: virtualFile.parent
 
-            if (!Network.isPortAvailable(settings.httpPort)) {
-                if (settings.searchFreePort) {
-                    // Спробуємо знайти вільний порт
-                    var foundPort = false
-                    for (port in settings.httpPort..65535) {
-                        if (Network.isPortAvailable(port)) {
-                            foundPort = true
-                            settings.httpPort = port
-                            logger.info("Hot Reloader - Found free HTTP port: ${settings.httpPort}")
-                            break
+            // Визначаємо baseUrl та запускаємо HTTP сервер при потребі
+            val baseUrl: String
+            if (!fileServerService.isRunning()) {
+                // Перевіряємо порт тільки якщо сервер не запущений
+                if (!Network.isPortAvailable(settings.httpPort)) {
+                    if (settings.searchFreePort) {
+                        // Спробуємо знайти вільний порт
+                        var foundPort = false
+                        for (port in settings.httpPort..65535) {
+                            if (Network.isPortAvailable(port)) {
+                                foundPort = true
+                                settings.httpPort = port
+                                logger.info("Hot Reloader - Found free HTTP port: ${settings.httpPort}")
+                                break
+                            }
                         }
-                    }
-                    if (!foundPort) {
-                        Notification.error(project, "Failed to find free port for HTTP Server")
+                        if (!foundPort) {
+                            Notification.error(project, "Failed to find free port for HTTP Server")
+                            return
+                        }
+                    } else {
+                        Notification.error(project, "Port ${settings.httpPort} for HTTP Server is busy")
                         return
                     }
-                } else {
-                    Notification.error(project, "Port ${settings.httpPort} for HTTP Server is busy")
-                    return
                 }
+                // Запускаємо HTTP сервер
+                baseUrl = fileServerService.start(settings.httpPort, projectRoot, settings.webSocketPort)
+            } else {
+                // Сервер вже запущений - використовуємо існуючий
+                baseUrl = "http://localhost:${settings.httpPort}"
+                logger.info("Hot Reloader - Using existing HTTP server: $baseUrl")
             }
-
-            // Запускаємо HTTP сервер
-            val baseUrl = fileServerService.start(settings.httpPort, projectRoot, settings.webSocketPort)
 
             // Обчислюємо відносний шлях від кореня проекту до файлу
             val relativePath = getRelativePath(projectRoot.path, virtualFile.path)

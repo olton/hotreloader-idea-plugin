@@ -57,7 +57,15 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
     }
 
     fun broadcastReload(fileName: String) {
-        val message = """{"type": "reload", "file": "$fileName"}"""
+        val fileExtension = fileName.substringAfterLast('.', "").lowercase()
+
+        // Визначаємо тип оновлення залежно від розширення файла
+        val message = when (fileExtension) {
+            "css" -> """{"type": "css-reload", "file": "$fileName"}"""
+            "js" -> """{"type": "js-reload", "file": "$fileName"}"""
+            else -> """{"type": "reload", "file": "$fileName"}"""
+        }
+
         val connectionsToRemove = mutableSetOf<WebSocket>()
 
         connections.forEach { conn ->
@@ -80,7 +88,7 @@ class WebSocketServer(port: Int) : JavaWebSocketServer(InetSocketAddress(port)) 
             onConnectionsChanged?.invoke(connections.size)
         }
 
-        logger.debug("Hot Reloader - The update signal for file has been sent: $fileName to ${connections.size} clients")
+        logger.debug("Hot Reloader - The update signal for file has been sent: $fileName (type: $fileExtension) to ${connections.size} clients")
     }
 
     /**
