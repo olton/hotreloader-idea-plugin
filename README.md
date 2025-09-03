@@ -1,16 +1,14 @@
 # Hot Reloader Plugin for IntelliJ IDEA
 
 <!-- Plugin description -->
-Hot Reloader is a powerful development tool that automatically refreshes your web browser whenever you make changes to
-your project files. It establishes a WebSocket connection between your IDE and browser to instantly reflect code
-modifications without manual page reloads. Perfect for web developers who want to streamline their development workflow and see changes instantly in the browser.
+Hot Reloader is a IDEA Plugin that automatically refreshes your web browser whenever you make changes to your project files.
 <!-- Plugin description end -->
 
 ## Features
 
 - Real-time browser refresh on file changes
 - Built-in WebSocket server for instant updates
-- Support for multiple file types (HTML, CSS, JS, TypeScript)
+- Support for multiple file types (HTML, CSS, JS, TypeScript, etc...)
 - Configurable refresh delay and file monitoring
 - Visual indicators for reload status
 - Easy integration with IDE toolbar and context menus
@@ -33,9 +31,8 @@ modifications without manual page reloads. Perfect for web developers who want t
 
 You can start Hot Reload in several ways:
 
-- From Tools menu: `Tools → Hot Reload → Start Hot Reload`
 - Right-click on HTML file → `Run with Hot Reload`
-- Using toolbar button next to the Run button
+- Using button on main toolbar to the Run view
 
 ### Configuration
 
@@ -50,10 +47,24 @@ Go to `Settings/Preferences → Tools → Hot Reload` to configure:
 
 ### Default Settings
 
-- Watched extensions: html, css, js
-- WebSocket port: 4081
-- HTTP port: 4080
-- Refresh delay: 100ms
+- `WebSocket Port`: 3000
+- `HTTP Server Port`: 4080
+- `Watched Extensions`: html, css, js, less
+- `Browser Refresh Delay`: 100ms
+- `Auto-start Server`: enabled
+- `Auto-start Service`: disabled
+- `Hot Reload Indicator`: enabled
+- `Indicator Position`: top right
+- `Excluded Folders`: .idea, .git, node_modules
+- `Auto-stop`: disabled
+- `Auto-stop Delay`: 300 seconds
+- `Core Pool Size`: 3 threads
+- `Search Free Port`: enabled
+- `Notification Timeout`: 3000ms
+- `Reconnect Attempts`: 5
+- `Force VFS Sync`: enabled
+- `Watch External Changes`: enabled
+- `External Watch Paths`: dist, build, lib
 
 ## License
 
