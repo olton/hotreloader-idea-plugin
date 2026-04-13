@@ -5,7 +5,7 @@
 
     let ws;
     let reconnectAttempts = 0;
-    const maxReconnectAttempts = {{maxReconnectAttempts}};
+    const maxReconnectAttempts = +"{{maxReconnectAttempts}}";
     let isReloading = false;
 
     // Зберігаємо інформацію про WebSocket в глобальній області для кожного файлу окремо
@@ -13,7 +13,7 @@
         window.hotReloaderInstances = {};
     }
 
-    // Перевіряємо чи вже існує активне з'єднання для цього файлу
+    // Перевіряємо, чи вже існує активне з'єднання для цього файлу
     if (window.hotReloaderInstances[fileId]) {
         console.log('🔄 Hot Reloader: Closing previous connection for file:', fileId);
         try {
@@ -120,7 +120,7 @@
             'animation: hotReloadSlideIn 0.3s ease-out;' +
             'pointer-events: none;';
 
-        // Додаємо CSS анімацію якщо її ще немає
+        // Додаємо CSS анімацію, якщо її ще немає
         if (!document.getElementById('hotReloadStyles')) {
             const style = document.createElement('style');
             style.id = 'hotReloadStyles';
@@ -161,7 +161,7 @@
         // 1. Змінився поточний HTML файл
         // 2. Змінився CSS файл (може впливати на вигляд)
         // 3. Змінився JS файл (може впливати на логіку)
-        // 4. Змінились інші ресурси які зазвичай використовують HTML файли
+        // 4. Змінились інші ресурси, які зазвичай використовують HTML файли
 
         return (
             changedFileNameLower === currentFileNameLower || // точна відповідність файлу
@@ -183,7 +183,7 @@
             // Зберігаємо посилання на WebSocket для цього файлу
             window.hotReloaderInstances[fileId] = ws;
 
-            ws.onopen = function(event) {
+            ws.onopen = function() {
                 console.log('🔗 Hot Reloader: WebSocket Connected for file:', fileId);
                 reconnectAttempts = 0;
                 updateIndicator('connected');
@@ -194,7 +194,7 @@
                     const data = JSON.parse(event.data);
                     const changedFileName = data.file;
 
-                    // Перевіряємо чи це повідомлення стосується нашого файлу
+                    // Перевіряємо, чи це повідомлення стосується нашого файлу
                     if (!isRelevantFileChange(changedFileName)) {
                         console.log('🔄 Hot Reloader: Ignoring irrelevant file change for', fileId + ':', changedFileName);
                         return;
@@ -305,7 +305,7 @@
                 connected: ws && ws.readyState === WebSocket.OPEN,
                 readyState: ws ? ws.readyState : 'not created',
                 reconnectAttempts: reconnectAttempts,
-                port: {{webSocketPort}},
+                port: +"{{webSocketPort}}",
                 activeInstances: Object.keys(window.hotReloaderInstances || {}).length
             });
         });

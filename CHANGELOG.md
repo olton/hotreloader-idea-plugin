@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.2] - 2026-04-13
+### Fixed
+- Add support for 2026.* IDE to the `Hot Reload` plugin.
+
 ## [0.3.1] - 2025-09-03
 ### Added
 - Added support for CSS Hot reload - update page style without reloading the page.
