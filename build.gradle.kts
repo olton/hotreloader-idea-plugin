@@ -100,3 +100,8 @@ changelog {
 kotlin {
     jvmToolchain(21)
 }
+
+// Workaround for WebStorm 2026.1 (build 261): searchable options task fails to start IDE bootstrap class.
+tasks.named("buildSearchableOptions") {
+    enabled = false
+}
