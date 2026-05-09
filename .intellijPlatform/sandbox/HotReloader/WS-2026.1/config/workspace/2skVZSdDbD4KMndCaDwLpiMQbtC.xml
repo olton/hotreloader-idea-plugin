@@ -1,0 +1,2249 @@
+<project version="4">
+  <component name="BookmarksManager">
+    <option name="groups">
+      <GroupState>
+        <option name="name" value="metroui-lib" />
+      </GroupState>
+    </option>
+  </component>
+  <component name="FileEditorManager">
+    <leaf ideFingerprint="2b4bk752mlc91">
+      <file current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/examples/accordion.html" file-id="13877" managing-fs="1778353215178">
+          <provider editor-type-id="text-editor" selected="true">
+            <state relative-caret-position="528">
+              <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+            </state>
+          </provider>
+        </entry>
+        <tab><![CDATA[{"tabTitle":"accordion.html","foregroundColor":-9392385,"textAttributes":{"name":"a","children":[{"name":"option","attributes":{"name":"FOREGROUND","value":"70aeff"}}]},"icon":[10,57,99,111,109,46,105,110,116,101,108,108,105,106,46,117,105,46,105,99,111,110,115,46,82,97,115,116,101,114,105,122,101,100,73,109,97,103,101,68,97,116,97,76,111,97,100,101,114,68,101,115,99,114,105,112,116,111,114,18,68,10,18,102,105,108,101,84,121,112,101,115,47,104,116,109,108,46,115,118,103,18,24,101,120,112,117,105,47,102,105,108,101,84,121,112,101,115,47,104,116,109,108,46,115,118,103,26,12,99,111,109,46,105,110,116,101,108,108,105,106,40,-72,-21,-93,-62,3,48,0]}]]></tab>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTypeUsageLocalSummary"><![CDATA[{
+  "data": {
+    "HTML": {
+      "usageCount": 1,
+      "lastUsed": 1778353303112
+    }
+  }
+}]]></component>
+  <component name="IdeDocumentHistory"><![CDATA[{
+  "changedPaths": [
+    "D:/Projects/metroui/metroui-lib/examples/accordion.html"
+  ]
+}]]></component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="$PROJECT_DIR$/.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="LanguageUsageStatistics">
+    <language id="HTML">
+      <summary usageCount="1" lastUsage="1778353303112" />
+    </language>
+  </component>
+  <component name="ProjectRoots">
+    <project-root url="file://$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1" />
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="metroui-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file://D:/Projects/metroui/metroui-lib}" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="metroui-lib" type="b2602c69:ProjectViewProjectNode" />
+              <item name="dir{file://D:/Projects/metroui/metroui-lib}" type="462c0819:PsiDirectoryNode" />
+              <item name="dir{file://D:/Projects/metroui/metroui-lib/examples}" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+          <presentation>
+            <attributes />
+            <data iconPath="expui/toolwindows/project.svg" iconPlugin="com.intellij" isLeaf="false" text="metroui-lib" />
+            <item name="metroui-lib" type="b2602c69:ProjectViewProjectNode" />
+            <presentation>
+              <attributes>
+                <map>
+                  <entry key="filePath" value="$PROJECT_DIR$" />
+                </map>
+              </attributes>
+              <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="metroui-lib" />
+              <item name="dir{file://D:/Projects/metroui/metroui-lib}" type="462c0819:PsiDirectoryNode" />
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.github" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folderGithub.svg" iconPlugin="com.intellij" isLeaf="false" text=".github" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/.github}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.idea" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text=".idea" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/.idea}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.junie" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text=".junie" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/.junie}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.vscode" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text=".vscode" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/.vscode}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/examples" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="examples" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/examples}" type="462c0819:PsiDirectoryNode" />
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/data" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="data" />
+                  <item name="dir{file://D:/Projects/metroui/metroui-lib/examples/data}" type="462c0819:PsiDirectoryNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/images" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="images" />
+                  <item name="dir{file://D:/Projects/metroui/metroui-lib/examples/images}" type="462c0819:PsiDirectoryNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/accordion.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="accordion.html" />
+                  <item name="accordion.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/action-button.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="action-button.html" />
+                  <item name="action-button.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/activity.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="activity.html" />
+                  <item name="activity.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/adblock.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="adblock.html" />
+                  <item name="adblock.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/analog-clock.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="analog-clock.html" />
+                  <item name="analog-clock.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/analog-clock-{size}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="analog-clock-{size}.html" />
+                  <item name="analog-clock-{size}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/animate-border.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="animate-border.html" />
+                  <item name="animate-border.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/any.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="any.html" />
+                  <item name="any.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/app-bar.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="app-bar.html" />
+                  <item name="app-bar.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/audio-button.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="audio-button.html" />
+                  <item name="audio-button.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/audio-player.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="audio-player.html" />
+                  <item name="audio-player.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/bar3d.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="bar3d.html" />
+                  <item name="bar3d.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/blocks.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="blocks.html" />
+                  <item name="blocks.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/bottom-sheet.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="bottom-sheet.html" />
+                  <item name="bottom-sheet.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/breadcrumbs.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="breadcrumbs.html" />
+                  <item name="breadcrumbs.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/bulls.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="bulls.html" />
+                  <item name="bulls.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/button-group.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="button-group.html" />
+                  <item name="button-group.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/buttons.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="buttons.html" />
+                  <item name="buttons.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/calendar.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="calendar.html" />
+                  <item name="calendar.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/calendar-picker.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="calendar-picker.html" />
+                  <item name="calendar-picker.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/calendar-wide.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="calendar-wide.html" />
+                  <item name="calendar-wide.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/calendar-with-time.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="calendar-with-time.html" />
+                  <item name="calendar-with-time.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/cards.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="cards.html" />
+                  <item name="cards.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/carousel.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="carousel.html" />
+                  <item name="carousel.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/catalog-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="catalog-menu.html" />
+                  <item name="catalog-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/charms.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="charms.html" />
+                  <item name="charms.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/chat.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="chat.html" />
+                  <item name="chat.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/checkbox.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="checkbox.html" />
+                  <item name="checkbox.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/chips.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="chips.html" />
+                  <item name="chips.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/clock.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="clock.html" />
+                  <item name="clock.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/code.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="code.html" />
+                  <item name="code.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/collapse.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="collapse.html" />
+                  <item name="collapse.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/color-palette.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="color-palette.html" />
+                  <item name="color-palette.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/color-picker.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="color-picker.html" />
+                  <item name="color-picker.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/color-selector.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="color-selector.html" />
+                  <item name="color-selector.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/colors.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="colors.html" />
+                  <item name="colors.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/container.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="container.html" />
+                  <item name="container.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/context-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="context-menu.html" />
+                  <item name="context-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/cookie.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="cookie.html" />
+                  <item name="cookie.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/cookie-disclaimer.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="cookie-disclaimer.html" />
+                  <item name="cookie-disclaimer.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/countdown.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="countdown.html" />
+                  <item name="countdown.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/counter.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="counter.html" />
+                  <item name="counter.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/cube.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="cube.html" />
+                  <item name="cube.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/custom-checkbox.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="custom-checkbox.html" />
+                  <item name="custom-checkbox.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/cutter.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="cutter.html" />
+                  <item name="cutter.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/d-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="d-menu.html" />
+                  <item name="d-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/date-picker.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="date-picker.html" />
+                  <item name="date-picker.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/datetime.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="datetime.html" />
+                  <item name="datetime.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/dialog.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="dialog.html" />
+                  <item name="dialog.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/directive.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="directive.html" />
+                  <item name="directive.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/directive2.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="directive2.html" />
+                  <item name="directive2.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/directive3.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="directive3.html" />
+                  <item name="directive3.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/donut.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="donut.html" />
+                  <item name="donut.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/double-select-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="double-select-box.html" />
+                  <item name="double-select-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/double-slider.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="double-slider.html" />
+                  <item name="double-slider.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/drag-items.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="drag-items.html" />
+                  <item name="drag-items.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/draggable.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="draggable.html" />
+                  <item name="draggable.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/draggable-boundary-restriction.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="draggable-boundary-restriction.html" />
+                  <item name="draggable-boundary-restriction.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/dropdown.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="dropdown.html" />
+                  <item name="dropdown.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/dropdown-button.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="dropdown-button.html" />
+                  <item name="dropdown-button.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/dropdown-{position}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="dropdown-{position}.html" />
+                  <item name="dropdown-{position}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/dropmenu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="dropmenu.html" />
+                  <item name="dropmenu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/eval.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="eval.html" />
+                  <item name="eval.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/file.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="file.html" />
+                  <item name="file.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/form.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="form.html" />
+                  <item name="form.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/form-elements.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="form-elements.html" />
+                  <item name="form-elements.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/gauge.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="gauge.html" />
+                  <item name="gauge.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/github-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="github-box.html" />
+                  <item name="github-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/gradient-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="gradient-box.html" />
+                  <item name="gradient-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/gradients.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="gradients.html" />
+                  <item name="gradients.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/gravatar.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="gravatar.html" />
+                  <item name="gravatar.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/grid.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="grid.html" />
+                  <item name="grid.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/grid-new.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="grid-new.html" />
+                  <item name="grid-new.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/grid-{enclosed).html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="grid-{enclosed).html" />
+                  <item name="grid-{enclosed).html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/h-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="h-menu.html" />
+                  <item name="h-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/h-tag.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="h-tag.html" />
+                  <item name="h-tag.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero1.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero1.html" />
+                  <item name="hero1.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero2.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero2.html" />
+                  <item name="hero2.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero3.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero3.html" />
+                  <item name="hero3.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero4.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero4.html" />
+                  <item name="hero4.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero5.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero5.html" />
+                  <item name="hero5.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hero6.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hero6.html" />
+                  <item name="hero6.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hint.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hint.html" />
+                  <item name="hint.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hotkey.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hotkey.html" />
+                  <item name="hotkey.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/hover-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="hover-box.html" />
+                  <item name="hover-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/html-container.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="html-container.html" />
+                  <item name="html-container.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/i18n.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="i18n.html" />
+                  <item name="i18n.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/icons.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="icons.html" />
+                  <item name="icons.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-box.html" />
+                  <item name="image-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-carousel.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-carousel.html" />
+                  <item name="image-carousel.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-compare.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-compare.html" />
+                  <item name="image-compare.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-grid.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-grid.html" />
+                  <item name="image-grid.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-magnifier.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-magnifier.html" />
+                  <item name="image-magnifier.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/image-placeholder.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="image-placeholder.html" />
+                  <item name="image-placeholder.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/index.css" />
+                    </map>
+                  </attributes>
+                  <data iconPath="fileTypes/css.svg" iconPlugin="com.intellij" isLeaf="true" text="index.css" />
+                  <item name="index.css" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/info-box.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="info-box.html" />
+                  <item name="info-box.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/input.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="input.html" />
+                  <item name="input.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/input-mask.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="input-mask.html" />
+                  <item name="input-mask.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/jquery.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="jquery.html" />
+                  <item name="jquery.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/keypad.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="keypad.html" />
+                  <item name="keypad.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/lightbox.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="lightbox.html" />
+                  <item name="lightbox.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/linked-block.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="linked-block.html" />
+                  <item name="linked-block.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/list.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="list.html" />
+                  <item name="list.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/lists.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="lists.html" />
+                  <item name="lists.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/listview.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="listview.html" />
+                  <item name="listview.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/load-metro.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="load-metro.html" />
+                  <item name="load-metro.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/log.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="log.html" />
+                  <item name="log.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/marquee.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="marquee.html" />
+                  <item name="marquee.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/marquee-sw.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="marquee-sw.html" />
+                  <item name="marquee-sw.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/master.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="master.html" />
+                  <item name="master.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/material-input.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="material-input.html" />
+                  <item name="material-input.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/material-tabs.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="material-tabs.html" />
+                  <item name="material-tabs.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/model.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="model.html" />
+                  <item name="model.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/multicolor-gradients.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="multicolor-gradients.html" />
+                  <item name="multicolor-gradients.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/navview.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="navview.html" />
+                  <item name="navview.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/navview2.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="navview2.html" />
+                  <item name="navview2.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/notify.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="notify.html" />
+                  <item name="notify.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/package-manager.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="package-manager.html" />
+                  <item name="package-manager.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/page-control.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="page-control.html" />
+                  <item name="page-control.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/pagination.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="pagination.html" />
+                  <item name="pagination.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/panel.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="panel.html" />
+                  <item name="panel.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/patterns.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="patterns.html" />
+                  <item name="patterns.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/popover.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="popover.html" />
+                  <item name="popover.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/progress.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="progress.html" />
+                  <item name="progress.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/push-button.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="push-button.html" />
+                  <item name="push-button.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/quick-start.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="quick-start.html" />
+                  <item name="quick-start.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/radio.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="radio.html" />
+                  <item name="radio.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/rating.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="rating.html" />
+                  <item name="rating.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/remark.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="remark.html" />
+                  <item name="remark.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/remote-dataset.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="remote-dataset.html" />
+                  <item name="remote-dataset.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/remote-table.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="remote-table.html" />
+                  <item name="remote-table.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/resizable.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="resizable.html" />
+                  <item name="resizable.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/resizable-container.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="resizable-container.html" />
+                  <item name="resizable-container.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/resizer.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="resizer.html" />
+                  <item name="resizer.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/ribbon-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="ribbon-menu.html" />
+                  <item name="ribbon-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/ripple.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="ripple.html" />
+                  <item name="ripple.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/scrollbar.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="scrollbar.html" />
+                  <item name="scrollbar.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select.html" />
+                  <item name="select.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-2.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-2.html" />
+                  <item name="select-2.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-options.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-options.html" />
+                  <item name="select-options.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-{data}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-{data}.html" />
+                  <item name="select-{data}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-{reset}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-{reset}.html" />
+                  <item name="select-{reset}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-{source}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-{source}.html" />
+                  <item name="select-{source}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/select-{val}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="select-{val}.html" />
+                  <item name="select-{val}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/shadow.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="shadow.html" />
+                  <item name="shadow.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/shadow-text.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="shadow-text.html" />
+                  <item name="shadow-text.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/shapes.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="shapes.html" />
+                  <item name="shapes.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/shortcuts.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="shortcuts.html" />
+                  <item name="shortcuts.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/sidebar.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="sidebar.html" />
+                  <item name="sidebar.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/sidenav.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="sidenav.html" />
+                  <item name="sidenav.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/sidenav-counter.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="sidenav-counter.html" />
+                  <item name="sidenav-counter.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/slider.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="slider.html" />
+                  <item name="slider.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/sorter.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="sorter.html" />
+                  <item name="sorter.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/spinner.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="spinner.html" />
+                  <item name="spinner.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/splashscreen.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="splashscreen.html" />
+                  <item name="splashscreen.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/splitter.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="splitter.html" />
+                  <item name="splitter.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/stack-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="stack-menu.html" />
+                  <item name="stack-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/stepper.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="stepper.html" />
+                  <item name="stepper.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/storage.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="storage.html" />
+                  <item name="storage.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/streamer.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="streamer.html" />
+                  <item name="streamer.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/streamer.json" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/json.svg" iconPlugin="com.intellij" isLeaf="true" text="streamer.json" />
+                  <item name="streamer.json" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/stroke-color.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="stroke-color.html" />
+                  <item name="stroke-color.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/swipe.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="swipe.html" />
+                  <item name="swipe.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/switch.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="switch.html" />
+                  <item name="switch.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/t-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="t-menu.html" />
+                  <item name="t-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/table.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="table.html" />
+                  <item name="table.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/table2.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="table2.html" />
+                  <item name="table2.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/table-static.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="table-static.html" />
+                  <item name="table-static.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/tabs.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="tabs.html" />
+                  <item name="tabs.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/tabs-material.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="tabs-material.html" />
+                  <item name="tabs-material.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/tag-input.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="tag-input.html" />
+                  <item name="tag-input.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/template.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="template.html" />
+                  <item name="template.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/textarea.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="textarea.html" />
+                  <item name="textarea.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/theme-switcher.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="theme-switcher.html" />
+                  <item name="theme-switcher.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/tile.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="tile.html" />
+                  <item name="tile.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/time-picker.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="time-picker.html" />
+                  <item name="time-picker.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/timeline.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="timeline.html" />
+                  <item name="timeline.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/toast.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="toast.html" />
+                  <item name="toast.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/toggle-button.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="toggle-button.html" />
+                  <item name="toggle-button.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/tokenizer.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="tokenizer.html" />
+                  <item name="tokenizer.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/touch.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="touch.html" />
+                  <item name="touch.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/treeview.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="treeview.html" />
+                  <item name="treeview.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/typer.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="typer.html" />
+                  <item name="typer.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/typography.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="typography.html" />
+                  <item name="typography.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/v-menu.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="v-menu.html" />
+                  <item name="v-menu.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/validator.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="validator.html" />
+                  <item name="validator.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/validator-{required}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="validator-{required}.html" />
+                  <item name="validator-{required}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/validator-{submit}.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="validator-{submit}.html" />
+                  <item name="validator-{submit}.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/vegas.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="vegas.html" />
+                  <item name="vegas.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/video-player.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="video-player.html" />
+                  <item name="video-player.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/viewport-check.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="viewport-check.html" />
+                  <item name="viewport-check.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/window.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="window.html" />
+                  <item name="window.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/wizard.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="wizard.html" />
+                  <item name="wizard.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+                <presentation>
+                  <attributes>
+                    <map>
+                      <entry key="filePath" value="$PROJECT_DIR$/examples/wizard-classic.html" />
+                    </map>
+                  </attributes>
+                  <data iconPath="expui/fileTypes/html.svg" iconPlugin="com.intellij" isLeaf="true" text="wizard-classic.html" />
+                  <item name="wizard-classic.html" type="ab9368bb:PsiFileNode" />
+                </presentation>
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/fails" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="fails" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/fails}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/icons" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="icons" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/icons}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/lib" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="lib" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/lib}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/node_modules" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/excludeRoot.svg" iconPlugin="com.intellij" isLeaf="false" text="node_modules" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/node_modules}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/source" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="source" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/source}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/temp" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/excludeRoot.svg" iconPlugin="com.intellij" isLeaf="false" text="temp" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/temp}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/tests" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="tests" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/tests}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/utils" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/nodes/folder.svg" iconPlugin="com.intellij" isLeaf="false" text="utils" />
+                <item name="dir{file://D:/Projects/metroui/metroui-lib/utils}" type="462c0819:PsiDirectoryNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.aiignore" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text=".aiignore" />
+                <item name=".aiignore" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.gitattributes" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text=".gitattributes" />
+                <item name=".gitattributes" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.gitignore" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/ignored.svg" iconPlugin="com.intellij" isLeaf="true" text=".gitignore" />
+                <item name=".gitignore" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.npmignore" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text=".npmignore" />
+                <item name=".npmignore" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.oxlintrc.json" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/json.svg" iconPlugin="com.intellij" isLeaf="true" text=".oxlintrc.json" />
+                <item name=".oxlintrc.json" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/.prettierrc" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/fileTypes/prettier.svg" iconPlugin="JavaScript" isLeaf="true" text=".prettierrc" />
+                <item name=".prettierrc" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/banner.png" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/image.svg" iconPlugin="com.intellij" isLeaf="true" text="banner.png" />
+                <item name="banner.png" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/build.js" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/javaScript.svg" iconPlugin="com.intellij" isLeaf="true" text="build.js" />
+                <item name="build.js" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CHANGELOG.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="CHANGELOG.md" />
+                <item name="CHANGELOG.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CHANGELOG-HISTORY.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="CHANGELOG-HISTORY.md" />
+                <item name="CHANGELOG-HISTORY.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CLA.docx" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/unknown.svg" iconPlugin="com.intellij" isLeaf="true" text="CLA.docx" />
+                <item name="CLA.docx" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CLA.txt" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text="CLA.txt" />
+                <item name="CLA.txt" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CODE_OF_CONDUCT.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="CODE_OF_CONDUCT.md" />
+                <item name="CODE_OF_CONDUCT.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/components.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="components.md" />
+                <item name="components.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CONTRIBUTING.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="CONTRIBUTING.md" />
+                <item name="CONTRIBUTING.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/CREDITS.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="CREDITS.md" />
+                <item name="CREDITS.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/DESCRIPTION.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="DESCRIPTION.md" />
+                <item name="DESCRIPTION.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/generate-tests.js" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/javaScript.svg" iconPlugin="com.intellij" isLeaf="true" text="generate-tests.js" />
+                <item name="generate-tests.js" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/icon.png" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/image.svg" iconPlugin="com.intellij" isLeaf="true" text="icon.png" />
+                <item name="icon.png" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/icon.svg" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/image.svg" iconPlugin="com.intellij" isLeaf="true" text="icon.svg" />
+                <item name="icon.svg" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/LICENSE" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text="LICENSE" />
+                <item name="LICENSE" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/metroui.nuspec" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/text.svg" iconPlugin="com.intellij" isLeaf="true" text="metroui.nuspec" />
+                <item name="metroui.nuspec" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/package.json" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/json.svg" iconPlugin="com.intellij" isLeaf="true" text="package.json" />
+                <item name="package.json" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/package-lock.json" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/json.svg" iconPlugin="com.intellij" isLeaf="true" text="package-lock.json" />
+                <item name="package-lock.json" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/README.md" />
+                  </map>
+                </attributes>
+                <data iconPath="icons/expui/markdown.svg" iconPlugin="org.intellij.plugins.markdown" isLeaf="true" text="README.md" />
+                <item name="README.md" type="ab9368bb:PsiFileNode" />
+              </presentation>
+              <presentation>
+                <attributes>
+                  <map>
+                    <entry key="filePath" value="$PROJECT_DIR$/tea.yaml" />
+                  </map>
+                </attributes>
+                <data iconPath="expui/fileTypes/yaml.svg" iconPlugin="com.intellij" isLeaf="true" text="tea.yaml" />
+                <item name="tea.yaml" type="ab9368bb:PsiFileNode" />
+              </presentation>
+            </presentation>
+            <presentation>
+              <attributes />
+              <data iconPath="expui/nodes/library.svg" iconPlugin="com.intellij" isLeaf="false" text="External Libraries" />
+              <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
+            </presentation>
+            <presentation>
+              <attributes />
+              <data iconPath="expui/fileTypes/scratches.svg" iconPlugin="com.intellij" isLeaf="true" text="Scratches and Consoles" />
+              <item name="Scratches and Consoles" type="b85a3e1f:ScratchTreeStructureProvider$MyProjectNode" />
+            </presentation>
+          </presentation>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="QueryFileSettings">
+    <option name="projectQueriesDirectory" value="D:\Projects\metroui\metroui-lib\.idea\queries" />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="61000" />
+  </component>
+  <component name="ToolWindowManager">
+    <layoutV2>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.32984102" />
+      <window_info id="Commit" order="1" weight="0.25" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="0" />
+      <window_info anchor="bottom" id="Problems" order="1" />
+      <window_info anchor="bottom" id="Problems View" order="2" />
+      <window_info anchor="bottom" id="Terminal" order="3" />
+      <window_info anchor="bottom" id="Services" order="4" />
+      <window_info anchor="right" content_ui="combo" id="Notifications" order="0" weight="0.25" />
+      <window_info anchor="right" id="AIAssistant" order="1" weight="0.25" />
+      <window_info anchor="right" id="Database" order="2" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" weight="0.25" />
+      <window_info anchor="right" id="Maven" order="4" weight="0.25" />
+      <unified_weights left="0.32984102" />
+    </layoutV2>
+    <recentWindows>
+      <value>Project</value>
+    </recentWindows>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/examples/accordion.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

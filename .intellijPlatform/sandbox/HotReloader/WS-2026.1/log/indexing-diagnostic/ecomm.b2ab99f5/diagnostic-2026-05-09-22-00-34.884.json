@@ -1,0 +1,65 @@
+{
+  "appInfo" : {
+    "build" : "261.22158.274",
+    "buildDate" : "2026-03-25T02:37:00Z[UTC]",
+    "productCode" : "WS",
+    "generated" : "2026-05-09T19:00:34.8855771Z",
+    "os" : "Windows 11.0",
+    "runtime" : "JetBrains s.r.o. 25.0.2 25.0.2+1-b329.72"
+  },
+  "runtimeInfo" : {
+    "maxMemory" : 2147483648,
+    "numberOfProcessors" : 24,
+    "maxNumberOfIndexingThreads" : 23,
+    "maxSizeOfFileForIntelliSense" : 2560000,
+    "maxSizeOfFileForContentLoading" : 20971520
+  },
+  "type" : "Scanning",
+  "projectIndexingActivityHistory" : {
+    "projectName" : "ecomm",
+    "times" : {
+      "scanningReason" : "changes in: \"Custom kind roots from entity (sass_functions.scss, sass_color.scss, sass_list.scss, ..., empty)\"",
+      "scanningType" : "PARTIAL",
+      "scanningId" : 1,
+      "creatingIteratorsTime" : 0,
+      "concurrentHandlingWallTimeWithoutPauses" : 0,
+      "concurrentHandlingWallTimeWithPauses" : 0,
+      "concurrentHandlingSumOfThreadTimesWithPauses" : 2116000,
+      "concurrentIterationAndScannersApplicationSumOfThreadTimesWithPauses" : 72600,
+      "concurrentFileCheckSumOfThreadTimesWithPauses" : 1962100,
+      "delayedPushPropertiesStageTime" : 0,
+      "indexExtensionsTime" : 41900,
+      "dumbModeStart" : "2026-05-09T19:00:34.6887678Z",
+      "dumbWallTimeWithPauses" : 3725200,
+      "dumbWallTimeWithoutPauses" : 3725200,
+      "updatingStart" : "2026-05-09T19:00:34.687767Z",
+      "updatingEnd" : "2026-05-09T19:00:34.692493Z",
+      "totalWallTimeWithPauses" : 4726000,
+      "wallTimeOnPause" : 1000800,
+      "isCancelled" : false,
+      "totalWallTimeWithoutPauses" : 3725200
+    },
+    "fileCount" : {
+      "numberOfFileProviders" : 1,
+      "numberOfScannedFiles" : 8,
+      "numberOfFilesIndexedByInfrastructureExtensionsDuringScan" : 0,
+      "numberOfFilesScheduledForIndexingAfterScan" : 8
+    },
+    "scanningStatistics" : [ {
+      "providerName" : "Custom kind roots from entity (sass_functions.scss, sass_color.scss, sass_list.scss, ..., empty)",
+      "numberOfScannedFiles" : 8,
+      "numberOfSkippedFiles" : 0,
+      "numberOfFilesForIndexing" : 8,
+      "numberOfFilesFullyIndexedByInfrastructureExtensions" : 0,
+      "filesFullyIndexedByInfrastructureExtensions" : [ ],
+      "statusTime" : 1484200,
+      "totalOneThreadTimeWithPauses" : 2116000,
+      "iterationAndScannersApplicationTime" : 72600,
+      "filesCheckTime" : 1962100,
+      "timeProcessingUpToDateFiles" : 0,
+      "timeUpdatingContentLessIndexes" : 0,
+      "timeIndexingWithoutContentViaInfrastructureExtension" : 41900,
+      "roots" : [ ]
+    } ]
+  }
+}

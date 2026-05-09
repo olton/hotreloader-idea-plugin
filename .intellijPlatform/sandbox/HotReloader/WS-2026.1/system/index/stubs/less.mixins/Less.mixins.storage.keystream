@@ -1,0 +1,117 @@
+.text-ellipsis.thin.hint.d-none.tag.btn-custom
+.hamburger	.on-right.w-auto.circle.wrap.square
+.size-half.clear-button	.textarea	.material.autocomplete-list.item	.selected.line.avatar.focused.resize-element.mini.no-gap.value.outline.dropdown-caret.right	.controls.rounded.active-container.dash.arrow.slider.outside	.info-box.light-toggle.node.rotate.calendar-wide.row.radio.shift.shadow.slide
+.thumbnail.page.no-dropdown-caret	.top-left.bottom-right
+.top-right.bottom-left.mif-8x.mif-3x.mif-lg.mif-2x.mif-4x.mif-5x.mif-6x.mif-7x.mif-9x.mif-10x.animated-border-hover.animated-border.bd-transparent.bd-default.gradient-border	.gradient.gradient-text.same-color
+.focusable.fg-default.debug.op-default.clear-float	.size-1x1
+.size-21x9.embed-container
+.size-16x9	.size-4x3.bg-default.bg-facebook.bg-transparent
+.bg-gitlab
+.bg-github.bg-twitter
+.bg-amazon.bg-bootstrap.bg-glassmorphism.d-table-row-print.d-inline-block-print.d-block-print.d-none-print.scroll-x-print.wrap-print.no-visible-print.d-table-print.no-scroll-print.d-inline-flex-print.d-inline-print.d-flex-print.d-table-cell-print.no-scroll-x-print.scroll-y-print.no-scroll-y-print.no-wrap-print.scroll-print.no-overflow-print.visible-print.overflow-print.clear.rotateZ.rem2pt	.ellipsis.toggle.set-relative.neb-en.rotateY.set-absolute.hideScrollBars.neb-nw.rotateX.translateX.translateY.halo.skew.animate.neb-sw.skewX.skewY.transformOrigin.win-shadow.show-element.scaleX.neb-es.pt2rem.rem2px.pt2px.neb2.neb-ne.px2rem	.set-flex.reset-list.neb-wn.default-shadow.neb-se.neb.neb-n.scale.focus-show.hideElement
+.translate.get-values.px2pt.neb-e.neb-ws.perspective.hide-element.scaleY.shadow-right.neb-s.neb-w.transition-scheme.translate3d.shadow-left.border-right.border.border-right-none.no-border-right.border-left-none.border-bottom.border-visible-none.border-top.border-solid
+.no-border.border-bottom-none.no-border-bottom.border-left.border-groove.border-ridge.no-border-top.border-outset.border-dashed.border-double.border-none.no-border-visible.border-top-none.no-border-left.border-inset.border-dotted.c-grabbing.c-se-resize.c-w-resize.c-move.c-text-vertical.c-s-resize.c-not-allowed.c-ne-resize.c-col-resize.c-nwse-resize.c-cell.c-grab.c-n-resize.c-nw-resize.c-ns-resize.c-auto.c-progress.c-text.c-nesw-resize.c-zoom-out.c-wait.c-e-resize.c-ew-resize.c-sw-resize
+.c-no-drop.c-copy.c-row-resize
+.c-zoom-in
+.c-pointer.c-help.c-all-scroll.c-none
+.c-default.c-crosshair.c-alias.bg-pattern-art.bg-pattern-paper.bg-pattern-diagonal.masked.bg-pattern-box-dot.bg-pattern-mountain.bg-pattern-grid-bottom.bg-pattern-grid-top.bg-pattern-grid.bg-pattern-grid-dot.h-auto.z-9
+.z-popover	.z-sticky.z-8	.z-notify.z-modal.z-4.z-3.z-2.z-1.z-7.z-6.z-5.z-top.z-dropdown.z-fullscreen.z-fixed.z-modal-backdrop
+.z-tooltip
+.z-overlay	.z-charms.z-absolute.z-10.scroll.stop-pointer.no-scroll-y	.overflow	.scroll-y.no-overflow.inherit-background
+.no-scroll.inherit-colors.no-appearance.no-scroll-x	.scroll-x.no-user-select.inherit-color.box
+.box-title.box-title-secondary.d-table-cell.d-table.no-visible	.d-inline.d-block.d-table-row.visible.d-inline-block
+.pos-fixed.pos-static.pos-absolute.pos-sticky
+.fixed-top.pos-relative.fixed-bottom.img-container.fit-contain.flip-image-horizontal	.fit-none.description.img-thumbnail.image-overlay.flip-image
+.fit-cover.flip-image-vertical.fit-scale-down	.fit-fill
+.short-tag.inline-list.alpha-lower.second-label.latin-upper.roman-upper.custom-list-marker.alpha-upper.roman-lower.group-list.second-action
+.step-list.latin-lower.decimal.unstyled-list
+.feed-list.my-0.pr-0.ml-0.mb-0.mx-0.mt-0.ml-auto.px-0.p-0.mb-auto.mx-auto.py-0.mr-0.pb-0.mr-auto.mt-auto.pt-0.my-auto.pl-0.m-0.put-en.put-ne.pos-top-left	.put-left.put-ws.pos-bottom-right.pos-top-right.put-nw.put-wn.put-w.put-e.pos-center
+.put-right.pos-right-center.pos-bottom-left.put-s.put-n.put-se.pos-left-center.put-sw.put-es.pos-top-center.pos-bottom-center.form-group.form-actions.inline-form
+.grid-form.list-bottom.list-pagination
+.list-info.list-component.list-search-block	.list-top.list-rows-block.axis-x.axis-z
+.cube-cell.axis-y.axis.cube.light.hero6.hero4.hero-image.hero2.hero5.hero.hero1.hero3.grid.input-small.drop-on.file
+.drop-zone.attach-link.input-custom-button.message-text.chat.message-text-inner.message-sender	.messages.message-avatar.message.smile.--next.message-item.message-time.message-input.text-weight-1.text-leader
+.va-middle
+.enlarge-2.text-weight-9.text-underover.text-oblique.text-light.text-muted	.reduce-8.enlarge	.reduce-6.sub-leader.error
+.enlarge-9
+.enlarge-8	.reduce-9.text-weight-3.text-weight-10
+.enlarge-7.text-secondary
+.enlarge-5
+.enlarge-4.text-weight-7.text-medium	.text-cap.text-weight-4.text-upper.indent
+.text-just.va-sub.text-weight-6
+.enlarge-1.fat
+.enlarge-3.text-weight-8
+.va-bottom	.no-decor.enlarge-3x.text-underline.text-leader2.text-weight-2
+.enlarge-6	.va-super.text-weight-5	.reduce-3.va-text-bottom.mono.text-overline.text-italic
+.text-bold	.reduce-2.va-text-top	.reduce-4.text-ultralight.va-baseline	.reduce-5.leader	.reduce-1
+.wrap-long.enlarge-4x.enlarge-2x.align-size.text-small.text-normal.text-linethrough.text-lower.va-top	.reduce-7.growing-bar.bar3d.remove-cloak
+.add-cloak
+.flex-card.card-content.image-header.card-footer.card.card-header
+.pill-chip.chip.show-column.clock-divider.clock.digital.clock-time.clock-ampm.expand-title.align-left.align-center.tabs-bottom.tabs-expand
+.tabs-text.align-right.tabs.prepend-options.options-list.append-options.donut.donut-fill.donut-title.donut-back.panel-content.panel-title.panel.custom-buttons
+.tile-wide.tile.tile-small.transform-top.branding-bar.transform-left.slide-back.tiles-group.transform-bottom.create-tiles-grid-size.tiles-grid.tile-medium.slide-front
+.badge-top.badge-bottom
+.image-set.img.tile-large.transform-right.create-tiles-cells.typer.typer-cursor.typer-text.show-center	.show-top.toast.flex-no-shrink-self.flex-bottom	.flex-top.flex-column
+.flex-wrap.flex-grow-self.flex-column-reverse.flex-nowrap.flex-wrap-reverse.flex-center.flex-shrink-self
+.flex-left.flex-no-grow-self.d-inline-flex.flex-equal-items	.flex-row.flex-right.flex-row-reverse.d-flex.corner-outside.corner.mark.theme-load
+.label-min.theme-speed.needle.theme-battery.analog-gauge.theme-rainbow.gauge.value-marks.theme-temp
+.label-max
+.theme-sky!.vegas-transition-slideRight2-out.vegas-transition-zoomIn2-out!.vegas-animation-kenburnsDownLeft.vegas-timer-progress.vegas-transition-negative2-out.vegas-transition-flash2-out.vegas-animation-kenburnsRight .vegas-animation-kenburnsUpRight.vegas-animation-kenburnsUpLeft	.overlay8	.overlay2	.overlay4	.overlay3	.overlay5	.overlay9!.vegas-transition-swirlRight2-out.vegas-timer	.overlay6	.overlay7.vegas-transition-fade2-out	.overlay1 .vegas-transition-swirlLeft2-out.vegas-animation-kenburnsUp.vegas-animation-kenburnsDown".vegas-animation-kenburnsDownRight .vegas-transition-slideDown2-out.vegas-overlay.vegas-transition-burn2-out.vegas-transition-blur2-out .vegas-transition-slideLeft2-out.vegas-video.vegas-transition-slideUp2-out.vegas-transition-zoomOut2-out.vegas-animation-kenburns.vegas-animation-kenburnsLeft.tr.fixed-layout.table-info.subcompact.table-rows-block.table-bottom.table-component.table-progress.striped.cell-hover.data-wrapper.table-scrollable.row-border.table-load-data-activity
+.row-hover.inverse-striped.large-padding.sortable-markers-on-left.fixed-header
+.table-top.tbody.horizontal-scroll.table-search-block.tfoot.table-skip.table-form.medium-padding.table-inspector-actions.table-container.table-wrap.table.hidden.table-border.thead.table-inspector-header.inspector-button.table-inspector.cell-border.default-padding.largest-padding.small-padding
+.hoverable.wave.cutter	.dash-dot.dot.h-menu.dialog-content.dialog-actions.dialog-title.charm-tile
+.secondary.charm-notify.charms
+.open-left.prev.controls-top.pages.next.controls-bottom.master.left.key.keypad.bottom.keys.top.notify.notify-title.position-bottom.position-left.notify-message.notify-container.half.half-90.half-50.half-70.result.half-40.half-30.half-10.half-20.half-60.stars.rating.half-80.glow.link.pill-button.glow-animated.loader.glow-animated-hover.loading.glow-hover.remark.info.dark.success.ribbon.rippleEffect.ripple.shape-heptagon.shape-parallelogram.shape-nonagon.shape-right-chevron.shape-concave.shape-diagonal.shape-rhomb.shape-bevel.shape-pentagon.shape-concave2.shape-wave.shape-left-point.shape-octagon.shape-wavy-top.shape-trapezoid.shape-wavy.shape-wavy-bottom.shape-left-chevron.shape-triangle.shape-rabbet.shape-decagon.shape-hexagon.reverse.shape-right-point.shape-message.slider-min-max.marker.range.vertical-slider.cycle-marker.ultra-thin.slider-text-max.hidden-button
+.left-knob.right-knob	.backside.slider-text-min.switch.t-menu.selected-item__group-name.drop-full-size.drop-container.select.unselect-option.option-list.select-input	.multiple	.no-icons.v-menu.page-content.action-bar.wizard.wide-wizard.alert-window.warning-window.window-status.btn-max.modal
+.resizable
+.maximized
+.btn-close
+.minimized.sys-button	.shadowed.window-caption.window-content.success-window.btn-min.window.info-window
+.collapsed.app-bar-menu.app-bar-expand
+.menu-down.app-bar-button.brand.app-bar-item-static.app-bar-container.app-bar-input.opened.app-bar.marquee__item.marquee.moveUpDown.moveLeftRight.global-dialog.global-overlay.overlay.transparent.splashscreen.popover-content.popover.popover-close-button.navview-menu-container.navview-menu.navview-pane
+.compacted.navview.icon-replacer.item-header.pad-second-level.holder.navview-content.badges.suggest-box .shadow-solid.no-shadow-text.no-shadow-box.shadow-large.shadow-3d-border.text-3d.shadow-medium.shadow-normal.shadow-small.text-retro.shadow-large-extra.text-shadow.shadow-border.text-emboss
+.shadow-3d.sidebar-header.sidebar-menu.sidebar.on-left.content-container.buttons-left.buttons-right.spinner-button-plus.stepper.diamond.step.toolbar.movable.no-divider.text-button.tool-button.layout-sidenav.sidenav.stick-right.carousel-bullets.controls-outside
+.bullet-on.carousel-switch-prev.carousel-bullet.fixed-size.slides.active-slide	.carousel.carousel-switch-next.bullet-style	.gravatar.drop-right.drop-up-right.drop-up-left.drop-down-right
+.drop-down
+.drop-left.drop-down-left	.dropdown.activity-square.activity-simple.activity-bars.activity-metro	.circular.activity-ring.activity-atom.activity-cycle.path.color-style.more-info-box.primary-value
+.info-box2.secondary-value.more.info-box-content	.calendar.to-animate.calendar-time__inner-cell.calendar-time__inner-row.coincidental.calendar-toolbar.calendar-header.caret.calendar-time.calendar-time__inner.day-content.calendar-content.event.-week-numbers	.excluded.wide-calendar.week-number.showed.header-day.calendar-footer.header-actions.today.events.header-year
+.icon-box4
+.icon-box3	.icon-box.lightbox__next	.lightbox	.no-title.lightbox__image-wrapper.lightbox__closer.lightbox__image.lightbox-overlay	.segments.progress-value.progress-label.load.segment.bar	.progress.progress-component
+.with-load.progress-data	.shortcut.windows-shortcut.gutter-style-dashed.static-size.gutter-style-dotted	.splitter.gutter-style-ribbed.view-table.current-select.view-icons-large	.listview.node-group.view-tiles.date.vertical-layout.view-icons-medium
+.view-list.view-content.timeline-end
+.no-marker.data	.timeline.task.tasks.widgets	.task-bar.system-tray.stream-title.slide-logo.global-stream	.streamer.streamer-action.event-group.streamer-events
+.size-auto.streams.stream-event-slide.state-icon.stream-secondary.stream-event.size-one-third.streamer-fake-timeline.slide-data.events-area.offset-half.stream-events.streamer-expand.stream-icon.offset-one-third.streamer-actions.fake-textarea.container-max
+.container.container-fluid.heading
+.accordion.frame
+.draggable	.treeview.actions-list-trigger.actions-list.secondary-text.actions-holder.menu-toggle
+.drop-menu.digit-value.digit.blink.hours.days.part.seconds.animate-slide
+.countdown.digit-placeholder
+.flip-card.front.flip-horizontal.back.directive-info.directive-fuck.directive-success.directive-title.directive-air.directive-bug.directive-important.directive-style-2.directive-shit.directive-warning
+.directive.directive-style-3.directive-note
+.hover-box.resize-element-disabled.arrow-right.arrow-left.scroll-container.scrollbar-type-3.scrollbar-type-1.scrollbar-type-2.scrollbar-type-4
+.skill-box
+.tag-input.padding-for-clear.original-input.static-mode.input-wrapper.date-wrapper.date-picker
+.sel-month.chart-card.chart.drag-item-marker.drag-marker-dark.dragged-item.drag-items-target.dragged-item-avatar.box-header.more-button.author.github-box.prc.attributes.ticket-box__header	.-default.box-content.info-panel.info-panel-content.info-panel-footer.info-panel-header.image-grid__item
+.half-size.image-grid.social-box
+.page-link.short-pagination.no-link	.collapse.transition.expand	.no-style.no-wrap.side..text-right
+.text-left.text-center.right-side
+.left-side.bottom-side	.top-side.place-right.menu-title.hotkey.group-title.spinner	.complete.current.action.caption-prepend.caption-append.drop-up
+.no-shadow.dialog.cycle.closer.spinner-button-minus.buffer.horizontal	.vertical	.checkbox	.expanded.desc.d-menu.node-toggle.minutes.month.time	.subtitle.skills.header.content.action-block.divider.dropdown-toggle	.week-day.day.input-clear-button.pill-input.stream.audio-player.button-group.append.full-screen.largest.medium.large.active-toggle.small.actions.compact.open.prepend.input.icon-right.-left.badge.invalid.valid.label.buttons.count-block.search-block.service-block.order-block.caption.title.icon.active.button	.disabled
+.dark-side.pagination
+.page-item.size-small.size-large.stack-menu	.-initial.time-picker.time-wrapper.show-labels.info-button.select-block.drop-as-dialog.select-wrapper.wheel-picker.drop-up-select.ribbon-menu.ribbon-split.static.section.ribbon-tool-button.ribbon-button.ribbon-split-button.scrollable.ribbon-icon-button.ribbon-dropdown.checked-one.ribbon-toggle-group.group-divider.group.content-holder.ribbon-main.non-active.tabs-holder.checked.waxing-gibbous.day-month-inner.hour.first-quarter
+.dc-minute.waning-crescent.waxing-crescent	.new-moon.analog-clock.second.last-quarter.secondary-dash.hands.tick
+.day-month.minute.digital-clock.moon.show-numbers
+.full-moon.waning-gibbous.breadcrumbs.context-menu.catalog-item-content.catalog-menu.color-example-box.color-selector-box.color-picker-button.color-picker.image-button.connection-area
+.west-side.connector-delete.active-block	.cl-curve.north-side.south-side.linked-block.add-point-west.add-point-east
+.one-point.can-drag-icon
+.east-side.link-point.add-point-btn
+.no-points.connecting.cl-line.linked-block-content.add-point-north.add-point-south.show-connector-delete
+.preloader.load-audio.media-player.play.mute.show.stop.loop.full.logo.volume.hide-cursor.label-for-input.hidden-input	.required.invalid_feedback.custom-validation.product-price.hovered.product-status.product-desc.product-title.product-card.product-image.product-footer.product-rating.product-props.-old.wrap-items.invisible-tabs .page-control__tab__menu__holder$.page-control__invisible_tabs_holder.page-control__tabs.page-control.page-control__service-button.page-control__tab__menu.page-control__tab__service.tabs-position-.page-control__tab__caption.page-control__tab.page-control__tab__icon.page-control__tab__closer.page-control__tab__append.video-wrapper.video-player.place-left.split.split-button.work-success.working-tree
+.work-fail.leaves.work-pending.bull.action-button.image-slider.image-wrapper.image-compare.image-container-overlay.remote-table.toggle-button.open-up.calendar-for-picker.calendar-picker.dialog-mode.hue-map.user-colors-title.color-cursor.color-values-block.color-block.hue-cursor
+.color-map	.dragging.user-colors.cursor.no-alpha-channel
+.alpha-map.user-swatch.user-colors-actions
+.color-box.color-selector.alpha-cursor.command-button.thumbnails.scene.prev-button.image-carousel.next-button
+.with-icon
+.full-size.input-material	.informer.permanent-label.helper-button.with-icons.fixed-tabs.tab-marker.tabs-material.tabs-material-wrapper.deep
+.tab-badge.remote-dataset.dataset-load-more.dataset-actions.dataset-caption.sidenav-simple.theme-switcher.mode-button.mode-switch.wizard-pages.wizard-help.out.wizard-actions.wizard-next.wizard-classic.wizard-cancel.wizard-prev.wizard-finish.dropdown-button.custom-checkbox.caption-left.image-magnifier-glass.image-magnifier.pm-command.package-manager.sidenav-counter.counter
+.transform.down.up.transform-button.disclaimer-actions.disclaimer-text.cookie-disclaimer.disclaimer-title.disclaimer-message.double-select-box.-sw.-e.rc-contour.-nw.-ne.-w.resizable-container.-se	.rc-point.-s                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             

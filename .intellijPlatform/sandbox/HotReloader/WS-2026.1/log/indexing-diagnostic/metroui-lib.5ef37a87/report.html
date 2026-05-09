@@ -1,0 +1,670 @@
+<html>
+  <head>
+    <title>Indexing diagnostics of 'metroui-lib'</title>
+    <style>body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  width: 80%;
+}
+
+table.activity-table {
+  width: 100%;
+}
+
+table.metrics-table {
+  width: auto;
+}
+
+.red-text {
+  color: red;
+}
+
+table.narrow-activity-table {
+  width: 80%;
+}
+
+table.two-columns td {
+  width: 50%;
+}
+
+th, td {
+  padding: 3px;
+}
+
+th {
+  background: lightgrey;
+}
+
+td {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.stats-content {
+  margin-left: 20%;
+}
+
+.stats-activity-content {
+  margin-left: 20%;
+  margin-right: 5%;
+}
+
+.aggregate-report-content {
+  margin-left: 10%;
+}
+
+.aggregate-activity-report-content {
+  margin-left: 10%;
+  margin-right: 10%;
+}
+
+.aggregate-header {
+  padding-top: 1em;
+  padding-bottom: 1em;
+  margin-bottom: 0;
+}
+
+.table-with-margin{
+  margin-top: 1em;
+  margin-bottom: 2em;
+}
+
+.navigation-bar {
+  width: 15%;
+  background-color: lightgrey;
+  position: fixed;
+  height: 100%;
+}
+
+div.navigation-bar ul {
+  list-style-type: none;
+  overflow: auto;
+  margin: 0;
+  padding: 0;
+  font-size: 24px;
+}
+
+div.navigation-bar ul li a, label {
+  display: block;
+  color: #000;
+  padding: 8px 20px;
+  text-decoration: none;
+}
+
+label input {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+div.navigation-bar ul li a:hover {
+  background-color: #555;
+  color: white;
+}
+
+.minor-data {}
+
+.invisible {
+  display: none;
+}
+
+.jetbrains-logo {
+  width: 50%;
+  bottom: 5%;
+  position: absolute;
+  left: 20%;
+}
+
+.centered-text {
+  text-align: center;
+}
+
+.linkable-table-row:hover {
+  background: #f2f3ff;
+  outline: none;
+  cursor: pointer;
+}
+
+.scanning-table-row {
+  background-color: aliceblue;
+}
+
+.not-applicable-data{
+  color: darkgrey;
+}</style>
+    <script>document.addEventListener("DOMContentLoaded", () => {
+  const rows = document.getElementsByClassName("linkable-table-row")
+  for (const row of rows) {
+    const href = row.getAttribute("href")
+    row.addEventListener("click", () => {
+      window.open(href, "_blank");
+    });
+  }
+});</script>
+  </head>
+  <body>
+    <div class="aggregate-activity-report-content">
+      <h1 class="aggregate-header">metroui-lib</h1>
+      <div>All durations are wall time; total and content loading time include pauses
+        <table class="centered-text table-with-margin activity-table"><caption style="caption-side: bottom; text-align: right; font-size: 14px">Click for details</caption>
+          <thead>
+            <tr>
+              <th colspan="14">History of scannings and indexings</th>
+            </tr>
+            <tr>
+              <th colspan="7">Time</th>
+              <th colspan="5">Files</th>
+              <th rowspan="2">Scanning ID(s)</th>
+              <th rowspan="2">Scanning Type</th>
+            </tr>
+            <tr>
+              <th>Started</th>
+              <th>Started dumb mode</th>
+              <th>Finished</th>
+              <th>Total&nbsp;time</th>
+              <th>Time spent on pause</th>
+              <th>Full dumb mode time</th>
+              <th>Dumb mode time w/o pauses</th>
+              <th>Scanned</th>
+              <th>Shared indexes (w/o content loading)</th>
+              <th>Scheduled for indexing</th>
+              <th>Shared indexes (content loaded)</th>
+              <th>Total indexed (shared indexes included)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="linkable-table-row" href="diagnostic-2026-05-09-22-01-35.134.html">
+              <td>22:01:35 09 трав.</td>
+              <td>22:01:35 09 трав.</td>
+              <td>22:01:35 09 трав.</td>
+              <td>&lt; 1 ms</td>
+              <td>0</td>
+              <td>&lt; 1 ms</td>
+              <td>&lt; 1 ms</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td>0</td>
+              <td>0</td>
+              <td>None</td>
+              <td class="not-applicable-data">N/A</td>
+            </tr>
+            <tr class="linkable-table-row" href="diagnostic-2026-05-09-22-01-35.106.html">
+              <td>22:01:29 09 трав.</td>
+              <td>22:01:29 09 трав.</td>
+              <td>22:01:35 09 трав.</td>
+              <td>5 s 165 ms</td>
+              <td>0</td>
+              <td>5 s 165 ms</td>
+              <td>5 s 165 ms</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td>0</td>
+              <td>4841<br>(incl. 1 changed in VFS)</td>
+              <td>5, 6</td>
+              <td class="not-applicable-data">N/A</td>
+            </tr>
+            <tr class="linkable-table-row scanning-table-row" href="diagnostic-2026-05-09-22-01-29.938.html">
+              <td>22:01:29 09 трав.</td>
+              <td>22:01:29 09 трав.</td>
+              <td>22:01:29 09 трав.</td>
+              <td>155 ms</td>
+              <td>1 ms</td>
+              <td>155 ms</td>
+              <td>154 ms</td>
+              <td>5212</td>
+              <td>0</td>
+              <td>4840</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td>6</td>
+              <td>full</td>
+            </tr>
+            <tr class="linkable-table-row scanning-table-row" href="diagnostic-2026-05-09-22-01-29.780.html">
+              <td>22:01:28 09 трав.</td>
+              <td>22:01:28 09 трав.</td>
+              <td><strong class="Cancelled"></strong><br>22:01:29 09 трав.</td>
+              <td class="red-text">1 s 431 ms
+cancelled</td>
+              <td>1 ms</td>
+              <td>1 s 306 ms</td>
+              <td>1 s 306 ms</td>
+              <td>1462</td>
+              <td>0</td>
+              <td>1092</td>
+              <td class="not-applicable-data">N/A</td>
+              <td class="not-applicable-data">N/A</td>
+              <td>5</td>
+              <td>full on project open</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table class="table-with-margin activity-table metrics-table">
+          <thead>
+            <tr>
+              <th colspan="2">Metrics</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>indexingTimeWithoutPauses</td>
+              <td>5 s 166 ms</td>
+            </tr>
+            <tr>
+              <td>scanningTimeWithoutPauses</td>
+              <td>1 s 584 ms</td>
+            </tr>
+            <tr>
+              <td>pausedTimeInIndexingOrScanning</td>
+              <td>2 ms</td>
+            </tr>
+            <tr>
+              <td>dumbModeTimeWithPauses</td>
+              <td>6 s 626 ms</td>
+            </tr>
+            <tr>
+              <td>numberOfScannedFiles</td>
+              <td>6674</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles</td>
+              <td>4841</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFilesWritingIndexValue</td>
+              <td>4841</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFilesWithNothingToWrite</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>numberOfFilesIndexedByExtensions</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>numberOfFilesIndexedWithoutExtensions</td>
+              <td>4841</td>
+            </tr>
+            <tr>
+              <td>numberOfRunsOfScannning</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>numberOfRunsOfIndexing</td>
+              <td>2</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#TypeScript</td>
+              <td>7902</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#JavaScript</td>
+              <td>4658</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#HTML</td>
+              <td>1554</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#Markdown</td>
+              <td>3308</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#Less</td>
+              <td>3615</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#CSS</td>
+              <td>9180</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#JSON</td>
+              <td>53022</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#SVG</td>
+              <td>106171</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#PLAIN_TEXT</td>
+              <td>6144</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#YAML</td>
+              <td>8140</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#textmate</td>
+              <td>19423</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#UNKNOWN</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#GitIgnore file</td>
+              <td>18960</td>
+            </tr>
+            <tr>
+              <td>processingSpeedAvg#AUTO_DETECTED</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#TypeScript</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#JavaScript</td>
+              <td>236</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#HTML</td>
+              <td>78</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#Markdown</td>
+              <td>167</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#Less</td>
+              <td>183</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#CSS</td>
+              <td>465</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#JSON</td>
+              <td>2686</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#SVG</td>
+              <td>5380</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#PLAIN_TEXT</td>
+              <td>311</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#YAML</td>
+              <td>412</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#textmate</td>
+              <td>984</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#UNKNOWN</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#GitIgnore file</td>
+              <td>960</td>
+            </tr>
+            <tr>
+              <td>processingSpeedWorst#AUTO_DETECTED</td>
+              <td>0</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#JavaScript</td>
+              <td>7210</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#TypeScript</td>
+              <td>7902</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#CSS</td>
+              <td>6130</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#XML</td>
+              <td>3924</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#HTML</td>
+              <td>1554</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#Markdown</td>
+              <td>3308</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#LESS</td>
+              <td>3615</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#JSON</td>
+              <td>53022</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#SVG</td>
+              <td>106171</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#TEXT</td>
+              <td>6144</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#yaml</td>
+              <td>8140</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#textmate</td>
+              <td>19423</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#GitIgnore</td>
+              <td>18960</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageAvg#IgnoreLang</td>
+              <td>18960</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#JavaScript</td>
+              <td>365</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#TypeScript</td>
+              <td>400</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#CSS</td>
+              <td>310</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#XML</td>
+              <td>198</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#HTML</td>
+              <td>78</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#Markdown</td>
+              <td>167</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#LESS</td>
+              <td>183</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#JSON</td>
+              <td>2686</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#SVG</td>
+              <td>5380</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#TEXT</td>
+              <td>311</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#yaml</td>
+              <td>412</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#textmate</td>
+              <td>984</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#GitIgnore</td>
+              <td>960</td>
+            </tr>
+            <tr>
+              <td>processingSpeedOfBaseLanguageWorst#IgnoreLang</td>
+              <td>960</td>
+            </tr>
+            <tr>
+              <td>processingTime#TypeScript</td>
+              <td>2 s 983 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#JavaScript</td>
+              <td>808 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#HTML</td>
+              <td>397 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#Markdown</td>
+              <td>357 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#Less</td>
+              <td>317 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#CSS</td>
+              <td>261 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#JSON</td>
+              <td>28 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#SVG</td>
+              <td>9 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#PLAIN_TEXT</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#YAML</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#textmate</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#UNKNOWN</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#GitIgnore file</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>processingTime#AUTO_DETECTED</td>
+              <td>0 ms</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#TypeScript</td>
+              <td>3566</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#JavaScript</td>
+              <td>561</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#HTML</td>
+              <td>194</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#Markdown</td>
+              <td>186</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#Less</td>
+              <td>183</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#CSS</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#JSON</td>
+              <td>127</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#SVG</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#PLAIN_TEXT</td>
+              <td>3</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#YAML</td>
+              <td>5</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#textmate</td>
+              <td>4</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#UNKNOWN</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#GitIgnore file</td>
+              <td>1</td>
+            </tr>
+            <tr>
+              <td>numberOfIndexedFiles#AUTO_DETECTED</td>
+              <td>1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div>
+        <table class="table-with-margin activity-table">
+          <thead>
+            <tr>
+              <th colspan="9">Shared indexes</th>
+            </tr>
+            <tr>
+              <th>Time</th>
+              <th>Kind</th>
+              <th>Name</th>
+              <th>Size</th>
+              <th>Download time</th>
+              <th>Download speed</th>
+              <th>Status</th>
+              <th>ID</th>
+              <th>Generation time</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+  </body>
+</html>

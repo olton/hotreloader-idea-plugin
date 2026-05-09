@@ -1,0 +1,35 @@
+<project version="4">
+  <component name="JSRemoteModulesUsagesDetector">
+    <modules>
+      <module url="https://cdn.metroui.org.ua/current/metro.js" />
+      <module url="https://code.jquery.com/jquery-3.7.1.min.js" />
+    </modules>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER">
+    <package-json value="$PROJECT_DIR$/package.json" />
+  </component>
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <directories>
+      <directory path="$PROJECT_DIR$/node_modules" />
+    </directories>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="RestoreUpdateTree"><![CDATA[{}]]></component>
+  <component name="VcsDirectoryMappingCache">
+    <option name="roots">
+      <set>
+        <option value="$PROJECT_DIR$" />
+      </set>
+    </option>
+    <option name="vcsName" value="Git" />
+  </component>
+</project>

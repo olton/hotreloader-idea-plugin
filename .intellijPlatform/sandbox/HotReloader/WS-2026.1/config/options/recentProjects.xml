@@ -1,0 +1,57 @@
+<application>
+  <component name="RecentProjectsManager">
+    <option name="additionalInfo">
+      <map>
+        <entry key="D:/Projects/ecomm">
+          <value>
+            <RecentProjectMetaInfo frameTitle="ecomm – README.md" projectWorkspaceId="3DV36LC66Wk5lLy8nMTn8YZWlZt">
+              <option name="activationTimestamp" value="1778353256747" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="WS-261.22158.274" />
+              <option name="buildTimestamp" value="1774406220000" />
+              <option name="colorInfo">
+                <RecentProjectColorInfo associatedIndex="4" />
+              </option>
+              <frame x="580" y="196" width="1400" height="1000" />
+              <option name="productionCode" value="WS" />
+              <option name="projectOpenTimestamp" value="1778353233807" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Projects/latte/latte-app">
+          <value>
+            <RecentProjectMetaInfo frameTitle="Latte App – watcher.js" projectWorkspaceId="2mYZiL8L7VfGlSNSOVzCXCSlAAa">
+              <option name="activationTimestamp" value="1778353286134" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="WS-261.22158.274" />
+              <option name="buildTimestamp" value="1774406220000" />
+              <option name="colorInfo">
+                <RecentProjectColorInfo associatedIndex="1" customColor="4c3d22b3" />
+              </option>
+              <frame x="580" y="196" width="1400" height="1000" />
+              <option name="productionCode" value="WS" />
+              <option name="projectOpenTimestamp" value="1778353261029" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+        <entry key="D:/Projects/metroui/metroui-lib">
+          <value>
+            <RecentProjectMetaInfo frameTitle="metroui-lib – accordion.html" opened="true" projectWorkspaceId="2skVZSdDbD4KMndCaDwLpiMQbtC">
+              <option name="activationTimestamp" value="1778353302764" />
+              <option name="binFolder" value="$APPLICATION_HOME_DIR$/bin" />
+              <option name="build" value="WS-261.22158.274" />
+              <option name="buildTimestamp" value="1774406220000" />
+              <option name="colorInfo">
+                <RecentProjectColorInfo associatedIndex="0" />
+              </option>
+              <frame x="580" y="196" width="1400" height="1000" />
+              <option name="productionCode" value="WS" />
+              <option name="projectOpenTimestamp" value="1778353288367" />
+            </RecentProjectMetaInfo>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="lastOpenedProject" value="D:/Projects/metroui/metroui-lib" />
+  </component>
+</application>
