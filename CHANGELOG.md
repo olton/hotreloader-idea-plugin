@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.3] - 2026-05-09
+### Added
+- Added support for 2026.1.* IDE.
+
 ## [0.3.2] - 2026-04-13
 ### Fixed
 - Add support for 2026.* IDE to the `Hot Reload` plugin.
