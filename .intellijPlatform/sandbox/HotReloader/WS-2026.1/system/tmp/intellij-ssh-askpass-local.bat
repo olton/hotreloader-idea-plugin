@@ -1,2 +1,0 @@
-@echo off
-"C:/Users/serhi/.gradle/caches/9.0.0/transforms/8cfd0f86c61dd9f9612e29e49bd72b3c/transformed/WebStorm-2026.1-win/jbr/bin/java" -cp "C:/Users/serhi/.gradle/caches/9.0.0/transforms/8cfd0f86c61dd9f9612e29e49bd72b3c/transformed/WebStorm-2026.1-win/lib/externalProcess-rt.jar" externalApp.nativessh.NativeSshAskPassApp %*
