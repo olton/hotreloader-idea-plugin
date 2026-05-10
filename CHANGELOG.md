@@ -2,6 +2,10 @@
 
 ## [Unreleased]
 
+## [0.3.4] - 2026-05-10
+### Added
+- Added support for 2026.2.* IDE.
+
 ## [0.3.3] - 2026-05-09
 ### Added
 - Added support for 2026.1.* IDE.
